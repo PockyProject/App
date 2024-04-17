@@ -1,18 +1,216 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:background="#f5f5f5"
+    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_weight="1">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="추천메뉴"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/nanumbarungothicbold"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="10dp"
+                    />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/linear_corner"
+                    android:orientation="horizontal">
+                    <Button
+                        android:id="@+id/Suggest_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/cheese_burger"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:backgroundTint="@color/white"
+                        android:drawableTop="@drawable/resize_burger_cheese"/>
+                    <Button
+                        android:id="@+id/Suggest_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/doublecheese_burger"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:backgroundTint="@color/white"
+                        android:drawableTop="@drawable/resize_burger_doublecheese"
+                        />
+                    <Button
+                        android:id="@+id/Suggest_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/classic_burger"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:backgroundTint="@color/white"
+                        android:drawableTop="@drawable/resize_burger_classic"
+                        />
+                </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="메인메뉴"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/nanumbarungothicbold"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="10dp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/linear_corner"
+                    android:layout_margin="5dp"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/Cheese_Burger"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/cheese_burger"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:backgroundTint="@color/white"
+                            android:drawableTop="@drawable/resize_burger_cheese" />
+                        <Button
+                            android:id="@+id/Double_Cheese_Burger"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/doublecheese_burger"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:backgroundTint="@color/white"
+                            android:drawableTop="@drawable/resize_burger_doublecheese" />
+                        <Button
+                            android:id="@+id/Classic_Burger"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/classic_burger"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:backgroundTint="@color/white"
+                            android:drawableTop="@drawable/resize_burger_classic"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/linear_corner"
+                        android:orientation="horizontal">
+                        <Button
+                            android:id="@+id/Pound_Burger"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/pound_burger"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:backgroundTint="@color/white"
+                            android:drawableTop="@drawable/resize_burger_pound" />
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" "
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:backgroundTint="@color/white"/>
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=" "
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:backgroundTint="@color/white"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </ScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="20dp"
+            android:backgroundTintMode="src_in"
+            android:orientation="horizontal">
+
+            <android.widget.Button
+                android:id="@+id/home_button_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/nanumbarungothicbold"
+                android:background="@drawable/left_buttom_button"
+                android:text="홈"/>
+            <android.widget.Button
+                android:id="@+id/favorite_button_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/nanumbarungothicbold"
+                android:background="@drawable/center_buttom_button"
+                android:text="즐겨찾기"/>
+
+            <android.widget.Button
+                android:id="@+id/additional_button_main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/nanumbarungothicbold"
+                android:background="@drawable/right_buttom_button"
+                android:text="더보기"/>
+        </LinearLayout>
+
+
+    </FrameLayout>
+</LinearLayout>

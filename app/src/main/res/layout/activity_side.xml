@@ -1,0 +1,88 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/set_text_test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:fontFamily="@font/nanumbarungothicbold"
+            android:padding="10dp"
+            android:text="세트메뉴 사이드를 선택하세요?"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/cheese_stick_button"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/side_cheese_stick"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:background="@drawable/round_corner"
+                android:drawableTop="@drawable/resize_side_cheese_stick"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/chicken_button"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/side_chicken"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:background="@drawable/round_corner"
+                android:drawableTop="@drawable/resize_side_chicken"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/onion_ring_button"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/side_onion_ring"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:background="@drawable/round_corner"
+                android:drawableTop="@drawable/resize_side_onion_ring"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_cancel"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_margin="15dp"
+            android:text="주문취소"
+            android:textColor="@color/round"
+            android:background="@drawable/round_corner"
+            />
+    </LinearLayout>
+
+
+
+</FrameLayout>

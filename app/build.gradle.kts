@@ -4,12 +4,12 @@ plugins {
 
 android {
     namespace = "com.example.pocky"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.pocky"
-        minSdk = 33
-        targetSdk = 33
+        minSdk = 28
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -39,4 +39,9 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //kakao Login
+    implementation ("com.kakao.sdk:v2-user:2.10.0")
+    //zxing
+    implementation ("com.journeyapps:zxing-android-embedded:4.3.0")
 }

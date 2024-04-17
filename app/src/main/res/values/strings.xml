@@ -1,3 +1,20 @@
 <resources>
     <string name="app_name">Pocky</string>
+    <string name="kakao_app_key">432c8e499713dc07778219f7dc6ab3b1</string>
+    <string name="cheese_burger">치즈버거\n5800원</string>
+    <string name="doublecheese_burger">더블치즈버거\n6300원</string>
+    <string name="classic_burger">클래식버거\n6600원</string>
+    <string name="pound_burger">파운드버거\n7500원</string>
+    <string name="cheese_combo">치즈버거 세트\n6800원</string>
+    <string name="doublecheese_combo">더블치즈버거 세트\n7300원</string>
+    <string name="classic_combo">클래식버거 세트\n7600원</string>
+    <string name="pound_combo">파운드버거 세트\n8500원</string>
+    <string name="side_cheese_stick">치즈스틱\n1200원</string>
+    <string name="side_chicken">크리스피 치킨\n3500원</string>
+    <string name="side_onion_ring">어니언링\n1500원</string>
+    <string name="drink_coke">콜라</string>
+    <string name="drink_diet_coke">제로콜라</string>
+    <string name="drink_fanta">환타</string>
+    <string name="drink_ade">레몬에이드</string>
+    <string name="drink_milk">우유</string>
 </resources>
