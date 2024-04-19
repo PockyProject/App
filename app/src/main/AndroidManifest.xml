@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,13 +13,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Pocky"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <meta-data android:name = "com.kakao.sdk.Appkey" android:value="@string/kakao_app_key"/>
         <activity android:name=".ComboActivity" android:exported="false"></activity>
         <activity android:name=".SideActivity" android:exported="true"></activity>
         <activity android:name=".DrinkActivity" android:exported="false" ></activity>
         <activity android:name=".MainActivity" android:exported="true"></activity>
-        <activity android:name =".LoginActivity" android:label="카카오 계정 로그인" android:exported="true">
+        <activity android:name =".loginActivity.LoginActivity" android:label="카카오 계정 로그인" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
