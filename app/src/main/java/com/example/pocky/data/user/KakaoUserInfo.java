@@ -1,26 +1,17 @@
-package com.example.pocky.loginActivity;
+package com.example.pocky.data.user;
 
-public class KakaoUserInfo {
+import java.io.Serializable;
+
+public class KakaoUserInfo implements Serializable {
     private static final String TAG = "KakaoLogin";
 
     private String nickname;
-    private long id;
     private String profilePhotoUrl;
 
-    public KakaoUserInfo(long id, String nickname, String profilePhotoUrl) {
-        this.id = id;
+    public KakaoUserInfo(String nickname, String profilePhotoUrl) {
         this.nickname = nickname;
         this.profilePhotoUrl = profilePhotoUrl;
     }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
 
     public String getProfilePhotoUrl() {
         return profilePhotoUrl;

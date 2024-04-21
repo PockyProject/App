@@ -9,8 +9,7 @@
 
     import com.example.pocky.MainActivity;
     import com.example.pocky.data.RetrofitService;
-    import com.example.pocky.data.favor.FavorDTO;
-    import com.example.pocky.data.favor.FavorInterface;
+    import com.example.pocky.data.user.KakaoUserInfo;
     import com.example.pocky.data.user.UserDTO;
     import com.example.pocky.data.user.UserInterface;
     import com.example.pocky.databinding.ActivityLoginBinding;
@@ -56,7 +55,7 @@
                     return null;
                 }
             };
-            binding.KakaoBtn.setOnClickListener(new View.OnClickListener(){ //로그인btn 이벤트
+            binding.kakaologinBtn.setOnClickListener(new View.OnClickListener(){ //로그인btn 이벤트
                 @Override
                 public void onClick(View view){
                     if(UserApiClient.getInstance().isKakaoTalkLoginAvailable(LoginActivity.this)){
@@ -84,7 +83,13 @@
                         //아이디, 닉네임, 프로필 url 담아서 UserInfo 객체 선언
                         //userInfo = new KakaoUserInfo(user.getId(), userInfo.getNickname(),user.getKakaoAccount().getProfile().getProfileImageUrl());
                         callApi(String.valueOf(user.getId()),user.getKakaoAccount().getProfile().getNickname());
+                        Log.e("로그인",user.getKakaoAccount().getProfile().getThumbnailImageUrl());
+                        String nickName = user.getKakaoAccount().getProfile().getNickname().toString();
+                        String profileUrl = user.getKakaoAccount().getProfile().getThumbnailImageUrl().toString();
+                        userInfo = new KakaoUserInfo(nickName,profileUrl);
+                        Log.e("User",userInfo.getNickname());
                         Intent nextintent = new Intent(LoginActivity.this, MainActivity.class);
+                        nextintent.putExtra("userInfo",userInfo);
                         startActivity(nextintent);
                         finish();
                     }

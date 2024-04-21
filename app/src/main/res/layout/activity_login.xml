@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical"
-    tools:context=".loginActivity.LoginActivity">
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,22 +14,22 @@
         android:text="\n\n주머니속 키오스크\nPocki"
         android:fontFamily="@font/nanumbarungothicbold"
         android:textAlignment="center"
-        android:textSize="29sp" />
-
+        android:textSize="29sp"/>
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="400dp"
         android:layout_margin="40dp"
-        app:srcCompat="@drawable/icon" />
+        app:srcCompat="@drawable/icon"/>
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/KakaoBtn"
-        android:layout_width="183dp"
-        android:layout_height="43dp"
+        android:id="@+id/kakaologin_btn"
+        android:layout_width="410dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
-        android:background="@color/white"
-        android:drawableBottom="@drawable/kakao_login_medium_narrow"
+        android:layout_marginTop="-40dp"
+        android:background="@android:color/transparent"
+        android:drawableBottom="@drawable/kakao_login_large_narrow"
         android:textColor="@color/black"
         tools:ignore="SpeakableTextPresentCheck"/>
 

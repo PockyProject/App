@@ -2,12 +2,14 @@ package com.example.pocky;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.example.pocky.data.user.KakaoUserInfo;
 
 public class MainActivity extends AppCompatActivity{
     Button Classic_Burger, CheeseBurger, PoundBurger, DoubleCheeseBurger;
@@ -17,7 +19,20 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Intent intent = getIntent();
 
+        //유저 정보 담는 변수
+        KakaoUserInfo userInfo = (KakaoUserInfo) intent.getSerializableExtra("userInfo");
+
+        if (userInfo != null) {
+            try{
+                Log.e("MainActivity","userNickname : " + userInfo.getNickname());
+            }catch (NullPointerException e){
+                Log.e("MainActivity","유저 정보 객체 호출 실패");
+            }
+        } else {
+            Log.e("MainActivity","userInfo is null");
+        }
 
         Classic_Burger = (Button) findViewById(R.id.Classic_Burger);
         CheeseBurger = (Button) findViewById(R.id.Cheese_Burger);
