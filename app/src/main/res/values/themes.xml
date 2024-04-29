@@ -6,4 +6,7 @@
     </style>
 
     <style name="Theme.Pocky" parent="Base.Theme.Pocky" />
+    <style name="ToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:fontFamily">@font/nanumbarungothicbold</item>
+    </style>
 </resources>

@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -15,27 +16,51 @@
         android:theme="@style/Theme.Pocky"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
-        <meta-data android:name = "com.kakao.sdk.Appkey" android:value="@string/kakao_app_key"/>
-        <activity android:name=".ComboActivity" android:exported="false"></activity>
-        <activity android:name=".SideActivity" android:exported="true"></activity>
-        <activity android:name=".DrinkActivity" android:exported="false" ></activity>
-        <activity android:name=".MainActivity" android:exported="true"></activity>
-        <activity android:name =".loginActivity.LoginActivity" android:label="카카오 계정 로그인" android:exported="true">
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity" android:exported="true">
+
+        <meta-data
+            android:name="com.kakao.sdk.Appkey"
+            android:value="@string/kakao_app_key" />
+
+        <activity
+            android:name=".ComboActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SideActivity"
+            android:exported="true" />
+        <activity
+            android:name=".DrinkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".loginActivity.LoginActivity"
+            android:exported="true"
+            android:label="카카오 계정 로그인">
+        </activity>
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:host="oauth"
-                    android:scheme="kakao432c8e499713dc07778219f7dc6ab3b1"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data
+                    android:host="oauth"
+                    android:scheme="kakao432c8e499713dc07778219f7dc6ab3b1" />
             </intent-filter>
         </activity>
     </application>
-
 
 </manifest>

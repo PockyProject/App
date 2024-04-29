@@ -43,6 +43,11 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
+    //Glide
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
+    //프로필 이미지
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
+
     //kakao Login
     implementation ("com.kakao.sdk:v2-user:2.10.0")
     //zxing
