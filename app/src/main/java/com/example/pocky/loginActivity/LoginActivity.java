@@ -71,8 +71,6 @@
 
         //카카오 로그인
         private void updateKakaoLoginUi() {
-            user = RetrofitService.getInstance().getRetrofit().create(UserInterface.class); //레트로핏 객체 불러오기
-
             UserApiClient.getInstance().me(new Function2<User, Throwable, Unit>() {
                 @Override
                 public Unit invoke(User user, Throwable throwable) {
