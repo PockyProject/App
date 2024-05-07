@@ -40,7 +40,7 @@
             android:name=".DrinkActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".mainActivity.MainActivity"
             android:exported="true" />
         <activity
             android:name=".loginActivity.LoginActivity"

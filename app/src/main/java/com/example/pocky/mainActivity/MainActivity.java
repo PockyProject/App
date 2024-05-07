@@ -1,4 +1,4 @@
-package com.example.pocky;
+package com.example.pocky.mainActivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity{
         } else {
             Log.e("MainActivity","userInfo is null");
         }
-        binding.usernameText.setText(userInfo.getNickname()+"님");
+        binding.usernameText.setText(userInfo.getNickname()+"님!");
 
 
        Glide.with(this)

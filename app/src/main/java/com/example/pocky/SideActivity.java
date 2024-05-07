@@ -4,13 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import org.w3c.dom.Text;
+import com.example.pocky.mainActivity.MainActivity;
 
 public class SideActivity extends AppCompatActivity {
 

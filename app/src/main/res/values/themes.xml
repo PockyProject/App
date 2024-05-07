@@ -5,7 +5,11 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Pocky" parent="Base.Theme.Pocky" />
+    <style name="Theme.Pocky" parent="Base.Theme.Pocky">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
     <style name="ToolBarTheme" parent="ThemeOverlay.AppCompat.Light">
         <item name="android:fontFamily">@font/nanumbarungothicbold</item>
     </style>

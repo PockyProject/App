@@ -5,22 +5,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SplashActivity">
+
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/icon"/>
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:src="@drawable/icon"
+        app:layout_constraintBottom_toTopOf="@id/mentText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-        android:id="@+id/logoText"
-        android:fontFamily="@font/nanumbarungothicbold"
-        android:textSize="36dp"
-        android:textColor="@color/signature"
-        android:layout_width="wrap_content"
+        android:id="@+id/mentText"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fontFamily="@font/nanumbarungothicbold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="50dp"
-        android:text="Pocki , 손안의 키오스크"/>
+        app:layout_constraintBottom_toTopOf="@id/logoText"
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        android:text="주머니속 키오스크"
+        android:gravity="center"
+        android:textSize="24dp"/>
+
+    <TextView
+        android:id="@+id/logoText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/nanumbarungothicbold"
+        android:gravity="center"
+        android:text="Pocki"
+        android:textColor="@color/signature"
+        android:textSize="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mentText"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
