@@ -7,7 +7,7 @@
     import android.util.Log;
     import android.view.View;
 
-    import com.example.pocky.MainActivity;
+    import com.example.pocky.mainActivity.MainActivity;
     import com.example.pocky.data.RetrofitService;
     import com.example.pocky.data.user.KakaoUserInfo;
     import com.example.pocky.data.user.UserDTO;

@@ -1,5 +1,7 @@
 package com.example.pocky.data.user;
 
+import androidx.annotation.NonNull;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 

@@ -3,12 +3,11 @@ package com.example.pocky;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import java.util.Objects;
+import com.example.pocky.mainActivity.MainActivity;
 
 public class ComboActivity extends AppCompatActivity {
 
