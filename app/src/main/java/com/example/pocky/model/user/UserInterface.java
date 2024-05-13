@@ -1,4 +1,4 @@
-package com.example.pocky.data.user;
+package com.example.pocky.model.user;
 
 import java.util.List;
 

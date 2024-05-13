@@ -1,4 +1,4 @@
-package com.example.pocky.data;
+package com.example.pocky.model;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

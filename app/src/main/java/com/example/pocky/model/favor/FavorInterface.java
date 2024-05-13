@@ -1,4 +1,4 @@
-package com.example.pocky.data.favor;
+package com.example.pocky.model.favor;
 
 import java.util.List;
 

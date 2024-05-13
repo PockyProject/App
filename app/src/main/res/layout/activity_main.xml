@@ -29,10 +29,11 @@
             app:layout_constraintVertical_weight="2">
 
             <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/appbarLayoutItem"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:theme="@style/ToolBarTheme"
-                app:menu="@menu/top_app_bar"
+                app:menu="@menu/main_top_app_bar"
                 app:title="Pocki"
                 app:titleTextColor="@color/signature" />
         </com.google.android.material.appbar.AppBarLayout>
@@ -141,6 +142,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
+                        android:id="@+id/Suggest_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -164,6 +166,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
+                        android:id="@+id/Suggest_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -187,6 +190,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
+                        android:id="@+id/Suggest_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@color/white"
@@ -246,6 +250,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
+                        android:id="@+id/Classic_Burger"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -270,6 +275,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
+                        android:id="@+id/Cheese_Burger"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -294,6 +300,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
+                        android:id="@+id/Pound_Burger"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -318,7 +325,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/recofirst_btn"
+                        android:id="@+id/Double_Cheese_Burger"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -343,6 +350,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
+                        android:id="@+id/Cheese_Burger_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -367,7 +375,7 @@
                     android:orientation="vertical">
 
                     <ImageButton
-                        android:id="@+id/recothrid_btn"
+                        android:id="@+id/Cheese_Burger_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
@@ -405,10 +413,11 @@
 
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/white"
-                android:elevation="12dp"
+                android:elevation="8dp"
                 android:outlineAmbientShadowColor="@color/white"
                 app:itemActiveIndicatorStyle="@null"
                 app:itemBackground="@android:color/white"
