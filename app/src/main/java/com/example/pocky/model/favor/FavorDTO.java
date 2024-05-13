@@ -1,4 +1,4 @@
-package com.example.pocky.data.favor;
+package com.example.pocky.model.favor;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

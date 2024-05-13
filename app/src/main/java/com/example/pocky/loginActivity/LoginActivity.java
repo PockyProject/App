@@ -8,10 +8,11 @@
     import android.view.View;
 
     import com.example.pocky.mainActivity.MainActivity;
-    import com.example.pocky.data.RetrofitService;
-    import com.example.pocky.data.user.KakaoUserInfo;
-    import com.example.pocky.data.user.UserDTO;
-    import com.example.pocky.data.user.UserInterface;
+    import com.example.pocky.model.RetrofitService;
+    import com.example.pocky.model.user.KakaoUserInfo;
+    import com.example.pocky.model.user.UserDTO;
+    import com.example.pocky.model.user.UserInfo;
+    import com.example.pocky.model.user.UserInterface;
     import com.example.pocky.databinding.ActivityLoginBinding;
     import com.kakao.sdk.auth.model.OAuthToken;
     import com.kakao.sdk.common.KakaoSdk;
@@ -28,8 +29,7 @@
 
     public class LoginActivity extends AppCompatActivity {
         private ActivityLoginBinding binding; // 바인딩
-        public KakaoUserInfo userInfo; // 사용자 정보를 저장할 객체
-        private UserInterface user = RetrofitService.getInstance().getRetrofit().create(UserInterface.class); //레트로핏 객체 불러오기
+        public static UserInterface user = RetrofitService.getInstance().getRetrofit().create(UserInterface.class); //레트로핏 객체 불러오기
         private UserDTO setUser;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@
             setContentView(view);
 
             //카카오 init
+            //Todo appkey Strings에 보관 후 사용하려하는데 안됨.
             KakaoSdk.init(this,"432c8e499713dc07778219f7dc6ab3b1");
 
             //카카오톡 설치 여부 확인 메서드
@@ -82,12 +83,10 @@
                         //userInfo = new KakaoUserInfo(user.getId(), userInfo.getNickname(),user.getKakaoAccount().getProfile().getProfileImageUrl());
                         callApi(String.valueOf(user.getId()),user.getKakaoAccount().getProfile().getNickname());
                         Log.e("로그인",user.getKakaoAccount().getProfile().getThumbnailImageUrl());
-                        String nickName = user.getKakaoAccount().getProfile().getNickname().toString();
-                        String profileUrl = user.getKakaoAccount().getProfile().getThumbnailImageUrl().toString();
-                        userInfo = new KakaoUserInfo(nickName,profileUrl);
-                        Log.e("User",userInfo.getNickname());
+                        UserInfo.getInstance().init(user.getKakaoAccount().getProfile().getNickname().toString(),
+                                user.getKakaoAccount().getProfile().getThumbnailImageUrl().toString());
+                        //Log.e("User",UserInfo.getInstance().getNickname());
                         Intent nextintent = new Intent(LoginActivity.this, MainActivity.class);
-                        nextintent.putExtra("userInfo",userInfo);
                         startActivity(nextintent);
                         finish();
                     }
