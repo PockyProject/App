@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:fontFamily="@font/nanumbarungothicbold"
+            android:padding="10dp"
+            android:text="음료를 선택해주세요"
+            android:textSize="25sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/coke_button"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/drink_coke"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:background="@drawable/round_corner"
+                android:drawableTop="@drawable/resize_drink_coke"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/diet_coke_button"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/drink_diet_coke"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:background="@drawable/round_corner"
+                android:drawableTop="@drawable/resize_drink_diet_coke"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/fanta_button"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/drink_fanta"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:background="@drawable/round_corner"
+                android:drawableTop="@drawable/resize_drink_fanta"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/ade_button"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/drink_ade"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:background="@drawable/round_corner"
+                android:drawableTop="@drawable/resize_drink_ade"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:orientation="horizontal">
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/milk_button"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/drink_milk"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:background="@drawable/round_corner"
+                android:drawableTop="@drawable/resize_drink_milk"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_margin="15dp"
+            android:text="주문취소"
+            android:textColor="@color/round"
+            android:background="@drawable/round_corner"
+            />
+    </LinearLayout>
+
+
+
+</FrameLayout>
