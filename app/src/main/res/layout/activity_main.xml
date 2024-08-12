@@ -20,13 +20,15 @@
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@color/white"
             android:elevation="5dp"
+            app:layout_constraintBottom_toTopOf="@id/firstCardView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_weight="2">
+
+            app:layout_constraintVertical_weight="0.3">
 
             <com.google.android.material.appbar.MaterialToolbar
                 android:id="@+id/appbarLayoutItem"
@@ -41,7 +43,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/firstCardView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="8dp"
@@ -53,7 +55,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/appbarLayout"
-            app:layout_constraintVertical_weight="2">
+            app:layout_constraintVertical_weight="0.3">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -103,9 +105,9 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/secondCardView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="8dp"
             android:elevation="10dp"
             android:orientation="vertical"
@@ -115,7 +117,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/firstCardView"
-            app:layout_constraintVertical_weight="3">
+            app:layout_constraintVertical_weight="0.75">
 
             <TextView
                 android:layout_width="match_parent"
@@ -211,18 +213,19 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/thirdCardView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
             android:orientation="vertical"
             android:padding="5dp"
+            android:layout_marginTop="12dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="2dp"
             app:layout_constraintBottom_toTopOf="@id/thirdLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/secondCardView"
-            app:layout_constraintVertical_weight="3">
+            app:layout_constraintVertical_weight="2">
 
             <TextView
                 android:layout_width="match_parent"
@@ -396,20 +399,19 @@
         </androidx.cardview.widget.CardView>
 
 
-
         <LinearLayout
             android:id="@+id/thirdLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
             android:background="@color/white"
             android:elevation="10dp"
-            android:layout_marginTop="5dp"
             app:compatShadowEnabled="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/thirdCardView"
-            app:layout_constraintVertical_weight="1">
+            app:layout_constraintVertical_weight="0.35">
 
 
             <com.google.android.material.bottomnavigation.BottomNavigationView
