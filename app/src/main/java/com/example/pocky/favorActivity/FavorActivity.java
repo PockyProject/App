@@ -1,9 +1,11 @@
 package com.example.pocky.favorActivity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,10 +14,9 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.pocky.R;
 import com.example.pocky.databinding.ActivityFavorBinding;
-import com.example.pocky.databinding.ActivityMainBinding;
 import com.example.pocky.mainActivity.MainActivity;
-
-import java.util.Objects;
+import com.google.zxing.BarcodeFormat;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class FavorActivity extends AppCompatActivity {
     ActivityFavorBinding binding;
@@ -25,11 +26,26 @@ public class FavorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityFavorBinding.inflate(getLayoutInflater());
         toolbar = binding.appbarLayoutItem;
+        FavorModalBottomsheet bottomsheet = new FavorModalBottomsheet();
         setContentView(binding.getRoot());
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        //initTopBar(binding);
+        binding.orderBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                bottomsheet.show(getSupportFragmentManager(),FavorModalBottomsheet.TAG);
+                try {
+                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+                    Bitmap bitmap = barcodeEncoder.encodeBitmap("Hello, world!", BarcodeFormat.QR_CODE, 300, 300);
+                    ImageView imageViewQrcode = findViewById(R.id.imageQrCode);
+                    imageViewQrcode.setImageBitmap(bitmap);
+                }catch (Exception e){
+                    System.out.println(e.getMessage());
+                }
+            }
+        });
+
     }
 
     @Override
@@ -42,14 +58,4 @@ public class FavorActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //    private void initTopBar(ActivityFavorBinding binding){
-//        //상단바 객체 초기화
-//        toolbar = binding.appbarLayoutItem;
-//        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
-//    }
 }

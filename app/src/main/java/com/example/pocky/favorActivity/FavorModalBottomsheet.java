@@ -1,23 +1,25 @@
 package com.example.pocky.favorActivity;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
 import com.example.pocky.R;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.WriterException;
+import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class FavorModalBottomsheet  extends BottomSheetDialogFragment {
-
+    static String TAG = "ModalBottomSheet";
 
     @Nullable
     @Override
@@ -29,6 +31,23 @@ public class FavorModalBottomsheet  extends BottomSheetDialogFragment {
 
         bottomSheetBehavior.setDraggable(true);
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+
+        // Generate QR code
+        try {
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+            Bitmap bitmap = barcodeEncoder.encodeBitmap("Hello, world!", BarcodeFormat.QR_CODE, 400, 400);
+
+            // Set the QR code to the ImageView
+            AppCompatImageView imageViewQrcode = view.findViewById(R.id.imageQrCode);
+            if (imageViewQrcode != null) {
+                imageViewQrcode.setImageBitmap(bitmap);
+            } else {
+                throw new NullPointerException("ImageView for QR Code is null");
+            }
+        } catch (WriterException e) {
+            throw new RuntimeException(e);
+        }
+
 
         bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback(){
             @Override
