@@ -20,7 +20,7 @@ public class QrCodeActivity extends AppCompatActivity {
         try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bitmap = barcodeEncoder.encodeBitmap("Hello, world!", BarcodeFormat.QR_CODE, 400, 400);
-            ImageView imageViewQrcode = (ImageView) findViewById(R.id.imageViewQrCode);
+            ImageView imageViewQrcode = findViewById(R.id.imageViewQrCode);
             imageViewQrcode.setImageBitmap(bitmap);
         } catch (WriterException e) {
             throw new RuntimeException(e);
