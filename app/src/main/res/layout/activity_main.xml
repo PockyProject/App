@@ -4,10 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="item"
             type="com.example.pocky.mainActivity.MainActivity" />
+        <variable
+            name="name"
+            type="String" />
+
 
     </data>
 
@@ -94,6 +97,8 @@
                     android:fontFamily="@font/nanumbarungothicbold"
                     android:hint="이름"
                     android:textSize="24dp"
+                    android:text="@{name}"
+
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toEndOf="@id/profileImageView"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -147,8 +152,7 @@
                         android:id="@+id/Suggest_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:src="@drawable/resize_burger_cheese" />
+                        android:background="@color/white" />
 
                     <TextView
                         android:id="@+id/menuNameFirst"
@@ -171,8 +175,7 @@
                         android:id="@+id/Suggest_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:src="@drawable/resize_burger_doublecheese" />
+                        android:background="@color/white" />
 
                     <TextView
                         android:id="@+id/menuNameSecond"
@@ -195,8 +198,7 @@
                         android:id="@+id/Suggest_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:src="@drawable/resize_burger_classic" />
+                        android:background="@color/white"/>
 
                     <TextView
                         android:id="@+id/menuNameThird"

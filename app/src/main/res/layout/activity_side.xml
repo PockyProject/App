@@ -32,8 +32,7 @@
                 android:text="@string/side_cheese_stick"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:background="@drawable/round_corner"
-                android:drawableTop="@drawable/resize_side_cheese_stick"/>
+                android:background="@drawable/round_corner" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/chicken_button"
                 android:layout_marginRight="10dp"
@@ -44,8 +43,7 @@
                 android:text="@string/side_chicken"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:background="@drawable/round_corner"
-                android:drawableTop="@drawable/resize_side_chicken"/>
+                android:background="@drawable/round_corner" />
         </LinearLayout>
 
 
@@ -64,8 +62,7 @@
                 android:text="@string/side_onion_ring"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:background="@drawable/round_corner"
-                android:drawableTop="@drawable/resize_side_onion_ring"/>
+                android:background="@drawable/round_corner" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

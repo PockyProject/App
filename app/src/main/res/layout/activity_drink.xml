@@ -31,8 +31,7 @@
                 android:text="@string/cheese_burger"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:background="@drawable/round_corner"
-                android:drawableTop="@drawable/resize_burger_cheese"/>
+                android:background="@drawable/round_corner" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/combo_button"
@@ -42,7 +41,6 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_corner"
-                android:drawableTop="@drawable/resize_burger_doublecheese"
                 android:text="@string/doublecheese_burger"
                 android:textColor="@color/black"
                 android:textSize="15sp" />
