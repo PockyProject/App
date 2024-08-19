@@ -14,9 +14,19 @@ import com.example.pocky.R;
 
 import java.util.List;
 
+
 public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerViewAdapter.ViewHolder> {
+    public interface OnItemClickListener{ //인터페이스 생성
+        void onItemClick(View v, int position);
+    }
+    private static OnItemClickListener listener; // 메인에서 받아올 리스너 객체
+    public void setOnItemClickListener(OnItemClickListener listener){ // 받아온 리스너 담을 메서드
+        this.listener = listener;
+    }
     List<String> menuName;
     List<Integer> menuImg;
+
+
 
     @SuppressLint("NotifyDataSetChanged")
     public void setArr(List<String> name, List<Integer> img) {
@@ -34,9 +44,10 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.menuName.setText(menuName.get(position));
         holder.menuPhoto.setImageResource(menuImg.get(position));
+        holder.itemView.setTag(position);
     }
 
     @Override
@@ -52,6 +63,18 @@ public class MainRecyclerViewAdapter extends RecyclerView.Adapter<MainRecyclerVi
             super(itemView);
             menuPhoto = itemView.findViewById(R.id.foodImageView1);
             menuName = itemView.findViewById(R.id.foodTitleText);
+
+            itemView.setOnClickListener(new View.OnClickListener() { //인터페이스 구현
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition() ; //아이템 포지션 확인
+                    if(listener!=null && position!= RecyclerView.NO_POSITION){
+                        //포지션 값을 반환해서 클릭이벤트 때 메인에서 활성화 한다
+                        listener.onItemClick(v, position);
+                    }
+                }
+            });
         }
+
     }
 }

@@ -26,21 +26,21 @@
                 android:id="@+id/foodImageView1"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="1.7"
+                android:layout_weight="1.5"
                 app:layout_constraintEnd_toStartOf="@+id/menuInfo"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/hameggchezzrap" />
+                tools:src="@drawable/morningmenu_hameggchezzrap" />
 
             <TextView
                 android:id="@+id/foodTitleText"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.3"
+                android:layout_weight="0.5"
                 android:gravity="center"
                 android:text="아침메뉴"
                 android:textColor="@color/black"
-                android:textSize="32dp"
+                android:textSize="24dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@id/foodImageView1"
                 app:layout_constraintStart_toStartOf="@id/foodImageView1"

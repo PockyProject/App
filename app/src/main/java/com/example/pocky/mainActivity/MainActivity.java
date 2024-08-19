@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,11 +38,8 @@ public class MainActivity extends AppCompatActivity{
     private static MainRecyclerViewAdapter recyclerViewAdapter;
     private static RecyclerView recyclerView;
     private String userName;
-    //private MainMenuDTO menuArr;
     private List<String> menuName;
     private List<Integer> menuImg;
-
-
 
     private static final int ORDER_LIST_ICON_ID = R.id.orderListIcon;
 
@@ -55,20 +53,14 @@ public class MainActivity extends AppCompatActivity{
 
         //바인딩 설정
         binding = ActivityMainBinding.inflate(getLayoutInflater());
-
-
-        recyclerView = binding.selectMenuRecyclerView;
-        recyclerViewAdapter = new MainRecyclerViewAdapter();
-        recyclerView.setAdapter(recyclerViewAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerViewAdapter.setArr(menuName,menuImg);
-
-
-        userName = viewModel.initUserData();
+        //리사이클러뷰 초기화
+        initRecyclerView();
+        //유저 이름 초기화
+        binding.setName(viewModel.initUserData());
         //액티비티에 xml 정보 전달
         setContentView(binding.getRoot());
-        //유저 데이터 초기화
-        binding.usernameText.setText(userName);
+//        //유저 데이터 초기화
+//        binding.usernameText.setText(userName);
         //액티비티에 toolbar 정보 전달
         setSupportActionBar(toolbar);
         //상단바 초기화
@@ -154,6 +146,48 @@ public class MainActivity extends AppCompatActivity{
     }
 
     private void initRecyclerView(){
+        recyclerView = binding.selectMenuRecyclerView;
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerViewAdapter = new MainRecyclerViewAdapter();
+        recyclerViewAdapter.setOnItemClickListener(new MainRecyclerViewAdapter.OnItemClickListener() { //리스트 아이템 클릭리스너
+            @Override
+            public void onItemClick(View v, int position) {
+                switch (position){
+                    case 0 :{
+                        Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class); // 아침메뉴
+                        startActivity(intent);
+                        finish();
+                    }
+                    case 1 : {
+                        Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class); // 샐러드
+                        startActivity(intent);
+                        finish();
+                    }
+                    case 2 : {
+                        Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class); // 샌드위치
+                        startActivity(intent);
+                        finish();
+                    }
+                    case 3 : {
+                        Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class); // 랩 및 기타
+                        startActivity(intent);
+                        finish();
+                    }
+                    case 4 : {
+                        Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class); // 그룹 메뉴
+                        startActivity(intent);
+                        finish();
+                    }
+                    case 5 : {
+                        Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class); // 스마일 썹
+                        startActivity(intent);
+                        finish();
+                    }
+                }
+            }
+        });
+        recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.setArr(menuName,menuImg);
 
     }
 
