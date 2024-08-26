@@ -32,8 +32,7 @@
                 android:text="@string/drink_coke"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:background="@drawable/round_corner"
-                android:drawableTop="@drawable/resize_drink_coke"/>
+                android:background="@drawable/round_corner" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/diet_coke_button"
                 android:layout_marginRight="10dp"
@@ -44,8 +43,7 @@
                 android:text="@string/drink_diet_coke"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:background="@drawable/round_corner"
-                android:drawableTop="@drawable/resize_drink_diet_coke"/>
+                android:background="@drawable/round_corner" />
         </LinearLayout>
 
         <LinearLayout
@@ -63,8 +61,7 @@
                 android:text="@string/drink_fanta"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:background="@drawable/round_corner"
-                android:drawableTop="@drawable/resize_drink_fanta"/>
+                android:background="@drawable/round_corner" />
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/ade_button"
                 android:layout_marginRight="10dp"
@@ -75,8 +72,7 @@
                 android:text="@string/drink_ade"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:background="@drawable/round_corner"
-                android:drawableTop="@drawable/resize_drink_ade"/>
+                android:background="@drawable/round_corner" />
         </LinearLayout>
 
         <LinearLayout
@@ -94,8 +90,7 @@
                 android:text="@string/drink_milk"
                 android:textColor="@color/black"
                 android:textSize="15sp"
-                android:background="@drawable/round_corner"
-                android:drawableTop="@drawable/resize_drink_milk"/>
+                android:background="@drawable/round_corner" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

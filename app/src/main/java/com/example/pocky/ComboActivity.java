@@ -23,32 +23,6 @@ public class ComboActivity extends AppCompatActivity {
         Intent intent_to_main = getIntent();
         String burger = intent_to_main.getStringExtra("put_burger");
 
-        switch (burger){
-            case "Classic_Burger":
-                imageView_meal.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.resize_burger_classic,0,0);
-                imageView_meal.setText(getResources().getString(R.string.classic_burger));
-                imageView_combo.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.resize_combo_classic,0,0);
-                imageView_combo.setText(getResources().getString(R.string.classic_combo));
-                break;
-            case "Cheese_Burger":
-                imageView_meal.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.resize_burger_cheese,0,0);
-                imageView_meal.setText(getResources().getString(R.string.cheese_burger));
-                imageView_combo.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.resize_combo_cheese,0,0);
-                imageView_combo.setText(getResources().getString(R.string.cheese_combo));
-                break;
-            case "Double_Cheese_Burger":
-                imageView_meal.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.resize_burger_doublecheese,0,0);
-                imageView_meal.setText(getResources().getString(R.string.doublecheese_burger));
-                imageView_combo.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.resize_combo_double,0,0);
-                imageView_combo.setText(getResources().getString(R.string.doublecheese_combo));
-                break;
-            case "Pound_Burger":
-                imageView_meal.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.resize_burger_pound,0,0);
-                imageView_meal.setText(getResources().getString(R.string.pound_burger));
-                imageView_combo.setCompoundDrawablesWithIntrinsicBounds(0,R.drawable.resize_burger_pound,0,0);
-                imageView_combo.setText(getResources().getString(R.string.pound_combo));
-                break;
-        }
 
         imageView_meal.setOnClickListener(new View.OnClickListener(){
             @Override
