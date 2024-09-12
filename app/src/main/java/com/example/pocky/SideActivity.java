@@ -9,7 +9,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatButton;
 
-import com.example.pocky.mainActivity.MainActivity;
+import com.example.pocky.presentation.screen.main.MainActivity;
 
 public class SideActivity extends AppCompatActivity {
 

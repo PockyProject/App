@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".SplashActivity"
+            android:name=".presentation.screen.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -40,10 +40,10 @@
             android:name=".DrinkActivity"
             android:exported="false" />
         <activity
-            android:name=".mainActivity.MainActivity"
+            android:name=".presentation.screen.main.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".loginActivity.LoginActivity"
+            android:name=".presentation.screen.loginActivity.LoginActivity"
             android:exported="true"
             android:label="카카오 계정 로그인">
         </activity>
@@ -61,9 +61,9 @@
                     android:scheme="kakao432c8e499713dc07778219f7dc6ab3b1" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.pocky.favorActivity.FavorActivity" />
-        <activity android:name="com.example.pocky.moreActivity.MoreActivity" />
-        <activity android:name="com.example.pocky.shoppingCartActivity.ShoppingCartActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.main.frgment.favor.FavorActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.main.frgment.more.MoreActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.shoppingCartActivity.ShoppingCartActivity" />
     </application>
 
 </manifest>
