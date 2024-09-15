@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.pocky.R;
 import com.example.pocky.databinding.ActivityMainBinding;
+import com.example.pocky.presentation.screen.main.frgment.favor.FavorFragment;
 import com.example.pocky.presentation.screen.main.frgment.main.MainFrgment;
 import com.example.pocky.presentation.screen.main.frgment.main.MainViewModel;
 import com.example.pocky.presentation.screen.shoppingCartActivity.ShoppingCartActivity;
@@ -59,6 +60,7 @@ public class MainActivity extends AppCompatActivity{
                     return true;
                 }else if(menuItem.getItemId() == R.id.bottomFavorBtn){
                     // 즐겨찾기 버튼 클릭 시
+                    loadFragment(new FavorFragment());
                 }else if(menuItem.getItemId() == R.id.bottomMoreBtn){
                     //더보기 버튼 클릭 시
                 }
