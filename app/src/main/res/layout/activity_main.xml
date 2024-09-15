@@ -1,293 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <data>
-        <variable
-            name="item"
-            type="com.example.pocky.presentation.screen.main.MainActivity" />
-        <variable
-            name="name"
-            type="String" />
-    </data>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbarLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:background="@color/white"
-        android:orientation="vertical">
+        android:elevation="5dp"
+        app:layout_constraintBottom_toTopOf="@id/fragmentContentView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_weight="0.8"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbarLayout"
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/appbarLayoutItem"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@color/white"
-            android:elevation="5dp"
-            app:layout_constraintBottom_toTopOf="@id/firstCardView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ToolBarTheme"
+            app:menu="@menu/main_top_app_bar"
+            app:title="Pocki"
+            app:titleTextColor="@color/signature" />
+    </com.google.android.material.appbar.AppBarLayout>
 
-            app:layout_constraintVertical_weight="0.3">
+    <FrameLayout
+        android:id="@+id/fragmentContentView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottomBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/appbarLayout"
+        app:layout_constraintVertical_weight="11" />
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/appbarLayoutItem"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:theme="@style/ToolBarTheme"
-                app:menu="@menu/main_top_app_bar"
-                app:title="Pocki"
-                app:titleTextColor="@color/signature" />
-        </com.google.android.material.appbar.AppBarLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:outlineAmbientShadowColor="@color/white"
+        app:itemActiveIndicatorStyle="@null"
+        app:itemBackground="@android:color/white"
+        app:itemIconSize="25dp"
+        app:itemIconTint="@color/bottom_navigation_color"
+        app:itemTextAppearanceActiveBoldEnabled="true"
+        app:itemTextColor="@color/bottom_navigation_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fragmentContentView"
+        app:layout_constraintVertical_weight="1"
+        app:menu="@menu/bottom_navigation_menu" />
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/firstCardView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="5dp"
-            android:orientation="vertical"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="5dp"
-            app:layout_constraintBottom_toTopOf="@+id/secondCardView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/appbarLayout"
-            app:layout_constraintVertical_weight="0.3">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/profileImageView"
-                    android:layout_width="70dp"
-                    android:layout_height="match_parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/recommendText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:fontFamily="@font/nanumbarungothicbold"
-                    android:gravity="center"
-                    android:text="환영합니다"
-                    android:textSize="24dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/usernameText"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/usernameText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="20dp"
-                    app:layout_constraintEnd_toStartOf="@id/recommendText"
-                    android:fontFamily="@font/nanumbarungothicbold"
-                    android:gravity="center"
-                    android:hint="이름"
-                    android:text="@{name}"
-                    android:textSize="24dp"
-
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/profileImageView"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/secondCardView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="8dp"
-            android:elevation="10dp"
-            android:orientation="vertical"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="2dp"
-            app:layout_constraintBottom_toTopOf="@id/thirdCardView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/firstCardView"
-            app:layout_constraintVertical_weight="0.75">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumbarungothicbold"
-                android:padding="10dp"
-                android:text="추천메뉴"
-                android:textSize="24dp" />
-
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:columnCount="3"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:rowCount="1">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/Suggest_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white" />
-
-                    <TextView
-                        android:id="@+id/menuNameFirst"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cheese_burger"
-                        android:textAlignment="center"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/Suggest_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white" />
-
-                    <TextView
-                        android:id="@+id/menuNameSecond"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/doublecheese_burger"
-                        android:textAlignment="center"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:gravity="center"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/Suggest_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white" />
-
-                    <TextView
-                        android:id="@+id/menuNameThird"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/classic_burger"
-                        android:textAlignment="center"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </GridLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/thirdCardView"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="8dp"
-            android:orientation="vertical"
-            android:padding="5dp"
-            app:cardCornerRadius="15dp"
-            app:cardElevation="2dp"
-            app:layout_constraintBottom_toTopOf="@id/thirdLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/secondCardView"
-            app:layout_constraintVertical_weight="2">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/menuText"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:fontFamily="@font/nanumbarungothicbold"
-                    android:padding="10dp"
-                    android:text="메뉴"
-                    android:textSize="24dp"
-                    app:layout_constraintBottom_toTopOf="@id/selectMenuRecyclerView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_weight="1" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/selectMenuRecyclerView"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/menuText"
-                    app:layout_constraintVertical_weight="9" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-
-        <LinearLayout
-            android:id="@+id/thirdLayout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="5dp"
-            android:background="@color/white"
-            android:elevation="10dp"
-            app:compatShadowEnabled="false"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/thirdCardView"
-            app:layout_constraintVertical_weight="0.35">
-
-
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottomBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:elevation="8dp"
-                android:outlineAmbientShadowColor="@color/white"
-                app:itemActiveIndicatorStyle="@null"
-                app:itemBackground="@android:color/white"
-                app:itemIconSize="25dp"
-                app:itemIconTint="@color/bottom_navigation_color"
-                app:itemTextAppearanceActiveBoldEnabled="true"
-                app:itemTextColor="@color/bottom_navigation_color"
-                app:menu="@menu/bottom_navigation_menu" />
-        </LinearLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</layout>
+</androidx.constraintlayout.widget.ConstraintLayout>

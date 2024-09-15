@@ -1,4 +1,4 @@
-package com.example.pocky.presentation.screen.main.frgment.home;
+package com.example.pocky.presentation.screen.main.frgment.main;
 
 import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
