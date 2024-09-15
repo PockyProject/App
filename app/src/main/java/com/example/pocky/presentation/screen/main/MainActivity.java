@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity{
                 }else if(menuItem.getItemId() == R.id.bottomFavorBtn){
                     // 즐겨찾기 버튼 클릭 시
                     loadFragment(new FavorFragment());
+                    return true;
                 }else if(menuItem.getItemId() == R.id.bottomMoreBtn){
                     //더보기 버튼 클릭 시
                 }
