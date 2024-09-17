@@ -61,7 +61,7 @@
                     android:scheme="kakao432c8e499713dc07778219f7dc6ab3b1" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.pocky.presentation.screen.main.frgment.favor.FavorActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.main.frgment.favor.FavorFragment" />
         <activity android:name="com.example.pocky.presentation.screen.main.frgment.more.MoreActivity" />
         <activity android:name="com.example.pocky.presentation.screen.shoppingCartActivity.ShoppingCartActivity" />
     </application>

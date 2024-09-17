@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pocky.R;
-import com.example.pocky.domain.model.Favor.Favor;
+import com.example.pocky.domain.repository.Favor;
 
 import java.util.Objects;
 

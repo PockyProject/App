@@ -22,30 +22,53 @@
         app:layout_constraintVertical_weight="0.05" />
 
     <androidx.recyclerview.widget.RecyclerView
-        app:layout_constraintVertical_weight="1"
         android:id="@+id/favorRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/favorText"
         app:layout_constraintBottom_toTopOf="@id/orderBtn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
+        app:layout_constraintTop_toBottomOf="@id/favorText"
+        app:layout_constraintVertical_weight="1" />
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:layout_marginBottom="10dp"
         android:id="@+id/orderBtn"
-        android:layout_width="match_parent"
+        android:text="저장"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_design"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cancelBtn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_weight="0.1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/cancelBtn"
+        android:text="삭제"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/button_design"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/qrBtn"
+        app:layout_constraintStart_toEndOf="@id/orderBtn"
+        app:layout_constraintVertical_weight="0.1" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/qrBtn"
+        android:text="qr생성"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/button_design"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/thirdCardView"
+        app:layout_constraintStart_toEndOf="@id/cancelBtn"
         app:layout_constraintVertical_weight="0.1" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
