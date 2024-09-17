@@ -3,6 +3,7 @@ package com.example.pocky.domain.repository;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.example.pocky.domain.model.Favor.FavorModel;
 
 
 // 테이블 정의
@@ -19,7 +20,6 @@ public class Favor {
     private String sauce;
     private String toping;
     private String side;
-    private String requid;
 
     public String getMenuName() {
         return menuName;
@@ -29,6 +29,7 @@ public class Favor {
         return sauce;
     }
 
+    private String requid;
 
     public int getMenuImage() {
         return menuImage;
@@ -104,7 +105,7 @@ public class Favor {
         if (this == obj) return true; // 동일한 객체일 경우
         if (obj == null || getClass() != obj.getClass()) return false; // 클래스 타입이 다르면 다름
 
-        com.example.pocky.domain.model.Favor.Favor favor = (com.example.pocky.domain.model.Favor.Favor) obj; // 형변환
+        FavorModel favor = (FavorModel) obj; // 형변환
 
         // 각각의 필드를 비교하여 동일한지 확인
         return menuImage == favor.getMenuImage() &&

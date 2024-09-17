@@ -1,6 +1,6 @@
 package com.example.pocky.domain.model.Favor;
 
-public class Favor {
+public class FavorModel {
     private int menuImage;
     private String menuName;
     private int favorNumber; // 즐겨찾기 구분 키
@@ -76,7 +76,7 @@ public class Favor {
         this.requid = requid;
     }
 
-    public Favor(int menuImage, String menuName, int favorNumber, String bread, String sauce, String toping, String side, String requid) {
+    public FavorModel(int menuImage, String menuName, int favorNumber, String bread, String sauce, String toping, String side, String requid) {
         this.menuImage = menuImage;
         this.menuName = menuName;
         this.favorNumber = favorNumber;
@@ -94,7 +94,7 @@ public class Favor {
         if (this == obj) return true; // 동일한 객체일 경우
         if (obj == null || getClass() != obj.getClass()) return false; // 클래스 타입이 다르면 다름
 
-        Favor favor = (Favor) obj; // 형변환
+        FavorModel favor = (FavorModel) obj; // 형변환
 
         // 각각의 필드를 비교하여 동일한지 확인
         return menuImage == favor.menuImage &&
