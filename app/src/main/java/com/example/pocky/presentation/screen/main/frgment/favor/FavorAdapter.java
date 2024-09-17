@@ -18,13 +18,22 @@ import java.util.Objects;
 
 public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolder> {
 
-    // 생성자
-    public FavorAdapter() {
-        super(FavorDiffUtil);
+    private static OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
+
+    public interface OnItemClickListener {
+        void onItemClick(Favor favor); // 클릭된 아이템 데이터를 전달할 메서드
     }
 
+
+    // 생성자
+    public FavorAdapter(OnItemClickListener listener) {
+        super(FavorDiffUtil);
+        FavorAdapter.listener = listener;
+    }
+
+
     // ViewHolder 정의
-    public static class FavorViewHolder extends RecyclerView.ViewHolder {
+    public class FavorViewHolder extends RecyclerView.ViewHolder {
         private final TextView menuNameTextView;
         private final ImageView menuImageView;
         private final TextView breadTextView;
@@ -43,6 +52,16 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
             topingTextView = itemView.findViewById(R.id.toping);
             sideTextView = itemView.findViewById(R.id.side);
             requidTextView = itemView.findViewById(R.id.requid);
+            // 클릭 이벤트 처리
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(getItem(position));
+                    }
+                }
+            });
         }
 
         public void bind(Favor favor) {

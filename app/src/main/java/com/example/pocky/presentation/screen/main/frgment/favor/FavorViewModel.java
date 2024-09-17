@@ -30,6 +30,7 @@ public class FavorViewModel extends AndroidViewModel {
         Favors = repository.getAllFavors();
     }
 
+
     public LiveData<List<Favor>> getFavorList() {
         return Favors;
     }
@@ -41,5 +42,7 @@ public class FavorViewModel extends AndroidViewModel {
     public void deleteFavor(Favor favor) {
         repository.delete(favor);
     }
+
+
 }
 

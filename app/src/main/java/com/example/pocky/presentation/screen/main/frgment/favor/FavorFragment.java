@@ -2,10 +2,12 @@ package com.example.pocky.presentation.screen.main.frgment.favor;
 
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -28,6 +30,7 @@ public class FavorFragment extends Fragment {
     private FavorModalBottomsheet bottomsheet;
     private FavorViewModel viewModel ;
     private FavorAdapter favorAdapter;
+    private Favor selectedFavor;  // 클릭된 Favor 데이터를 저장할 변수
 
     private MutableLiveData<List<Favor>> currentName;
 
@@ -66,7 +69,13 @@ public class FavorFragment extends Fragment {
 
 
         // RecyclerView와 FavorAdapter 초기화
-        favorAdapter = new FavorAdapter();
+        favorAdapter = new FavorAdapter(new FavorAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(Favor favor) {
+                Log.d("FavorFragment","선택된 데이터 : " + favor.getMenuName());
+                selectedFavor = favor;
+            }
+        });
         binding.favorRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.favorRecyclerView.setAdapter(favorAdapter);
 
@@ -75,24 +84,9 @@ public class FavorFragment extends Fragment {
             favorAdapter.submitList(favors);  // 데이터를 어댑터에 설정
         });
 
-        //QR 버튼 정의
-        binding.qrBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                bottomsheet.show(getParentFragmentManager(),FavorModalBottomsheet.TAG);
-                try {
-                    BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-                    Bitmap bitmap = barcodeEncoder.encodeBitmap(
-                            "content",
-                            BarcodeFormat.QR_CODE, 300, 300);
-                    ImageView imageViewQrcode = requireView().findViewById(R.id.imageQrCode);
-                    imageViewQrcode.setImageBitmap(bitmap);
-                }catch (Exception e){
-                    System.out.println(e.getMessage());
-                }
-            }
-        });
 
+        // QR 코드 생성 버튼 클릭 이벤트 설정
+        setupQrButton(view);
 
         // 데이터 삽입 예시
         binding.orderBtn.setOnClickListener(v -> {
@@ -111,11 +105,9 @@ public class FavorFragment extends Fragment {
         binding.cancelBtn.setOnClickListener(v -> {
             if (favorAdapter.getCurrentList().size() > 0) {
                 Favor favorToDelete = favorAdapter.getCurrentList().get(0);
-                //Favor favorToDelete = favorAdapter.getCurrentList().get(0);
                 viewModel.deleteFavor(favorToDelete);
             }
         });
-
     }
 
     @Override
@@ -123,5 +115,41 @@ public class FavorFragment extends Fragment {
         super.onDestroy();
         // 바인딩 해제
         binding = null;
+    }
+
+
+    // QR 코드 생성 버튼 클릭 이벤트 처리
+    private void setupQrButton(View view) {
+        Button qrButton = view.findViewById(R.id.qrBtn);  // QR 코드 생성 버튼
+        qrButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (selectedFavor != null) {
+                    // 선택된 Favor 데이터로 QR 코드 생성
+                    generateQrCode(selectedFavor);
+                    Log.d("FavorFrgment","선택된 데이터 : " + selectedFavor.getMenuName());
+                } else {
+                    // 선택된 Favor 데이터가 없으면 메시지 출력
+                    Toast.makeText(getContext(), "먼저 아이템을 선택하세요.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    // QR 코드 생성 처리 메서드
+    private void generateQrCode(Favor favor) {
+        bottomsheet.show(getParentFragmentManager(), FavorModalBottomsheet.TAG);
+        try {
+            BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
+
+            // favor에서 필요한 데이터를 QR 코드에 넣기
+            String content = favor.getMenuName() + " - " + favor.getRequid();
+            Bitmap bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.QR_CODE, 300, 300);
+
+            bottomsheet.setQrBitmap(bitmap);
+            bottomsheet.show(getChildFragmentManager(),FavorModalBottomsheet.TAG);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
