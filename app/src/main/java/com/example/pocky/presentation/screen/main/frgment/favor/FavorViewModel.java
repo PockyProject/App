@@ -35,9 +35,18 @@ public class FavorViewModel extends AndroidViewModel {
         return Favors;
     }
 
+
+    //Favor 단일 저장
     public void insertFavor(Favor favor) {
         repository.insert(favor);
     }
+
+    // Favor 여러개 저장
+    public void insertAll(Favor... favors) {
+        repository.insertAll(favors);
+    }
+
+
 
     public void deleteFavor(Favor favor) {
         repository.delete(favor);

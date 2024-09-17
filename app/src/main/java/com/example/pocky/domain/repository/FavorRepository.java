@@ -58,6 +58,14 @@ public class FavorRepository {
             return null;
         }
     }
+
+    // 여러 개의 Favor 객체를 저장하는 메서드
+    public void insertAll(Favor... favors) {
+        FavorDatabase.databaseWriteExecutor.execute(() -> {
+            favorDao.insertAll(favors);
+        });
+    }
+
 }
 
 

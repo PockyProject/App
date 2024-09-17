@@ -19,6 +19,7 @@ import java.util.Objects;
 public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolder> {
 
     private static OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
+    private FavorViewModel viewModel;
 
     public interface OnItemClickListener {
         void onItemClick(Favor favor); // 클릭된 아이템 데이터를 전달할 메서드
@@ -26,8 +27,9 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
 
 
     // 생성자
-    public FavorAdapter(OnItemClickListener listener) {
+    public FavorAdapter(OnItemClickListener listener,FavorViewModel viewModel) {
         super(FavorDiffUtil);
+        this.viewModel = viewModel;
         FavorAdapter.listener = listener;
     }
 
@@ -62,6 +64,18 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
                     }
                 }
             });
+            itemView.findViewById(R.id.cancelBtn).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 현재 클릭된 포지션 가져오기
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        // 포지션에 해당하는 데이터 가져오기
+                        Favor favorToDelete = getItem(position);
+                        viewModel.deleteFavor(favorToDelete);
+                    }
+                }
+            });
         }
 
         public void bind(Favor favor) {
@@ -72,7 +86,7 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
             sauceTextView.setText(favor.getSauce()); // 소스 설정
             topingTextView.setText(favor.getToping()); // 토핑 설정
             sideTextView.setText(favor.getSide()); // 사이드 메뉴 설정
-            requidTextView.setText(favor.getRequid()); // 기타 요청 사항 설정
+            requidTextView.setText(favor.getRequid().toString()); // 기타 요청 사항 설정
         }
     }
 
@@ -81,6 +95,7 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
     public FavorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         // 아이템 레이아웃을 인플레이트하여 ViewHolder 생성
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_favor_recycerview, parent, false);
+
         return new FavorViewHolder(view);
     }
 

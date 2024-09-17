@@ -42,22 +42,22 @@
         android:layout_marginBottom="10dp"
         android:background="@drawable/button_design"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/cancelBtn"
+        app:layout_constraintEnd_toStartOf="@id/cancel_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintVertical_weight="0.1" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/cancelBtn"
-        android:text="삭제"
+        android:id="@+id/cancel_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/button_design"
+        android:text="삭제"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/qrBtn"
         app:layout_constraintStart_toEndOf="@id/orderBtn"
         app:layout_constraintVertical_weight="0.1" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/qrBtn"
         android:text="qr생성"
@@ -68,7 +68,7 @@
         android:background="@drawable/button_design"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/cancelBtn"
+        app:layout_constraintStart_toEndOf="@id/cancel_button"
         app:layout_constraintVertical_weight="0.1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

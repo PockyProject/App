@@ -23,6 +23,7 @@ import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.List;
+import java.util.UUID;
 
 public class FavorFragment extends Fragment {
 
@@ -75,7 +76,7 @@ public class FavorFragment extends Fragment {
                 Log.d("FavorFragment","선택된 데이터 : " + favor.getMenuName());
                 selectedFavor = favor;
             }
-        });
+        },viewModel);
         binding.favorRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.favorRecyclerView.setAdapter(favorAdapter);
 
@@ -90,24 +91,48 @@ public class FavorFragment extends Fragment {
 
         // 데이터 삽입 예시
         binding.orderBtn.setOnClickListener(v -> {
-            Favor favor = new Favor(R.drawable.resize_foldfork,
+            Favor favor1 = new Favor(R.drawable.resize_foldfork,
                     "Burger",
-                    1,
+                    UUID.randomUUID().toString(),
                     "bread",
                     "sauce",
                     "toping",
                     "side",
-                    "requid");
-            viewModel.insertFavor(favor);
+                    false);
+            Favor favor2 = new Favor(R.drawable.resize_hamcheeze,
+                    "Burger",
+                    UUID.randomUUID().toString(),
+                    "bread",
+                    "sauce",
+                    "toping",
+                    "side",
+                    true);
+            Favor favor3 = new Favor(R.drawable.resize_bestpartyflatter,
+                    "Burger",
+                    UUID.randomUUID().toString(),
+                    "bread",
+                    "sauce",
+                    "toping",
+                    "side",
+                    false);
+            viewModel.insertAll(favor1,favor2,favor3);
         });
 
-        // 데이터 삭제 예시 (첫 번째 아이템 삭제)
-        binding.cancelBtn.setOnClickListener(v -> {
-            if (favorAdapter.getCurrentList().size() > 0) {
-                Favor favorToDelete = favorAdapter.getCurrentList().get(0);
-                viewModel.deleteFavor(favorToDelete);
+        binding.cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Favor favor3 = new Favor(R.drawable.resize_bestpartyflatter,
+                        "Burger",
+                        UUID.randomUUID().toString(),
+                        "bread",
+                        "sauce",
+                        "toping",
+                        "side",
+                        false);
+                viewModel.insertAll(favor3);
             }
         });
+
     }
 
     @Override
@@ -128,6 +153,7 @@ public class FavorFragment extends Fragment {
                     // 선택된 Favor 데이터로 QR 코드 생성
                     generateQrCode(selectedFavor);
                     Log.d("FavorFrgment","선택된 데이터 : " + selectedFavor.getMenuName());
+                   // v.getBackground().applyTheme();
                 } else {
                     // 선택된 Favor 데이터가 없으면 메시지 출력
                     Toast.makeText(getContext(), "먼저 아이템을 선택하세요.", Toast.LENGTH_SHORT).show();
