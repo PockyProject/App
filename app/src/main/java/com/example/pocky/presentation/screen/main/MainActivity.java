@@ -118,4 +118,9 @@ public class MainActivity extends AppCompatActivity{
                 .commit();
     }
 
+    // 프래그먼트에서 호출할 수 있도록 바텀 네비게이션 아이콘 색깔 변경 메서드 정의
+    public void setSelectedIconColor(int menuItemId) {
+        binding.bottomBar.setSelectedItemId(menuItemId);
+    }
+
 }

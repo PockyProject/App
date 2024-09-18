@@ -1,5 +1,6 @@
 package com.example.pocky.presentation.screen.main.frgment.favor;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +21,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.pocky.R;
 import com.example.pocky.databinding.FragmentFavorBinding;
 import com.example.pocky.domain.repository.Favor;
+import com.example.pocky.presentation.screen.main.MainActivity;
+import com.example.pocky.presentation.screen.main.frgment.main.MainFrgment;
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
@@ -64,12 +68,7 @@ public class FavorFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        //뷰모델 초기화
-        viewModel = new ViewModelProvider(requireActivity(), ViewModelProvider.AndroidViewModelFactory.getInstance(requireActivity().getApplication()))
-                .get(FavorViewModel.class);
-
-
-        // RecyclerView와 FavorAdapter 초기화
+        // FavorAdapter 초기화
         favorAdapter = new FavorAdapter(new FavorAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(Favor favor) {
@@ -80,16 +79,28 @@ public class FavorFragment extends Fragment {
         binding.favorRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.favorRecyclerView.setAdapter(favorAdapter);
 
+
         // ViewModel에서 데이터를 가져와서 RecyclerView에 반영
         viewModel.getFavorList().observe(getViewLifecycleOwner(), favors -> {
-            favorAdapter.submitList(favors);  // 데이터를 어댑터에 설정
+
+            if(favors == null || favors.isEmpty()){ // 즐겨찾기 내역이 있다면, 없다면
+                binding.favorRecyclerView.setVisibility(View.INVISIBLE); // 내역 보여주는 리사이클러뷰 숨기기
+                binding.emptyView.setVisibility(View.VISIBLE); // 주문유도창 보이기
+            }else{
+                binding.favorRecyclerView.setVisibility(View.VISIBLE); // 내역 보여주는 리사이클러뷰 보이기
+                binding.emptyView.setVisibility(View.INVISIBLE);            // 주문유도창 숨기기
+                favorAdapter.submitList(favors);  // 데이터를 어댑터에 설정
+
+            }
         });
+
+
 
 
         // QR 코드 생성 버튼 클릭 이벤트 설정
         setupQrButton(view);
 
-        // 데이터 삽입 예시
+        // 데이터 삽입 예시, 주문프로세스 완성 후 삭제 예정
         binding.orderBtn.setOnClickListener(v -> {
             Favor favor1 = new Favor(R.drawable.resize_foldfork,
                     "Burger",
@@ -118,20 +129,13 @@ public class FavorFragment extends Fragment {
             viewModel.insertAll(favor1,favor2,favor3);
         });
 
-        binding.cancelButton.setOnClickListener(new View.OnClickListener() {
+        binding.gotoMainFrgmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Favor favor3 = new Favor(R.drawable.resize_bestpartyflatter,
-                        "Burger",
-                        UUID.randomUUID().toString(),
-                        "bread",
-                        "sauce",
-                        "toping",
-                        "side",
-                        false);
-                viewModel.insertAll(favor3);
+                goToMainFrgment(v);
             }
         });
+
 
     }
 
@@ -140,6 +144,17 @@ public class FavorFragment extends Fragment {
         super.onDestroy();
         // 바인딩 해제
         binding = null;
+    }
+
+    @SuppressLint("ResourceType")
+    private void goToMainFrgment(View view){
+        FragmentTransaction tr = getActivity().getSupportFragmentManager().beginTransaction();
+        MainFrgment main = new MainFrgment();
+        tr.replace(super.getId(),main);
+        tr.commit();
+
+        MainActivity activity = (MainActivity) getActivity();
+        activity.setSelectedIconColor(R.id.bottomHomeBtn); // 변경할 바텀 아이콘 아이디 넣기
     }
 
 
@@ -153,7 +168,6 @@ public class FavorFragment extends Fragment {
                     // 선택된 Favor 데이터로 QR 코드 생성
                     generateQrCode(selectedFavor);
                     Log.d("FavorFrgment","선택된 데이터 : " + selectedFavor.getMenuName());
-                   // v.getBackground().applyTheme();
                 } else {
                     // 선택된 Favor 데이터가 없으면 메시지 출력
                     Toast.makeText(getContext(), "먼저 아이템을 선택하세요.", Toast.LENGTH_SHORT).show();
