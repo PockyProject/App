@@ -12,6 +12,13 @@
         android:icon="@drawable/baseline_star_outline_24"
         android:title="즐겨찾기"/>
     <item
+        android:iconTint="#FFFFFF"
+        android:id="@+id/orderList"
+        android:enabled="true"
+        android:icon="@drawable/orderlist_btn"
+        android:title="주문내역"/>
+
+    <item
         android:id="@+id/bottomMoreBtn"
         android:enabled="true"
         android:icon="@drawable/outline_settings_24"
