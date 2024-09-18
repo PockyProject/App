@@ -62,7 +62,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.pocky.presentation.screen.main.frgment.favor.FavorFragment" />
-        <activity android:name="com.example.pocky.presentation.screen.main.frgment.more.MoreActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.main.frgment.more.MoreFragment" />
         <activity android:name="com.example.pocky.presentation.screen.shoppingCartActivity.ShoppingCartActivity" />
     </application>
 
