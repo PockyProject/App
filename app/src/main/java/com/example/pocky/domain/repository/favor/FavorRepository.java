@@ -1,9 +1,11 @@
-package com.example.pocky.domain.repository;
+package com.example.pocky.domain.repository.favor;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+
+import com.example.pocky.domain.repository.Database;
 
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class FavorRepository {
     private LiveData<List<Favor>> Favors;
 
     public FavorRepository(Application application) {
-        FavorDatabase db = FavorDatabase.getInstance(application);
+        Database db = Database.getInstance(application);
         favorDao = db.favorDao();
         Favors = favorDao.getAllFavors();
     }
@@ -61,7 +63,7 @@ public class FavorRepository {
 
     // 여러 개의 Favor 객체를 저장하는 메서드
     public void insertAll(Favor... favors) {
-        FavorDatabase.databaseWriteExecutor.execute(() -> {
+        Database.databaseWriteExecutor.execute(() -> {
             favorDao.insertAll(favors);
         });
     }
