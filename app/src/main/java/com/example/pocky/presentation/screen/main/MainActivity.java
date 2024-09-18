@@ -14,6 +14,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.pocky.R;
 import com.example.pocky.databinding.ActivityMainBinding;
+import com.example.pocky.presentation.screen.main.frgment.favor.FavorFragment;
 import com.example.pocky.presentation.screen.main.frgment.main.MainFrgment;
 import com.example.pocky.presentation.screen.main.frgment.main.MainViewModel;
 import com.example.pocky.presentation.screen.shoppingCartActivity.ShoppingCartActivity;
@@ -59,6 +60,8 @@ public class MainActivity extends AppCompatActivity{
                     return true;
                 }else if(menuItem.getItemId() == R.id.bottomFavorBtn){
                     // 즐겨찾기 버튼 클릭 시
+                    loadFragment(new FavorFragment());
+                    return true;
                 }else if(menuItem.getItemId() == R.id.bottomMoreBtn){
                     //더보기 버튼 클릭 시
                 }
@@ -113,6 +116,11 @@ public class MainActivity extends AppCompatActivity{
         getSupportFragmentManager().beginTransaction()
                 .replace(binding.fragmentContentView.getId(),fragment)
                 .commit();
+    }
+
+    // 프래그먼트에서 호출할 수 있도록 바텀 네비게이션 아이콘 색깔 변경 메서드 정의
+    public void setSelectedIconColor(int menuItemId) {
+        binding.bottomBar.setSelectedItemId(menuItemId);
     }
 
 }
