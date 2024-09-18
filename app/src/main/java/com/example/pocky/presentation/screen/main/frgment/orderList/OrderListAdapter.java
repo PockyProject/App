@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pocky.R;
-import com.example.pocky.databinding.ItemOrderRecycerviewBinding;
 import com.example.pocky.domain.repository.orderList.Order;
 
 import java.util.Objects;
@@ -21,7 +20,6 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
 
     private static OrderListAdapter.OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
     private OrderViewModel viewModel;
-    private ItemOrderRecycerviewBinding binding;
 
     public interface OnItemClickListener {
         void onItemClick(Order Order); // 클릭된 아이템 데이터를 전달할 메서드
@@ -66,7 +64,7 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
                     }
                 }
             });
-            itemView.findViewById(R.id.cancelBtn).setOnClickListener(new View.OnClickListener() {
+            itemView.findViewById(R.id.orderCancelBtn).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // 현재 클릭된 포지션 가져오기
@@ -113,7 +111,7 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
         @Override
         public boolean areItemsTheSame(@NonNull Order oldItem, @NonNull Order newItem) {
             // 각 항목의 고유성을 비교 (age 기준으로 동일 여부 판단)
-            return Objects.equals(oldItem.getFavorNumber(), newItem.getFavorNumber());
+            return Objects.equals(oldItem.getOrderNumber(), newItem.getOrderNumber());
         }
 
         @Override

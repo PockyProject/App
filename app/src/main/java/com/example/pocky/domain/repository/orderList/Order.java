@@ -14,7 +14,7 @@ public class Order {
 
     @PrimaryKey // 기본키 선언
     @NonNull
-    private String favorNumber;
+    private String orderNumber;
 
     private int menuImage;
     private String menuName;
@@ -38,8 +38,8 @@ public class Order {
     }
 
 
-    public String  getFavorNumber() {
-        return this.favorNumber;
+    public String  getOrderNumber() {
+        return this.orderNumber;
     }
 
     public String getBread() {
@@ -62,10 +62,10 @@ public class Order {
     }
 
 
-    public Order(int menuImage, String menuName, String favorNumber, String bread, String sauce, String toping, String side, Boolean requid) {
+    public Order(int menuImage, String menuName, String orderNumber, String bread, String sauce, String toping, String side, Boolean requid) {
         this.menuImage = menuImage;
         this.menuName = menuName;
-        this.favorNumber = favorNumber;
+        this.orderNumber = orderNumber;
         this.bread = bread;
         this.sauce = sauce;
         this.toping = toping;
@@ -80,16 +80,16 @@ public class Order {
         if (this == obj) return true; // 동일한 객체일 경우
         if (obj == null || getClass() != obj.getClass()) return false; // 클래스 타입이 다르면 다름
 
-        Favor favor = (Favor) obj; // 형변환
+        Order order = (Order) obj; // 형변환
 
         // 각각의 필드를 비교하여 동일한지 확인
-        return menuImage == favor.getMenuImage() &&
-                menuName.equals(favor.getMenuName()) &&
-                Objects.equals(favorNumber, favor.getFavorNumber()) &&
-                bread.equals(favor.getBread()) &&
-                sauce.equals(favor.getSauce()) &&
-                toping.equals(favor.getToping()) &&
-                side.equals(favor.getSide()) &&
-                requid.equals(favor.getRequid());
+        return menuImage == order.getMenuImage() &&
+                menuName.equals(order.getMenuName()) &&
+                Objects.equals(orderNumber, order.getOrderNumber()) &&
+                bread.equals(order.getBread()) &&
+                sauce.equals(order.getSauce()) &&
+                toping.equals(order.getToping()) &&
+                side.equals(order.getSide()) &&
+                requid.equals(order.getRequid());
     }
 }

@@ -12,8 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.pocky.R;
 import com.example.pocky.databinding.FragmentOrderlistBinding;
 import com.example.pocky.domain.repository.orderList.Order;
+
+import java.util.UUID;
 
 
 public class OrderListFragment extends Fragment {
@@ -57,6 +60,50 @@ public class OrderListFragment extends Fragment {
         binding.orderListRecycerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.orderListRecycerView.setAdapter(orderAdapter);
 
+
+
+        // ViewModel에서 데이터를 가져와서 RecyclerView에 반영
+        viewModel.getFavorList().observe(getViewLifecycleOwner(), favors -> {
+
+            if(favors == null || favors.isEmpty()){ // 즐겨찾기 내역이 있다면, 없다면
+                binding.orderListRecycerView.setVisibility(View.INVISIBLE); // 내역 보여주는 리사이클러뷰 숨기기
+                binding.emptyView.setVisibility(View.VISIBLE); // 주문유도창 보이기
+            }else{
+                binding.orderListRecycerView.setVisibility(View.VISIBLE); // 내역 보여주는 리사이클러뷰 보이기
+                binding.emptyView.setVisibility(View.INVISIBLE);            // 주문유도창 숨기기
+                orderAdapter.submitList(favors);  // 데이터를 어댑터에 설정
+
+            }
+        });
+
+        // 데이터 삽입 예시, 주문프로세스 완성 후 삭제 예정
+        binding.orderBtn.setOnClickListener(v -> {
+            Order order1 = new Order(R.drawable.resize_foldfork,
+                    "Burger",
+                    UUID.randomUUID().toString(),
+                    "bread",
+                    "sauce",
+                    "toping",
+                    "side",
+                    false);
+            Order order2 = new Order(R.drawable.resize_hamcheeze,
+                    "Burger",
+                    UUID.randomUUID().toString(),
+                    "bread",
+                    "sauce",
+                    "toping",
+                    "side",
+                    true);
+            Order order3 = new Order(R.drawable.resize_bestpartyflatter,
+                    "Burger",
+                    UUID.randomUUID().toString(),
+                    "bread",
+                    "sauce",
+                    "toping",
+                    "side",
+                    false);
+            viewModel.insertAll(order1,order2,order3);
+        });
 
     }
 }
