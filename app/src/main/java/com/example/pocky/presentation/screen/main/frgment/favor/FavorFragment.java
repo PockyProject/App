@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.pocky.R;
 import com.example.pocky.databinding.FragmentFavorBinding;
-import com.example.pocky.domain.repository.Favor;
+import com.example.pocky.domain.repository.favor.Favor;
 import com.example.pocky.presentation.screen.main.MainActivity;
 import com.example.pocky.presentation.screen.main.frgment.main.MainFrgment;
 import com.google.zxing.BarcodeFormat;
