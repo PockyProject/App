@@ -1,4 +1,4 @@
-package com.example.pocky.domain.repository;
+package com.example.pocky.domain.repository.favor;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;

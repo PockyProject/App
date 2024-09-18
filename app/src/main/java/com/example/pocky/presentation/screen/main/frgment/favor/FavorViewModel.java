@@ -7,8 +7,8 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.pocky.domain.repository.Favor;
-import com.example.pocky.domain.repository.FavorRepository;
+import com.example.pocky.domain.repository.favor.Favor;
+import com.example.pocky.domain.repository.favor.FavorRepository;
 
 import java.util.List;
 
