@@ -17,6 +17,7 @@ import com.example.pocky.databinding.ActivityMainBinding;
 import com.example.pocky.presentation.screen.main.frgment.favor.FavorFragment;
 import com.example.pocky.presentation.screen.main.frgment.main.MainFrgment;
 import com.example.pocky.presentation.screen.main.frgment.main.MainViewModel;
+import com.example.pocky.presentation.screen.main.frgment.orderList.OrderListFragment;
 import com.example.pocky.presentation.screen.shoppingCartActivity.ShoppingCartActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -62,8 +63,10 @@ public class MainActivity extends AppCompatActivity{
                     // 즐겨찾기 버튼 클릭 시
                     loadFragment(new FavorFragment());
                     return true;
-                }else if(menuItem.getItemId() == R.id.bottomMoreBtn){
-                    //더보기 버튼 클릭 시
+                }else if(menuItem.getItemId() == R.id.bottomOrderListBtn){
+                    //주문내역 버튼 클릭 시
+                    loadFragment(new OrderListFragment());
+                    return true;
                 }
                 return false;
             }
