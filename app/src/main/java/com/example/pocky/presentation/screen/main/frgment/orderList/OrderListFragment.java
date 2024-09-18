@@ -1,5 +1,6 @@
 package com.example.pocky.presentation.screen.main.frgment.orderList;
 
+import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,12 +13,15 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.pocky.R;
 import com.example.pocky.databinding.FragmentOrderlistBinding;
 import com.example.pocky.domain.repository.orderList.Order;
+import com.example.pocky.presentation.screen.main.MainActivity;
+import com.example.pocky.presentation.screen.main.frgment.main.MainFrgment;
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
@@ -117,6 +121,24 @@ public class OrderListFragment extends Fragment {
             viewModel.insertAll(order1,order2,order3);
         });
 
+        binding.gotoMainFrgmentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goToMainFrgment(v);
+            }
+        });
+
+    }
+
+    @SuppressLint("ResourceType")
+    private void goToMainFrgment(View view){
+        FragmentTransaction tr = getActivity().getSupportFragmentManager().beginTransaction();
+        MainFrgment main = new MainFrgment();
+        tr.replace(super.getId(),main);
+        tr.commit();
+
+        MainActivity activity = (MainActivity) getActivity();
+        activity.setSelectedIconColor(R.id.bottomHomeBtn); // 변경할 바텀 아이콘 아이디 넣기
     }
 
     // QR 코드 생성 버튼 클릭 이벤트 처리
