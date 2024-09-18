@@ -71,7 +71,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintBottom_toTopOf="@id/qrBtn"
+        app:layout_constraintBottom_toTopOf="@id/orderQrBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -80,7 +80,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/qrBtn"
+        android:id="@+id/orderQrBtn"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -104,7 +104,7 @@
         android:textStyle="bold"
         android:text="주문하기"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/qrBtn"
+        app:layout_constraintStart_toEndOf="@id/orderQrBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintVertical_weight="0.1" />
 
