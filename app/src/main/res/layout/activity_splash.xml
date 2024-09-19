@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".presentation.screen.SplashActivity">
 
     <ImageView
@@ -21,13 +22,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/nanumbarungothicbold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/logoText"
-        app:layout_constraintTop_toBottomOf="@id/logo"
-        android:text="주머니속 키오스크"
         android:gravity="center"
-        android:textSize="24dp"/>
+        android:text="주머니속 키오스크"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toTopOf="@id/logoText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo" />
 
     <TextView
         android:id="@+id/logoText"
@@ -41,6 +42,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/mentText"/>
+        app:layout_constraintTop_toBottomOf="@id/mentText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
