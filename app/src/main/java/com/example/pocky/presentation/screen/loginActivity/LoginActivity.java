@@ -1,18 +1,19 @@
     package com.example.pocky.presentation.screen.loginActivity;
 
-    import androidx.appcompat.app.AppCompatActivity;
-
     import android.content.Intent;
     import android.os.Bundle;
     import android.util.Log;
     import android.view.View;
 
-    import com.example.pocky.presentation.screen.main.MainActivity;
+    import androidx.appcompat.app.AppCompatActivity;
+
+    import com.example.pocky.BuildConfig;
+    import com.example.pocky.databinding.ActivityLoginBinding;
     import com.example.pocky.domain.model.RetrofitService;
     import com.example.pocky.domain.model.user.UserDTO;
     import com.example.pocky.domain.model.user.UserInfo;
     import com.example.pocky.domain.model.user.UserInterface;
-    import com.example.pocky.databinding.ActivityLoginBinding;
+    import com.example.pocky.presentation.screen.main.MainActivity;
     import com.kakao.sdk.auth.model.OAuthToken;
     import com.kakao.sdk.common.KakaoSdk;
     import com.kakao.sdk.user.UserApiClient;
@@ -30,6 +31,7 @@
         private ActivityLoginBinding binding; // 바인딩
         public static UserInterface user = RetrofitService.getInstance().getRetrofit().create(UserInterface.class); //레트로핏 객체 불러오기
         private UserDTO setUser;
+        private final String KAKAO_KEY = BuildConfig.kakaoSDK;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             binding = ActivityLoginBinding.inflate(getLayoutInflater());
@@ -38,8 +40,7 @@
             setContentView(view);
 
             //카카오 init
-            //Todo appkey Strings에 보관 후 사용하려하는데 안됨.
-            KakaoSdk.init(this,"432c8e499713dc07778219f7dc6ab3b1");
+            KakaoSdk.init(this,KAKAO_KEY);
 
             //카카오톡 설치 여부 확인 메서드
             Function2<OAuthToken, Throwable, Unit> callback = new Function2<OAuthToken, Throwable, Unit>() {
