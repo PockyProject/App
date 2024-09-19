@@ -7,24 +7,36 @@
     android:background="@color/white"
     tools:context=".presentation.screen.SplashActivity">
 
+    <View
+        android:id="@+id/dummyView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/logo"
+        app:layout_constraintVertical_weight="0.03"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+
     <ImageView
         android:id="@+id/logo"
         android:layout_width="240dp"
-        android:layout_height="240dp"
+        android:layout_height="0dp"
         android:src="@drawable/icon"
+        app:layout_constraintVertical_weight="0.1"
         app:layout_constraintBottom_toTopOf="@id/mentText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/dummyView" />
 
     <TextView
         android:id="@+id/mentText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:fontFamily="@font/nanumbarungothicbold"
         android:gravity="center"
         android:text="주머니속 키오스크"
         android:textSize="24dp"
+        app:layout_constraintVertical_weight="0.01"
         app:layout_constraintBottom_toTopOf="@id/logoText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,13 +44,14 @@
 
     <TextView
         android:id="@+id/logoText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         android:fontFamily="@font/nanumbarungothicbold"
-        android:gravity="center"
+        android:gravity="center|top"
         android:text="Pocki"
         android:textColor="@color/signature"
         android:textSize="36dp"
+        app:layout_constraintVertical_weight="0.05"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
