@@ -1,6 +1,5 @@
 package com.example.pocky.presentation.screen.main;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -19,7 +18,6 @@ import com.example.pocky.presentation.screen.main.frgment.main.MainFrgment;
 import com.example.pocky.presentation.screen.main.frgment.main.MainViewModel;
 import com.example.pocky.presentation.screen.main.frgment.more.MoreFragment;
 import com.example.pocky.presentation.screen.main.frgment.orderList.OrderListFragment;
-import com.example.pocky.presentation.screen.shoppingCartActivity.ShoppingCartActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
@@ -30,7 +28,6 @@ public class MainActivity extends AppCompatActivity{
     private static Toolbar toolbar;
     private static MainViewModel viewModel;
 
-    private static final int ORDER_LIST_ICON_ID = R.id.orderListIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +77,6 @@ public class MainActivity extends AppCompatActivity{
             loadFragment(new MainFrgment());
         }
 
-        //상단바 초기화
-        initTopBar(binding);
 
     }
 
@@ -92,32 +87,6 @@ public class MainActivity extends AppCompatActivity{
         inflater.inflate(R.menu.main_top_app_bar,menu);
         return true;
     }
-    private void openShoppingCartActivity() {
-        Intent intent = new Intent(getApplicationContext(), ShoppingCartActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-
-
-
-    private void initTopBar(ActivityMainBinding binding){
-        //상단바 객체 초기화
-        toolbar = binding.appbarLayoutItem;
-
-        //상단바 이벤트 리스너
-        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                if (item.getItemId() == ORDER_LIST_ICON_ID) {
-                    openShoppingCartActivity();
-                    return true;
-                }
-                return false;
-            }
-        });
-    }
-
 
     private void loadFragment(Fragment fragment){
         getSupportFragmentManager().beginTransaction()

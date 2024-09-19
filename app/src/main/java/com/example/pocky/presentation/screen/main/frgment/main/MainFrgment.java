@@ -68,7 +68,8 @@ public class MainFrgment extends Fragment {
     private void initGlide(FragmentMainBinding binding){
         Glide.with(this)
                 .load(UserInfo.getInstance().getProfileURl())
-                .apply(RequestOptions.bitmapTransform(new RoundedCorners(20)))
+                .centerCrop()
+                .apply(RequestOptions.bitmapTransform(new RoundedCorners(10)))
                 .into(binding.profileImageView);
 
     }
