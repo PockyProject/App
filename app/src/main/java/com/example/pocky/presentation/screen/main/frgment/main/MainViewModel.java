@@ -16,7 +16,7 @@ public class MainViewModel extends ViewModel {
         if (UserInfo.getInstance() != null) {
             try{
                 Log.e("MainActivity","userNickname : " + UserInfo.getInstance().getNickname());
-                return UserInfo.getInstance().getNickname() + "님";
+                return UserInfo.getInstance().getNickname();
             }catch (NullPointerException e){
                 Log.e("MainActivity","유저 정보 객체 호출 실패");
             }

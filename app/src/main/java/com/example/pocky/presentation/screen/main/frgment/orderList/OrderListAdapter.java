@@ -20,6 +20,7 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
 
     private static OrderListAdapter.OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
     private OrderViewModel viewModel;
+    private int selectedPosition;
 
     public interface OnItemClickListener {
         void onItemClick(Order Order); // 클릭된 아이템 데이터를 전달할 메서드
@@ -61,6 +62,9 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
                         listener.onItemClick(getItem(position));
+                        notifyItemChanged(selectedPosition); // 이전 선택된 아이템 업데이트
+                        selectedPosition = position; // 현재 선택된 아이템 위치 저장
+                        notifyItemChanged(selectedPosition); // 현재 선택된 아이템 업데이트
                     }
                 }
             });
@@ -78,7 +82,7 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
             });
         }
 
-        public void bind(Order order) {
+        public void bind(Order order,Boolean isSelected) {
             // 데이터 바인딩
             menuNameTextView.setText(order.getMenuName()); // 메뉴 이름 설정
             menuImageView.setImageResource(order.getMenuImage()); // 메뉴 이미지 설정
@@ -87,6 +91,14 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
             topingTextView.setText(order.getToping()); // 토핑 설정
             sideTextView.setText(order.getSide()); // 사이드 메뉴 설정
             requidTextView.setText(order.getRequid().toString()); // 기타 요청 사항 설정
+
+            // 선택 상태에 따라 테두리 색상 변경
+            if (isSelected) {
+                itemView.setBackgroundResource(R.drawable.selectedvalue); // 선택된 아이템 테두리
+            } else {
+                itemView.setBackgroundResource(R.drawable.defaultselected); // 기본 아이템 테두리
+            }
+
         }
     }
 
@@ -103,7 +115,8 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
     public void onBindViewHolder(@NonNull OrderListAdapter.OrderViewHolder holder, int position) {
         // 데이터 바인딩
         Order order = getItem(position);
-        holder.bind(order);
+        boolean isSelected = position == selectedPosition; // 현재 아이템이 선택된 아이템인지 확인
+        holder.bind(order,isSelected);
     }
 
     // DiffUtil 정의

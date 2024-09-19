@@ -37,10 +37,10 @@ public class OrderViewModel extends AndroidViewModel {
     }
 
 
-    //Favor 단일 저장
+    // Order 단일 저장
     public void insertFavor(Order order) {repository.insert(order);}
 
-    // Favor 여러개 저장
+    // Order 여러개 저장
     public void insertAll(Order... orders) {
         repository.insertAll(orders);
     }

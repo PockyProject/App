@@ -1,12 +1,26 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
+import java.util.Properties;
+import java.io.FileInputStream;
+import java.io.IOException;
+
 plugins {
     id("com.android.application")
 }
+
+val properties = Properties()
+val localProperties = rootProject.file("local.properties")
+if (localProperties.exists()) {
+    properties.load(FileInputStream(localProperties))
+}
+
 
 android {
     namespace = "com.example.pocky"
     compileSdk = 34
 
     defaultConfig {
+
+
         applicationId = "com.example.pocky"
         minSdk = 28
         targetSdk = 34
@@ -14,8 +28,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String","kakaoSDK", properties["kakaoSDK"].toString())
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
     buildTypes {
         release {
             isMinifyEnabled = false
