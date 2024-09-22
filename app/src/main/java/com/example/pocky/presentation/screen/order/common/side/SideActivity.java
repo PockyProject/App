@@ -14,7 +14,7 @@ import com.example.pocky.R;
 import com.example.pocky.databinding.ActivitySideBinding;
 import com.example.pocky.domain.model.menu.Menu;
 import com.example.pocky.domain.model.menu.MenuSingleton;
-import com.example.pocky.presentation.screen.order.common.DrinkActivity;
+import com.example.pocky.presentation.screen.order.common.drink.DrinkActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -56,7 +56,7 @@ public class SideActivity extends AppCompatActivity {
         binding.confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arr.getSideName() == "" || arr.getSideName() == null){
+                if(arr.getSideName().isEmpty()){
                     Toast myToast = Toast.makeText(getApplicationContext(),"먼저 사이드를 선택해주세요", Toast.LENGTH_SHORT);
                     myToast.show();
                 }else{
