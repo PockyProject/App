@@ -1,9 +1,8 @@
-package com.example.pocky;
+package com.example.pocky.presentation.screen.order;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,37 +10,40 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.pocky.R;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class SideActivity extends AppCompatActivity {
+public class ToppingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_side);
+        setContentView(R.layout.activity_topping);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this,3));
 
         List<Integer> imageList = Arrays.asList(
-                R.drawable.resize_baconcheesewedgepotato,
-                R.drawable.resize_cheesewedgepotato,
-                R.drawable.resize_chickenbaconminiwrap,
-                R.drawable.resize_chips,
-                R.drawable.resize_chocolatechip,
-                R.drawable.resize_cornsoup,
-                R.drawable.resize_doublechocolatechip,
-                R.drawable.resize_hashbrown,
-                R.drawable.resize_milk,
-                R.drawable.resize_mushroomsoup,
-                R.drawable.resize_oatmealrasin,
-                R.drawable.resize_raspberrycheesecake,
-                R.drawable.resize_wedgepotato,
-                R.drawable.resize_whitechocomacadamia
-
-
+                R.drawable.resize_abocado,
+                R.drawable.resize_bacon,
+                R.drawable.resize_eggslice,
+                R.drawable.resize_meet,
+                R.drawable.resize_omelet,
+                R.drawable.resize_pepperoni,
+                R.drawable.resize_eggmayo,
+                R.drawable.resize_americancheese,
+                R.drawable.resize_mozzarellacheese,
+                R.drawable.resize_shreddedcheese,
+                R.drawable.resize_cucumber,
+                R.drawable.resize_halapinyo,
+                R.drawable.resize_lettuce,
+                R.drawable.resize_olive,
+                R.drawable.resize_onion,
+                R.drawable.resize_pickle,
+                R.drawable.resize_pimento,
+                R.drawable.resize_tomato
                 // 소스 이미지 추가
         );
 
@@ -60,7 +62,7 @@ public class SideActivity extends AppCompatActivity {
         @Override
         public SouceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_middle, parent, false);
+                    .inflate(R.layout.item_short, parent, false);
             return new SouceViewHolder(view);
         }
 
@@ -88,7 +90,7 @@ public class SideActivity extends AppCompatActivity {
 
             public SouceViewHolder(View itemView) {
                 super(itemView);
-                imageView = itemView.findViewById(R.id.MiddleImageView);
+                imageView = itemView.findViewById(R.id.ShortImageView);
             }
         }
     }

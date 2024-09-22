@@ -1,4 +1,4 @@
-package com.example.pocky;
+package com.example.pocky.presentation.screen.order;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,27 +10,28 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.pocky.R;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class GruopmenuActivity extends AppCompatActivity {
+public class BreadActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gruopmenu);
+        setContentView(R.layout.activity_bread);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Integer> imageList = Arrays.asList(
-                R.drawable.resize_bestpartyplatter,
-                R.drawable.resize_cookiebox,
-                R.drawable.resize_cookieplatter,
-                R.drawable.resize_freshpartyplatter,
-                R.drawable.resize_gientsub3feet,
-                R.drawable.resize_gientsub6feet
+                R.drawable.resize_white,
+                R.drawable.resize_wheet,
+                R.drawable.resize_parmesan,
+                R.drawable.resize_honeyoat,
+                R.drawable.resize_hathi,
+                R.drawable.resize_flat
         );
 
         BreadAdapter adapter = new BreadAdapter(imageList);

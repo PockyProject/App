@@ -27,7 +27,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <activity
-            android:name=".SplashActivity"
+            android:name=".presentation.screen.SplashActivity"
             android:exported="true">
 
         </activity>
@@ -36,23 +36,23 @@
             android:name="com.kakao.sdk.Appkey"
             android:value="@string/kakao_app_key" />
 
-        <activity android:name=".BreadActivity"
+        <activity android:name=".presentation.screen.order.BreadActivity"
             android:exported="true">
 
         </activity>
-        <activity android:name=".SouceActivity"
+        <activity android:name=".presentation.screen.order.SouceActivity"
             android:exported="true">
 
         </activity>
-        <activity android:name=".ToppingActivity"
+        <activity android:name=".presentation.screen.order.ToppingActivity"
             android:exported="true">
 
         </activity>
-        <activity android:name=".SideActivity"
+        <activity android:name=".presentation.screen.order.SideActivity"
             android:exported="true">
 
         </activity>
-        <activity android:name=".SandwitchActivity"
+        <activity android:name=".presentation.screen.order.SandwitchActivity"
             android:exported="true">
 
         </activity>
@@ -60,7 +60,7 @@
             android:name=".ComboActivity"
             android:exported="false" />
         <activity
-            android:name=".DrinkActivity"
+            android:name=".presentation.screen.order.DrinkActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.screen.main.MainActivity"

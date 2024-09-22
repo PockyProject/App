@@ -1,8 +1,10 @@
-package com.example.pocky;
+package com.example.pocky.presentation.screen.order;
 
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.pocky.R;
 
 public class ConfirmationActivity extends AppCompatActivity {
 

@@ -1,36 +1,35 @@
-package com.example.pocky;
+package com.example.pocky.presentation.screen.order;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
+import com.example.pocky.R;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class BreadActivity extends AppCompatActivity {
+public class WrappActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_bread);
+        setContentView(R.layout.activity_wrapp);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Integer> imageList = Arrays.asList(
-                R.drawable.resize_white,
-                R.drawable.resize_wheet,
-                R.drawable.resize_parmesan,
-                R.drawable.resize_honeyoat,
-                R.drawable.resize_hathi,
-                R.drawable.resize_flat
+                R.drawable.resize_chickenbaconminiwrap,
+                R.drawable.resize_shrimpeggmayorap,
+                R.drawable.resize_steakncheeseavocadowrap
         );
 
         BreadAdapter adapter = new BreadAdapter(imageList);

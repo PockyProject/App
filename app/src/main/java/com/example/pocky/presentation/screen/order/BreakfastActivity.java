@@ -1,4 +1,4 @@
-package com.example.pocky;
+package com.example.pocky.presentation.screen.order;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,40 +10,26 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.pocky.R;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class SandwitchActivity extends AppCompatActivity {
+public class BreakfastActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sandwitch);
+        setContentView(R.layout.activity_breakfast);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Integer> imageList = Arrays.asList(
-                R.drawable.resize_bltsandwitch,
-                R.drawable.resize_chickenbaconavocadosandwitch,
-                R.drawable.resize_chickenslicesandwitch,
-                R.drawable.resize_chickenteriyakisandwitch,
-                R.drawable.resize_eggslicesandwitch,
-                R.drawable.resize_eggmayosandwitch,
-                R.drawable.resize_hamsandwitch,
-                R.drawable.resize_italianbmtsandwitch,
-                R.drawable.resize_kbbqsandwitch,
-                R.drawable.resize_pullporkcheesesandwitch,
-                R.drawable.resize_roastedchickensandwitch,
-                R.drawable.resize_rotisseriebbqchickensandwitch,
-                R.drawable.resize_shrimpsandwitch,
-                R.drawable.resize_spicyitaliansandwitch,
-                R.drawable.resize_spicyshrimpsandwitch,
-                R.drawable.resize_steakandcheesesandwitch,
-                R.drawable.resize_steakcheesesalad,
-                R.drawable.resize_subwayclubsandwitch,
-                R.drawable.resize_veggiesandwitch
+                R.drawable.resize_hameggcheese,
+                R.drawable.resize_hameggcheesewrap,
+                R.drawable.resize_westerneggcheese,
+                R.drawable.resize_westerneggcheesewrap
         );
 
         BreadAdapter adapter = new BreadAdapter(imageList);

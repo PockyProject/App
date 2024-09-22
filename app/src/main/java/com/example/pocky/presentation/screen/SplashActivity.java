@@ -1,4 +1,4 @@
-package com.example.pocky;
+package com.example.pocky.presentation.screen;
 
 import android.content.Intent;
 import android.os.Bundle;
