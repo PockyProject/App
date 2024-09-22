@@ -1,4 +1,4 @@
-package com.example.pocky.presentation.screen.order;
+package com.example.pocky.presentation.screen.order.common;
 
 import android.os.Bundle;
 
