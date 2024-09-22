@@ -1,14 +1,14 @@
 package com.example.pocky.presentation.screen.order.common;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.pocky.R;
@@ -23,7 +23,7 @@ public class SideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_side);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.side_RecyclerView);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         List<Integer> imageList = Arrays.asList(
@@ -41,8 +41,6 @@ public class SideActivity extends AppCompatActivity {
                 R.drawable.resize_raspberrycheesecake,
                 R.drawable.resize_wedgepotato,
                 R.drawable.resize_whitechocomacadamia
-
-
                 // 소스 이미지 추가
         );
 

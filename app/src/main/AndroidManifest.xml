@@ -48,7 +48,7 @@
             android:exported="true">
 
         </activity>
-        <activity android:name=".presentation.screen.order.common.SideActivity"
+        <activity android:name=".presentation.screen.order.common.side.SideActivity"
             android:exported="true">
 
         </activity>
