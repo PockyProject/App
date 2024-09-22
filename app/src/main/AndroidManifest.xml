@@ -87,7 +87,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.pocky.presentation.screen.order.smilesupp.SmilesuppActivity" />
-        <activity android:name="com.example.pocky.presentation.screen.order.breakfast.BreakfastActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.order.breakfast.BreakFastActivity" />
         <activity android:name="com.example.pocky.presentation.screen.order.common.ConfirmationActivity" />
         <activity android:name="com.example.pocky.presentation.screen.order.groupmenu.GroupmenuActivity" />
         <activity android:name="com.example.pocky.presentation.screen.order.salad.SaladActivity" />
