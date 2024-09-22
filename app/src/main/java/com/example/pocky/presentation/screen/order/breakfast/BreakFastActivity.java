@@ -1,84 +1,92 @@
 package com.example.pocky.presentation.screen.order.breakfast;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.pocky.R;
+import com.example.pocky.databinding.ActivityBreakfastBinding;
+import com.example.pocky.domain.model.menu.Menu;
+import com.example.pocky.domain.model.menu.MenuSingleton;
+import com.example.pocky.presentation.screen.order.common.SideActivity;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class BreakfastActivity extends AppCompatActivity {
+public class BreakFastActivity extends AppCompatActivity {
+
+    private ActivityBreakfastBinding binding;
+    private static List<Integer> imageList;
+    private static List<String> menuName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_breakfast);
+        binding = ActivityBreakfastBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        Menu arr = MenuSingleton.getInstance(); // 메뉴 객체 싱글톤 가져오기
+        init(); // 메뉴 이미지, 이름 초기화
+
+
+        //어댑터 설정
+        BreakFastAdapter adapter = new BreakFastAdapter(imageList,menuName, new BreakFastAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View v, int imageResId, String menuName) {
+                Log.d("BreakfastActivity", "선택된 아이템: " + imageResId);
+
+                //클릭된 메뉴 이미지, 메뉴 이미지 싱글톤 객체에 담기
+                arr.setMenuName(menuName);
+                arr.setMenuImage(imageResId);
+            }
+        });
+
+        binding.confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(arr.getMenuName() == null){
+                    Toast myToast = Toast.makeText(getApplicationContext(),"먼저 메뉴를 선택해주세요", Toast.LENGTH_SHORT);
+                    myToast.show();
+                }else{
+                    Log.d("BreakFastActivity","최종적으로 선택된 아이템 : " + arr.getMenuName()+" "+ arr.getMenuImage());
+                    Intent intent = new Intent(getApplicationContext(), SideActivity.class); // 아침메뉴
+                    startActivity(intent);
+                }
+            }
+        });
+
+        binding.backspaceBtn.setOnClickListener(new View.OnClickListener() { // 뒤로 가기 버튼
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        RecyclerView recyclerView = findViewById(R.id.breakFastRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        List<Integer> imageList = Arrays.asList(
+        recyclerView.setAdapter(adapter);
+    }
+
+    static void init(){
+        imageList = Arrays.asList( // 메뉴 이미지 초기화
                 R.drawable.resize_hameggcheese,
                 R.drawable.resize_hameggcheesewrap,
                 R.drawable.resize_westerneggcheese,
                 R.drawable.resize_westerneggcheesewrap
         );
 
-        BreadAdapter adapter = new BreadAdapter(imageList);
-        recyclerView.setAdapter(adapter);
-    }
-
-    public class BreadAdapter extends RecyclerView.Adapter<BreadAdapter.BreadViewHolder> {
-
-        private final List<Integer> imageList;
-
-        public BreadAdapter(List<Integer> imageList) {
-            this.imageList = imageList;
-        }
-
-        @Override
-        public BreadViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_long, parent, false);
-            return new BreadViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(BreadViewHolder holder, int position) {
-            Glide.with(holder.itemView.getContext())
-                    .load(imageList.get(position))
-                    .into(holder.imageView);
-
-            holder.imageView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // 클릭시 이벤트 발생 ( 추가 예정 )
-                }
-            });
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return imageList.size();
-        }
-
-        class BreadViewHolder extends RecyclerView.ViewHolder {
-            ImageView imageView;
-
-            public BreadViewHolder(View itemView) {
-                super(itemView);
-                imageView = itemView.findViewById(R.id.LongImageView);
-            }
-        }
+        menuName = Arrays.asList( // 메뉴
+                "햄치즈",
+                "햄치즈에그랩",
+                "웨스턴에그치즈",
+                "웨스턴에그치즈랩"
+        );
     }
 }

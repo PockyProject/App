@@ -18,7 +18,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.pocky.databinding.FragmentMainBinding;
 import com.example.pocky.domain.model.user.UserInfo;
-import com.example.pocky.presentation.screen.order.breakfast.BreakfastActivity;
+import com.example.pocky.presentation.screen.order.breakfast.BreakFastActivity;
 import com.example.pocky.presentation.screen.order.groupmenu.GroupmenuActivity;
 import com.example.pocky.presentation.screen.order.salad.SaladActivity;
 import com.example.pocky.presentation.screen.order.sandwitch.SandwitchActivity;
@@ -84,33 +84,38 @@ public class MainFrgment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerViewAdapter = new MainRecyclerViewAdapter();
         recyclerViewAdapter.setOnItemClickListener(new MainRecyclerViewAdapter.OnItemClickListener() { //리스트 아이템 클릭리스너
-            //TODO 주문 프로세스 완성되면 시작 액티비티로 인텐트 넘기기
             @Override
             public void onItemClick(View v, int position) {
                 switch (position){
                     case 0 :{
-                        Intent intent = new Intent(getContext(), BreakfastActivity.class); // 아침메뉴
+                        Intent intent = new Intent(getContext(), BreakFastActivity.class); // 아침메뉴
                         startActivity(intent);
+                        break;
                     }
                     case 1 : {
                         Intent intent = new Intent(getContext(), SaladActivity.class); // 샐러드
                         startActivity(intent);
+                        break;
                     }
                     case 2 : {
                         Intent intent = new Intent(getContext(), SandwitchActivity.class); // 샌드위치
                         startActivity(intent);
+                        break;
                     }
                     case 3 : {
                         Intent intent = new Intent(getContext(), WrappActivity.class); // 랩 및 기타
                         startActivity(intent);
+                        break;
                     }
                     case 4 : {
                         Intent intent = new Intent(getContext(), GroupmenuActivity.class); // 그룹 메뉴
                         startActivity(intent);
+                        break;
                     }
                     case 5 : {
                         Intent intent = new Intent(getContext(), SmilesuppActivity.class); // 스마일 썹
                         startActivity(intent);
+                        break;
                     }
                 }
             }
