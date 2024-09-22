@@ -4,6 +4,7 @@ public class Menu {
 
     private int menuImage;
     private String menuName;
+    private String sideName;
 
     public int getMenuImage() {
         return menuImage;
@@ -19,6 +20,14 @@ public class Menu {
 
     public void setMenuName(String menuName) {
         this.menuName = menuName;
+    }
+
+    public String getSideName() {
+        return sideName;
+    }
+
+    public void setSideName(String sideName) {
+        this.sideName = sideName;
     }
 
 }
