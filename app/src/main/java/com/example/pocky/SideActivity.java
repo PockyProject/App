@@ -1,84 +1,95 @@
 package com.example.pocky;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.AppCompatButton;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
 
-import com.example.pocky.presentation.screen.main.MainActivity;
+import com.bumptech.glide.Glide;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class SideActivity extends AppCompatActivity {
-
-    Button cheese_stick, chicken, onion_ring;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_side);
 
-        cheese_stick = (Button) findViewById(R.id.cheese_stick_button);
-        chicken = (Button) findViewById(R.id.chicken_button);
-        onion_ring = (Button) findViewById(R.id.onion_ring_button);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
-        Intent intent_to_combo = getIntent();
-        String menu = intent_to_combo.getExtras().getString("putside");
-        AppCompatButton button_cancel = findViewById(R.id.button_cancel);
-
-
-        //데이터 가져오는거 확인용
-        /*String name = intent_to_combo.getExtras().getString("putside");
-        TextView test = findViewById(R.id.set_text_test);
-        test.setText(name);*/
-
-        final int cheeseStickBtn = R.id.cheese_stick_button;
-
-
-        View.OnClickListener side = new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View v) {
-                int id = v.getId();
-                if (id == R.id.cheese_stick_button) {
-                    Toast.makeText(SideActivity.this, "치즈스틱", Toast.LENGTH_SHORT).show();
-                    Intent intent_cheese_stick = new Intent(SideActivity.this, DrinkActivity.class);
-                    intent_cheese_stick.putExtra("put_side", menu + " Cheese_Stick");
-                    startActivity(intent_cheese_stick);
-                    finish();
-                } else if (id == R.id.onion_ring_button) {
-                    Toast.makeText(SideActivity.this, "어니언링", Toast.LENGTH_SHORT).show();
-                    Intent intent_onion_ring = new Intent(SideActivity.this, DrinkActivity.class);
-                    intent_onion_ring.putExtra("put_side", menu + " Onion_Ring");
-                    startActivity(intent_onion_ring);
-                    finish();
-                } else if (id == R.id.chicken_button) {
-                    Toast.makeText(SideActivity.this, "크리스피 치킨", Toast.LENGTH_SHORT).show();
-                    Intent intent_chicken = new Intent(SideActivity.this, DrinkActivity.class);
-                    intent_chicken.putExtra("put_side", menu + " Chicken");
-                    startActivity(intent_chicken);
-                    finish();
-                }
-            }
-        };
+        List<Integer> imageList = Arrays.asList(
+                R.drawable.resize_baconcheesewedgepotato,
+                R.drawable.resize_cheesewedgepotato,
+                R.drawable.resize_chickenbaconminiwrap,
+                R.drawable.resize_chips,
+                R.drawable.resize_chocolatechip,
+                R.drawable.resize_cornsoup,
+                R.drawable.resize_doublechocolatechip,
+                R.drawable.resize_hashbrown,
+                R.drawable.resize_milk,
+                R.drawable.resize_mushroomsoup,
+                R.drawable.resize_oatmealrasin,
+                R.drawable.resize_raspberrycheesecake,
+                R.drawable.resize_wedgepotato,
+                R.drawable.resize_whitechocomacadamia
 
 
-        button_cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent cancel = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(cancel);
-                finish();
-            }
-        });
+                // 소스 이미지 추가
+        );
 
-        cheese_stick.setOnClickListener(side);
-        chicken.setOnClickListener(side);
-        onion_ring.setOnClickListener(side);
+        SouceAdapter adapter = new SouceAdapter(imageList);
+        recyclerView.setAdapter(adapter);
     }
 
-}
+    public class SouceAdapter extends RecyclerView.Adapter<SouceAdapter.SouceViewHolder> {
 
+        private final List<Integer> imageList;
+
+        public SouceAdapter(List<Integer> imageList) {
+            this.imageList = imageList;
+        }
+
+        @Override
+        public SouceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_middle, parent, false);
+            return new SouceViewHolder(view);
+        }
+
+        @Override
+        public void onBindViewHolder(SouceViewHolder holder, int position) {
+            Glide.with(holder.itemView.getContext())
+                    .load(imageList.get(position))
+                    .into(holder.imageView);
+
+            holder.imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // 클릭시 이벤트 발생 (추가 예정)
+                }
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return imageList.size();
+        }
+
+        class SouceViewHolder extends RecyclerView.ViewHolder {
+            ImageView imageView;
+
+            public SouceViewHolder(View itemView) {
+                super(itemView);
+                imageView = itemView.findViewById(R.id.MiddleImageView);
+            }
+        }
+    }
+}
