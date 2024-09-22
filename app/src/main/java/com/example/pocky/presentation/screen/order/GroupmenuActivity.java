@@ -15,7 +15,7 @@ import com.example.pocky.R;
 import java.util.Arrays;
 import java.util.List;
 
-public class GruopmenuActivity extends AppCompatActivity {
+public class GroupmenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
