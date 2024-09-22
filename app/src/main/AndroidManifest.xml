@@ -57,7 +57,7 @@
 
         </activity>
         <activity
-            android:name=".presentation.screen.order.common.DrinkActivity"
+            android:name=".presentation.screen.order.common.drink.DrinkActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.screen.main.MainActivity"
