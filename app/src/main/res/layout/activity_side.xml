@@ -1,85 +1,75 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_gravity="center"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/buttonGroupLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <ImageButton
+            android:id="@+id/backspace_btn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:contentDescription="뒤로가기버튼"
+            android:padding="8dp"
+            android:src="@drawable/backspace_btn"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/titleTextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_weight="0.08" />
 
         <TextView
-            android:id="@+id/set_text_test"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="6dp"
+            android:id="@+id/titleTextView"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="0dp"
             android:fontFamily="@font/nanumbarungothicbold"
-            android:padding="10dp"
-            android:text="세트메뉴 사이드를 선택하세요?"
-            android:textSize="25sp" />
+            android:text="사이드를 선택해주세요"
+            android:textSize="24dp"
+            app:layout_constraintStart_toEndOf="@id/backspace_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/confirm_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_weight="0.2"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/black" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/cheese_stick_button"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/side_cheese_stick"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:background="@drawable/round_corner" />
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/chicken_button"
-                android:layout_marginRight="10dp"
-                android:layout_marginLeft="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/side_chicken"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:background="@drawable/round_corner" />
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:orientation="horizontal">
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/onion_ring_button"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="5dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/side_onion_ring"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:background="@drawable/round_corner" />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button_cancel"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_margin="15dp"
-            android:text="주문취소"
-            android:textColor="@color/round"
-            android:background="@drawable/round_corner"
+        <Button
+            android:id="@+id/confirm_btn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:fontFamily="@font/nanumbarungothicbold"
+            android:text="완료"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/titleTextView"
+            app:layout_constraintHorizontal_weight="0.08"
+            android:textSize="24dp"
             />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 리사이클러 뷰 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonGroupLayout"/>
 
-
-
-</FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
