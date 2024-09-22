@@ -1,4 +1,4 @@
-package com.example.pocky.domain.repository.order;
+package com.example.pocky.domain.model.order;
 
 import java.util.List;
 
