@@ -1,14 +1,13 @@
-package com.example.pocky.presentation.screen.order;
+package com.example.pocky.presentation.screen.order.groupmenu;
 
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.pocky.R;
@@ -16,20 +15,23 @@ import com.example.pocky.R;
 import java.util.Arrays;
 import java.util.List;
 
-public class WrappActivity extends AppCompatActivity {
+public class GroupmenuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wrapp);
+        setContentView(R.layout.activity_gruopmenu);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Integer> imageList = Arrays.asList(
-                R.drawable.resize_chickenbaconminiwrap,
-                R.drawable.resize_shrimpeggmayorap,
-                R.drawable.resize_steakncheeseavocadowrap
+                R.drawable.resize_bestpartyplatter,
+                R.drawable.resize_cookiebox,
+                R.drawable.resize_cookieplatter,
+                R.drawable.resize_freshpartyplatter,
+                R.drawable.resize_gientsub3feet,
+                R.drawable.resize_gientsub6feet
         );
 
         BreadAdapter adapter = new BreadAdapter(imageList);

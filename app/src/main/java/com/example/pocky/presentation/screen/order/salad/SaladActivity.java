@@ -1,4 +1,4 @@
-package com.example.pocky.presentation.screen.order;
+package com.example.pocky.presentation.screen.order.salad;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,23 +15,40 @@ import com.example.pocky.R;
 import java.util.Arrays;
 import java.util.List;
 
-public class GroupmenuActivity extends AppCompatActivity {
+public class SaladActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_gruopmenu);
+        setContentView(R.layout.activity_salad);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Integer> imageList = Arrays.asList(
-                R.drawable.resize_bestpartyplatter,
-                R.drawable.resize_cookiebox,
-                R.drawable.resize_cookieplatter,
-                R.drawable.resize_freshpartyplatter,
-                R.drawable.resize_gientsub3feet,
-                R.drawable.resize_gientsub6feet
+                R.drawable.resize_bltsalad2,
+                R.drawable.resize_chickenbaconavocadosalad,
+                R.drawable.resize_chickenslicesalad,
+                R.drawable.resize_chickenteriyakisalad,
+                R.drawable.resize_eggmayosalad,
+                R.drawable.resize_fullforksalad,
+                R.drawable.resize_greenavocadoeggslicesalad,
+                R.drawable.resize_greenricottachickensalad,
+                R.drawable.resize_greenrotisseriechickenavocadosalad,
+                R.drawable.resize_hamsalad,
+                R.drawable.resize_italianbmtsalad,
+                R.drawable.resize_kbbqsalad,
+                R.drawable.resize_minirotisseriechickensalad,
+                R.drawable.resize_roastchickensalad,
+                R.drawable.resize_rotisseriesalad,
+                R.drawable.resize_shrimpsalad,
+                R.drawable.resize_spicyitaliansalad,
+                R.drawable.resize_spicyitaliansalad,
+                R.drawable.resize_spicyshrimpsalad,
+                R.drawable.resize_steakcheesesalad,
+                R.drawable.resize_subwayclubsalad,
+                R.drawable.resize_tunasalad,
+                R.drawable.resize_veggiesalad
         );
 
         BreadAdapter adapter = new BreadAdapter(imageList);

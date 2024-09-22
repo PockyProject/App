@@ -18,12 +18,12 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.pocky.databinding.FragmentMainBinding;
 import com.example.pocky.domain.model.user.UserInfo;
-import com.example.pocky.presentation.screen.order.BreakfastActivity;
-import com.example.pocky.presentation.screen.order.GroupmenuActivity;
-import com.example.pocky.presentation.screen.order.SaladActivity;
-import com.example.pocky.presentation.screen.order.SandwitchActivity;
-import com.example.pocky.presentation.screen.order.SmilesuppActivity;
-import com.example.pocky.presentation.screen.order.WrappActivity;
+import com.example.pocky.presentation.screen.order.breakfast.BreakfastActivity;
+import com.example.pocky.presentation.screen.order.groupmenu.GroupmenuActivity;
+import com.example.pocky.presentation.screen.order.salad.SaladActivity;
+import com.example.pocky.presentation.screen.order.sandwitch.SandwitchActivity;
+import com.example.pocky.presentation.screen.order.smilesupp.SmilesuppActivity;
+import com.example.pocky.presentation.screen.order.wrapp.WrappActivity;
 
 import java.util.List;
 

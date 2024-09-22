@@ -1,4 +1,4 @@
-package com.example.pocky.presentation.screen.order;
+package com.example.pocky.presentation.screen.order.smilesupp;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,21 +15,31 @@ import com.example.pocky.R;
 import java.util.Arrays;
 import java.util.List;
 
-public class BreakfastActivity extends AppCompatActivity {
+public class SmilesuppActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_breakfast);
+        setContentView(R.layout.activity_smilesupp);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Integer> imageList = Arrays.asList(
-                R.drawable.resize_hameggcheese,
-                R.drawable.resize_hameggcheesewrap,
-                R.drawable.resize_westerneggcheese,
-                R.drawable.resize_westerneggcheesewrap
+                R.drawable.resize_baconcheesewedgepotato,
+                R.drawable.resize_cheesewedgepotato,
+                R.drawable.resize_chickenbaconminiwrap,
+                R.drawable.resize_chips,
+                R.drawable.resize_chocolatechip,
+                R.drawable.resize_cornsoup,
+                R.drawable.resize_doublechocolatechip,
+                R.drawable.resize_hashbrown,
+                R.drawable.resize_milk,
+                R.drawable.resize_mushroomsoup,
+                R.drawable.resize_oatmealrasin,
+                R.drawable.resize_raspberrycheesecake,
+                R.drawable.resize_wedgepotato,
+                R.drawable.resize_whitechocomacadamia
         );
 
         BreadAdapter adapter = new BreadAdapter(imageList);
