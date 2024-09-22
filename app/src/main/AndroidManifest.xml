@@ -54,11 +54,7 @@
         </activity>
         <activity android:name=".SandwitchActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ComboActivity"
@@ -73,6 +69,11 @@
             android:name=".presentation.screen.loginActivity.LoginActivity"
             android:exported="true"
             android:label="카카오 계정 로그인">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -88,9 +89,6 @@
                     android:scheme="kakao432c8e499713dc07778219f7dc6ab3b1" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.pocky.presentation.screen.main.frgment.favor.FavorFragment" />
-        <activity android:name="com.example.pocky.presentation.screen.main.frgment.more.MoreFragment" />
-        <activity android:name="com.example.pocky.presentation.screen.shoppingCartActivity.ShoppingCartActivity" />
         <activity android:name="com.example.pocky.presentation.ExActivity" />
     </application>
 
