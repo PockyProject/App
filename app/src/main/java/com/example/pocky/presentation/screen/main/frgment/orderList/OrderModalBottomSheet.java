@@ -1,4 +1,4 @@
-package com.example.pocky.presentation.screen.main.frgment.favor;
+package com.example.pocky.presentation.screen.main.frgment.orderList;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -23,7 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import java.io.File;
 import java.io.FileOutputStream;
 
-public class FavorModalBottomsheet  extends BottomSheetDialogFragment {
+public class OrderModalBottomSheet extends BottomSheetDialogFragment {
     static String TAG = "ModalBottomSheet";
     private Bitmap qrBitmap;
 
@@ -35,7 +35,7 @@ public class FavorModalBottomsheet  extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.modal_bottom_sheet_content,container,false);
+        View view = inflater.inflate(R.layout.modal_bottom_sheet_content, container, false);
         ConstraintLayout bottomSheet = view.findViewById(R.id.bottomSheet);
         ImageView imageViewQrCode = view.findViewById(R.id.imageQrCode);
         Button button = view.findViewById(R.id.shareBtn);
@@ -52,10 +52,10 @@ public class FavorModalBottomsheet  extends BottomSheetDialogFragment {
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
 
 
-        bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback(){
+        bottomSheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View view, int i) {
-                if(i == BottomSheetBehavior.STATE_DRAGGING){
+                if (i == BottomSheetBehavior.STATE_DRAGGING) {
                     bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
                 }
             }
@@ -78,9 +78,10 @@ public class FavorModalBottomsheet  extends BottomSheetDialogFragment {
             }
         });
 
+
+
         return view;
     }
-
 
     // QR 코드를 공유하는 메서드
     private void shareQrCode(Bitmap bitmap) {
@@ -129,6 +130,3 @@ public class FavorModalBottomsheet  extends BottomSheetDialogFragment {
         }
     }
 }
-
-
-

@@ -16,6 +16,16 @@
         android:theme="@style/Theme.Pocky"
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.android.application.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -78,9 +88,10 @@
                     android:scheme="kakao432c8e499713dc07778219f7dc6ab3b1" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.pocky.presentation.screen.main.frgment.favor.FavorActivity" />
-        <activity android:name="com.example.pocky.presentation.screen.main.frgment.more.MoreActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.main.frgment.favor.FavorFragment" />
+        <activity android:name="com.example.pocky.presentation.screen.main.frgment.more.MoreFragment" />
         <activity android:name="com.example.pocky.presentation.screen.shoppingCartActivity.ShoppingCartActivity" />
+        <activity android:name="com.example.pocky.presentation.ExActivity" />
     </application>
 
 </manifest>

@@ -1,55 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginBottom="4dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
+    <ImageButton
+        android:id="@+id/cancelBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/white"
+        android:src="@drawable/cancelbtn"
+        app:layout_constraintBottom_toTopOf="@id/menuInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="0.5" />
 
-    <androidx.cardview.widget.CardView
-    android:id="@+id/firstCardView"
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    app:layout_constraintBottom_toTopOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="parent"
-    app:layout_constraintVertical_bias="0.5">
+    <ImageView
+        android:id="@+id/foodImageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/menuText"
+        app:layout_constraintEnd_toStartOf="@+id/menuInfo"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/menuText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:textSize="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/foodImageView"
+        app:layout_constraintStart_toStartOf="@id/foodImageView"
+        tools:text="이탈리안 비엠티"
+        tools:textColor="@color/black" />
 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <ScrollView
+        android:id="@+id/menuInfo"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/foodImageView"
+        app:layout_constraintTop_toTopOf="@id/foodImageView">
 
-        <ImageView
-            android:id="@+id/foodImageView1"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            app:layout_constraintEnd_toStartOf="@+id/menuInfo"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="123"
-            android:textColor="@color/black"
-            android:textSize="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@id/foodImageView1"
-            app:layout_constraintStart_toStartOf="@id/foodImageView1"
-            app:layout_constraintTop_toBottomOf="@id/foodImageView1" />
-
-        <TextView
-            android:id="@+id/menuInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
             android:gravity="center"
-            android:text="123123123\n123123123\n123123123\n123123123\n123123123"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@id/foodImageView1"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.cardview.widget.CardView>
+            android:orientation="vertical"
+            android:weightSum="5">
+
+            <TextView
+                android:id="@+id/bread"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                tools:text="빵 : 플렛 브래드"
+                tools:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/sauce"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                tools:text="소스 : 스위트어니언 \n 핫칠리\n 사우스웨스트"
+                tools:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/toping"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                tools:text="토핑 : 아메리칸 치즈\n토마토\n 오이\n피클\n 올리브\n 할리피뇨\n 오믈렛\n 아보카도"
+                tools:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/side"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                tools:text="플렛 브래드"
+                tools:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/requid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                tools:text="음료 : 사이다"
+                tools:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                tools:text="금액 : 16000"
+                tools:textColor="@color/black" />
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
