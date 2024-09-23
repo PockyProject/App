@@ -24,6 +24,7 @@ public class SideActivity extends AppCompatActivity {
     private ActivitySideBinding binding;
     private static List<Integer> imageList;
     private static List<String> sideName;
+    private static List<String> arrSideName; // 메뉴 객체에 들어갈 리스트
 
 
     @Override
@@ -40,13 +41,14 @@ public class SideActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
 
-        SideAdapter adapter = new SideAdapter(imageList,sideName, new SideAdapter.OnItemClickListener() {
+        SideAdapter adapter = new SideAdapter(imageList,sideName,arrSideName, new SideAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(View v, int imageResId, String menuName) {
+            public void onItemClick(View v, int imageResId, String sideName,String qrName) {
                 Log.d("SideActivity", "선택된 아이템: " + imageResId);
                 Log.d("SideActivity", "선택된 메뉴: " + arr.getMenuName());
                 //클릭된 메뉴 이미지, 메뉴 이미지 싱글톤 객체에 담기
-                arr.setSideName(menuName);
+                arr.setSideName(sideName);
+                arr.setqrSideName(qrName);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -115,6 +117,22 @@ public class SideActivity extends AppCompatActivity {
                 "웨지포테이토",
                 "화이트마카다미아쿠키"
         );
+        arrSideName=Arrays.asList(
+                "BACONCHEESEWEDGEPOTATO",
+                "CHEESEWEDGEPOTATO",
+                "CHICKENBACONWRAP",
+                "POTATOCHIP",
+                "CHOCOLATECHIP",
+                "CORNSOUP",
+                "DOUBLECHOCOLATECHIP",
+                "HASHBROWN",
+                "MILK",
+                "MUSHROOMSOUP",
+                "OATMEAL",
+                "RASPBERRYCHEESECAKECOOKIE",
+                "WEDGEPOTATO",
+                "WHITEMACADAMIACOOKIE");
+
         // 사이드 이름 추가
     }
 }

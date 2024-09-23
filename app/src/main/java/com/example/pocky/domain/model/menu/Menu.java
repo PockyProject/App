@@ -7,6 +7,7 @@ public class Menu {
     private String sauceName;
     private String toppingName;
     private String menuName;
+    private String qrSideName;
     private String sideName;
     private Boolean requid;
 
@@ -62,6 +63,13 @@ public class Menu {
 
     public void setToppingName(String toppingName) {
         this.toppingName = toppingName;
+    }
+    public String getqrSideName() {
+        return qrSideName;
+    }
+
+    public void setqrSideName(String qrSideName) {
+        this.qrSideName = qrSideName;
     }
 
 }

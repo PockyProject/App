@@ -19,17 +19,19 @@ public class SideAdapter extends RecyclerView.Adapter<SideAdapter.SouceViewHolde
 
     private final List<Integer> imageList;
     private final List<String> sideName;
+    private final List<String> arrName; //메뉴 객체에 저장할 영어 이름
 
     private int selectedPosition = RecyclerView.NO_POSITION; // 처음에는 선택된 아이템 없음
 
     public interface OnItemClickListener {
-        void onItemClick(View v,int imageResId, String menuName); // 클릭된 이미지 리소스 ID 전달
+        void onItemClick(View v,int imageResId, String menuName,String qrName); // 클릭된 이미지 리소스 ID 전달
     }
 
-    public SideAdapter(List<Integer> imageList, List<String> sideName,OnItemClickListener listener) {
+    public SideAdapter(List<Integer> imageList, List<String> sideName, List<String> arrName, OnItemClickListener listener) {
         this.listener = listener;
         this.imageList = imageList;
         this.sideName = sideName;
+        this.arrName = arrName;
     }
 
     @Override
@@ -76,7 +78,7 @@ public class SideAdapter extends RecyclerView.Adapter<SideAdapter.SouceViewHolde
 
 
                     // 클릭된 아이템의 이미지 리소스 ID를 리스너로 전달
-                    listener.onItemClick(v, imageList.get(position),sideName.get(position));
+                    listener.onItemClick(v, imageList.get(position),sideName.get(position),arrName.get(position));
 
                     // 이전 선택된 아이템을 업데이트
                     notifyItemChanged(selectedPosition);
