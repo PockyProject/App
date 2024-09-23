@@ -3,6 +3,9 @@ package com.example.pocky.domain.model.menu;
 public class Menu {
 
     private int menuImage;
+    private String breadName;
+    private String sauceName;
+    private String toppingName;
     private String menuName;
     private String sideName;
     private Boolean requid;
@@ -36,6 +39,29 @@ public class Menu {
 
     public void setRequid(Boolean requid) {
         this.requid = requid;
+    }
+    public String getBreadName() {
+        return breadName;
+    }
+
+    public void setBreadName(String breadName) {
+        this.breadName = breadName;
+    }
+
+    public String getSauceName() {
+        return sauceName;
+    }
+
+    public void setSauceName(String sauceName) {
+        this.sauceName = sauceName;
+    }
+
+    public String getToppingName() {
+        return toppingName;
+    }
+
+    public void setToppingName(String toppingName) {
+        this.toppingName = toppingName;
     }
 
 }
