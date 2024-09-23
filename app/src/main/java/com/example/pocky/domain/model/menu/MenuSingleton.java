@@ -10,4 +10,8 @@ public class MenuSingleton {
         }
         return menuArr;
     }
+
+    public static void removeInstance(){
+        menuArr = null;
+    }
 }
