@@ -4,8 +4,11 @@ public class Menu {
 
     private int menuImage;
     private String breadName;
+    private String qrBreadName;
     private String sauceName;
+    private String qrSauceName;
     private String toppingName;
+    private String qrToppingName;
     private String menuName;
     private String qrSideName;
     private String sideName;
@@ -69,6 +72,38 @@ public class Menu {
     }
 
     public void setqrSideName(String qrSideName) {
+        this.qrSideName = qrSideName;
+    }
+
+    public String getQrBreadName() {
+        return qrBreadName;
+    }
+
+    public void setQrBreadName(String qrBreadName) {
+        this.qrBreadName = qrBreadName;
+    }
+
+    public String getQrSauceName() {
+        return qrSauceName;
+    }
+
+    public void setQrSauceName(String qrSauceName) {
+        this.qrSauceName = qrSauceName;
+    }
+
+    public String getQrToppingName() {
+        return qrToppingName;
+    }
+
+    public void setQrToppingName(String qrToppingName) {
+        this.qrToppingName = qrToppingName;
+    }
+
+    public String getQrSideName() {
+        return qrSideName;
+    }
+
+    public void setQrSideName(String qrSideName) {
         this.qrSideName = qrSideName;
     }
 

@@ -36,7 +36,7 @@
             android:name="com.kakao.sdk.Appkey"
             android:value="@string/kakao_app_key" />
 
-        <activity android:name=".presentation.screen.order.common.BreadActivity"
+        <activity android:name=".presentation.screen.order.bread.BreadActivity"
             android:exported="true">
 
         </activity>
