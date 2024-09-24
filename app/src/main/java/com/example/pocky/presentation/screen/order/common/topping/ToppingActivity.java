@@ -14,7 +14,7 @@ import com.example.pocky.R;
 import com.example.pocky.databinding.ActivityToppingBinding;
 import com.example.pocky.domain.model.menu.Menu;
 import com.example.pocky.domain.model.menu.MenuSingleton;
-import com.example.pocky.presentation.screen.order.common.drink.DrinkActivity;
+import com.example.pocky.presentation.screen.order.common.side.SideActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -70,7 +70,7 @@ public class ToppingActivity extends AppCompatActivity {
                     Log.d("BreakFastActivity","최종적으로 선택된 아이템 : " +
                             arr.getToppingName().get(0)+" "+
                             arr.getQrToppingName().get(0));
-                    Intent intent = new Intent(getApplicationContext(), DrinkActivity.class); // 아침메뉴
+                    Intent intent = new Intent(getApplicationContext(), SideActivity.class); // 아침메뉴
                     startActivity(intent);
                 }
 
@@ -144,14 +144,14 @@ public class ToppingActivity extends AppCompatActivity {
                 "EGGMAYO",
                 "AMERICANCHEESE",
                 "MOZZARELLACHEESE",
-                "SHRIMPCHEESE",
+                "SHOEREDDCHEESE",
                 "CUCUMBER",
                 "JALAPENO",
                 "LETTUCE",
                 "OLIVES",
                 "ONION",
-                "GREENPEPPER",
                 "PICKLE",
+                "PIMENTO",
                 "TOMATO"
         );
 

@@ -163,9 +163,6 @@ public class Menu {
     }
 
 
-    public String getqrSideName() {
-        return qrSideName;
-    }
 
     public void setqrSideName(String qrSideName) {
         this.qrSideName = qrSideName;

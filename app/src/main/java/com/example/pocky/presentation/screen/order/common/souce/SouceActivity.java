@@ -119,8 +119,8 @@ public class SouceActivity extends AppCompatActivity {
                 "이탈리안드레싱",
                 "마요네즈",
                 "머스타드",
-                "올리브오일", //
-                "후추", //
+                "올리브오일",
+                "후추",
                 "랜치",
                 "레드와인",
                 "소금",

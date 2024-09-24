@@ -33,7 +33,7 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="0dp"
             android:fontFamily="@font/nanumbarungothicbold"
-            android:text="사이드"
+            android:text="소스"
             android:textSize="30sp"
             app:layout_constraintStart_toEndOf="@id/backspace_btn"
             app:layout_constraintTop_toTopOf="parent"

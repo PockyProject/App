@@ -62,7 +62,7 @@ public class SideActivity extends AppCompatActivity {
                     Toast myToast = Toast.makeText(getApplicationContext(),"먼저 사이드를 선택해주세요", Toast.LENGTH_SHORT);
                     myToast.show();
                 }else{
-                    Log.d("BreakFastActivity","최종적으로 선택된 아이템 : " + arr.getMenuName()+" "+ arr.getMenuImage());
+                    Log.d("SideActivity","최종적으로 선택된 아이템 : " +arr.getQrSideName());
                     Intent intent = new Intent(getApplicationContext(), DrinkActivity.class); // 아침메뉴
                     startActivity(intent);
                 }

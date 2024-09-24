@@ -11,6 +11,7 @@ public interface FinalOrderValue {
     static final String EGGMAYOSANDWICH = "EGGMAYOSANDWICH";
     static final String HAMSANDWICH = "HAMSANDWICH";
     static final String ITALIANBMTSANDWICH = "ITALIANBMTSANDWICH";
+    static final String KBBQSANDWITCH = "KBBQSANDWITCH";
     static final String PORKCHEESESANDWICH = "PORKCHEESESANDWICH";
     static final String ROASTEDCHICKENSANDWICH = "ROASTEDCHICKENSANDWICH";
     static final String ROTISSERIEBBQCHICKEN = "ROTISSERIEBBQCHICKEN";
@@ -41,13 +42,13 @@ public interface FinalOrderValue {
     static final String EGGMAYO = "EGGMAYO";
     static final String AMERICANCHEESE = "AMERICANCHEESE";
     static final String MOZZARELLACHEESE = "MOZZARELLACHEESE";
-    static final String SHRIMPCHEESE = "SHRIMPCHEESE";
+    static final String SHOEREDDCHEESE = "SHOEREDDCHEESE";
     static final String CUCUMBER = "CUCUMBER";
     static final String JALAPENO = "JALAPENO";
     static final String LETTUCE = "LETTUCE";
     static final String OLIVES = "OLIVES";
     static final String ONION = "ONION";
-    static final String GREENPEPPER = "GREENPEPPER";
+    static final String PIMENTO = "PIMENTO";
     static final String PICKLE = "PICKLE";
     static final String TOMATO = "TOMATO";
 
