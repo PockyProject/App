@@ -10,6 +10,7 @@ public class Menu {
     private String toppingName;
     private String qrToppingName;
     private String menuName;
+    private String qrMenuName;
     private String qrSideName;
     private String sideName;
     private Boolean requid;
@@ -105,6 +106,14 @@ public class Menu {
 
     public void setQrSideName(String qrSideName) {
         this.qrSideName = qrSideName;
+    }
+
+    public String getQrMenuName() {
+        return qrMenuName;
+    }
+
+    public void setQrMenuName(String qrMenuName) {
+        this.qrMenuName = qrMenuName;
     }
 
 }
