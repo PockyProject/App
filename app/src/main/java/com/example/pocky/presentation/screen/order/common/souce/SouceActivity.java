@@ -49,7 +49,6 @@ public class SouceActivity extends AppCompatActivity {
 
                 arr.setSauceName(souceName);
                 arr.setQrSauceName(qrSouceName);
-                arr.setMenuImage(imageResId);
 
                 Log.d("SideActivity", "선택된 아이템: " + imageResId);
                 Log.d("SideActivity", "선택된 메뉴: " + arr.getSauceName());

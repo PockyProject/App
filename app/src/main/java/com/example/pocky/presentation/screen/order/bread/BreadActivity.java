@@ -48,7 +48,6 @@ public class BreadActivity extends AppCompatActivity {
                 //클릭된 메뉴 이미지, 메뉴 이미지 싱글톤 객체에 담기
                 arr.setBreadName(breadName);
                 arr.setQrBreadName(qrBreadName);
-                arr.setMenuImage(imageResId);
 
                 Log.d("SideActivity", "선택된 아이템: " + imageResId);
                 Log.d("SideActivity", "선택된 메뉴: " + arr.getBreadName());

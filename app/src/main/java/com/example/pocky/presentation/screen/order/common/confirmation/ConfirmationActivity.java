@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.pocky.databinding.ActivityConfirmationBinding;
 import com.example.pocky.domain.model.menu.Menu;
@@ -14,11 +15,15 @@ import com.example.pocky.presentation.screen.order.common.finalorder.FinalOrderA
 
 public class ConfirmationActivity extends AppCompatActivity {
 
-    ActivityConfirmationBinding binding;
+    private ActivityConfirmationBinding binding;
+    private ConfirmationViewModel viewModel ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //뷰모델 초기화
+        viewModel = new ViewModelProvider(this).get(ConfirmationViewModel.class);
 
         binding = ActivityConfirmationBinding.inflate(getLayoutInflater());
 
@@ -77,14 +82,14 @@ public class ConfirmationActivity extends AppCompatActivity {
         }
 
         if (arr.getSauceName() != null && !arr.getSauceName().isEmpty()) { // 소스
-            binding.confirmSauceTextView.setText("선택한 소스 : " + arr.getSauceName());
+            binding.confirmSauceTextView.setText("선택한 소스 : " + viewModel.convertArr(arr.getSauceName()));
             binding.confirmSauceTextView.setVisibility(View.VISIBLE);
         } else {
             binding.confirmSauceTextView.setVisibility(View.GONE);
         }
 
         if (arr.getToppingName() != null && !arr.getToppingName().isEmpty()) { // 토핑
-            binding.confirmToppingTextView.setText("선택한 토핑 : " + arr.getToppingName());
+            binding.confirmToppingTextView.setText("선택한 토핑 : " + viewModel.convertArr(arr.getToppingName()));
             binding.confirmToppingTextView.setVisibility(View.VISIBLE);
         } else {
             binding.confirmToppingTextView.setVisibility(View.GONE);
@@ -103,6 +108,5 @@ public class ConfirmationActivity extends AppCompatActivity {
         } else {
             binding.confirmRequidTextView.setText("음료 여부 : 아나오");
         }
-
     }
 }
