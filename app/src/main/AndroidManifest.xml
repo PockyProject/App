@@ -27,7 +27,7 @@
                 android:resource="@xml/file_paths" />
         </provider>
         <activity
-            android:name=".SplashActivity"
+            android:name=".presentation.screen.SplashActivity"
             android:exported="true">
 
         </activity>
@@ -36,35 +36,28 @@
             android:name="com.kakao.sdk.Appkey"
             android:value="@string/kakao_app_key" />
 
-        <activity android:name=".BreadActivity"
+        <activity android:name=".presentation.screen.order.bread.BreadActivity"
             android:exported="true">
 
         </activity>
-        <activity android:name=".SouceActivity"
+        <activity android:name=".presentation.screen.order.common.souce.SouceActivity"
             android:exported="true">
 
         </activity>
-        <activity android:name=".ToppingActivity"
+        <activity android:name=".presentation.screen.order.common.topping.ToppingActivity"
             android:exported="true">
 
         </activity>
-        <activity android:name=".SideActivity"
+        <activity android:name=".presentation.screen.order.common.side.SideActivity"
             android:exported="true">
 
         </activity>
-        <activity android:name=".SandwitchActivity"
+        <activity android:name=".presentation.screen.order.sandwitch.SandwitchActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
-            android:name=".ComboActivity"
-            android:exported="false" />
-        <activity
-            android:name=".DrinkActivity"
+            android:name=".presentation.screen.order.common.drink.DrinkActivity"
             android:exported="false" />
         <activity
             android:name=".presentation.screen.main.MainActivity"
@@ -73,6 +66,11 @@
             android:name=".presentation.screen.loginActivity.LoginActivity"
             android:exported="true"
             android:label="카카오 계정 로그인">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -88,10 +86,13 @@
                     android:scheme="kakao432c8e499713dc07778219f7dc6ab3b1" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.pocky.presentation.screen.main.frgment.favor.FavorFragment" />
-        <activity android:name="com.example.pocky.presentation.screen.main.frgment.more.MoreFragment" />
-        <activity android:name="com.example.pocky.presentation.screen.shoppingCartActivity.ShoppingCartActivity" />
-        <activity android:name="com.example.pocky.presentation.ExActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.order.smilesupp.SmilesuppActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.order.breakfast.BreakFastActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.order.common.confirmation.ConfirmationActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.order.groupmenu.GroupmenuActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.order.salad.SaladActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.order.wrapp.WrappActivity" />
+        <activity android:name="com.example.pocky.presentation.screen.order.common.finalorder.FinalOrderActivity" />
     </application>
 
 </manifest>

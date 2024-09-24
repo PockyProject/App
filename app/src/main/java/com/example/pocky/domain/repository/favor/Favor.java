@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.util.List;
 import java.util.Objects;
 
 
@@ -19,8 +20,8 @@ public class Favor {
     private String menuName;
 
     private String bread;
-    private String sauce;
-    private String toping;
+    private List<String> sauce;
+    private List<String> toping;
     private String side;
     private Boolean requid;
 
@@ -28,7 +29,7 @@ public class Favor {
         return menuName;
     }
 
-    public String getSauce() {
+    public List<String> getSauce() {
         return sauce;
     }
 
@@ -46,7 +47,7 @@ public class Favor {
     }
 
 
-    public String getToping() {
+    public List<String> getToping() {
         return toping;
     }
 
@@ -61,7 +62,7 @@ public class Favor {
     }
 
 
-    public Favor(int menuImage, String menuName, String favorNumber, String bread, String sauce, String toping, String side, Boolean requid) {
+    public Favor(int menuImage, String menuName, String favorNumber, String bread,  List<String> sauce, List<String> toping, String side, Boolean requid) {
         this.menuImage = menuImage;
         this.menuName = menuName;
         this.favorNumber = favorNumber;
