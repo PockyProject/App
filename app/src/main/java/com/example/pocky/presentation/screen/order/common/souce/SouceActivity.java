@@ -14,7 +14,7 @@ import com.example.pocky.R;
 import com.example.pocky.databinding.ActivitySouceBinding;
 import com.example.pocky.domain.model.menu.Menu;
 import com.example.pocky.domain.model.menu.MenuSingleton;
-import com.example.pocky.presentation.screen.order.bread.BreadActivity;
+import com.example.pocky.presentation.screen.order.common.topping.ToppingActivity;
 
 import java.util.Arrays;
 import java.util.List;
@@ -70,10 +70,9 @@ public class SouceActivity extends AppCompatActivity {
                     Log.d("BreakFastActivity","최종적으로 선택된 아이템 : " +
                             arr.getSauceName().get(0)+" "+
                             arr.getQrSauceName().get(0));
-                    Intent intent = new Intent(getApplicationContext(), BreadActivity.class); // 아침메뉴
+                    Intent intent = new Intent(getApplicationContext(), ToppingActivity.class); // 아침메뉴
                     startActivity(intent);
                 }
-
             }
         });
 
@@ -81,8 +80,8 @@ public class SouceActivity extends AppCompatActivity {
         binding.backspaceBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                arr.setMenuName("");
-                arr.setQrMenuName("");
+                arr.deleteQrSauceName();
+                arr.deleteSauceName();
                 finish();
             }
         });

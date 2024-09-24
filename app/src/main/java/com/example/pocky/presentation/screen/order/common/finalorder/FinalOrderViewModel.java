@@ -183,81 +183,84 @@ public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderV
             }
 
         }
-        //토핑 이름
-        switch (menu.getToppingName()){
-            case AVOCADO: {
-                temp+="T1";
-                break;
-            }
-            case BACON: {
-                temp+="T2";
-                break;
-            }
-            case EGGSLICE: {
-                temp+="T3";
-                break;
-            }
-            case MEAT: {
-                temp+="T4";
-                break;
-            }
-            case OMELETTE: {
-                temp+="T5";
-                break;
-            }
-            case PEPPERONI: {
-                temp+="T6";
-                break;
-            }
-            case EGGMAYO: {
-                temp+="T7";
-                break;
-            }
-            case AMERICANCHEESE: {
-                temp+="T8";
-                break;
-            }
-            case MOZZARELLACHEESE: {
-                temp+="T9";
-                break;
-            }
-            case SHRIMPCHEESE: {
-                temp+="T10";
-                break;
-            }
-            case CUCUMBER: {
-                temp+="T11";
-                break;
-            }
-            case JALAPENO: {
-                temp+="T12";
-                break;
-            }
-            case LETTUCE: {
-                temp+="T13";
-                break;
-            }
-            case OLIVES: {
-                temp+="T14";
-                break;
-            }
-            case ONION: {
-                temp+="T15";
-                break;
-            }
-            case GREENPEPPER: {
-                temp+="T16";
-                break;
-            }
-            case PICKLE: {
-                temp+="T17";
-                break;
-            }
-            case TOMATO: {
-                temp+="T18";
-                break;
-            }
 
+        for(int i = 0; i < menu.getToppingName().size(); i++){
+            //토핑 이름
+            switch (menu.getToppingName().get(i)){
+                case AVOCADO: {
+                    temp+="T1";
+                    break;
+                }
+                case BACON: {
+                    temp+="T2";
+                    break;
+                }
+                case EGGSLICE: {
+                    temp+="T3";
+                    break;
+                }
+                case MEAT: {
+                    temp+="T4";
+                    break;
+                }
+                case OMELETTE: {
+                    temp+="T5";
+                    break;
+                }
+                case PEPPERONI: {
+                    temp+="T6";
+                    break;
+                }
+                case EGGMAYO: {
+                    temp+="T7";
+                    break;
+                }
+                case AMERICANCHEESE: {
+                    temp+="T8";
+                    break;
+                }
+                case MOZZARELLACHEESE: {
+                    temp+="T9";
+                    break;
+                }
+                case SHRIMPCHEESE: {
+                    temp+="T10";
+                    break;
+                }
+                case CUCUMBER: {
+                    temp+="T11";
+                    break;
+                }
+                case JALAPENO: {
+                    temp+="T12";
+                    break;
+                }
+                case LETTUCE: {
+                    temp+="T13";
+                    break;
+                }
+                case OLIVES: {
+                    temp+="T14";
+                    break;
+                }
+                case ONION: {
+                    temp+="T15";
+                    break;
+                }
+                case GREENPEPPER: {
+                    temp+="T16";
+                    break;
+                }
+                case PICKLE: {
+                    temp+="T17";
+                    break;
+                }
+                case TOMATO: {
+                    temp+="T18";
+                    break;
+                }
+
+            }
         }
         //사이드 이름
         switch (menu.getSideName()){

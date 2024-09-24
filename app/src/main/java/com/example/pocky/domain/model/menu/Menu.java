@@ -8,10 +8,11 @@ public class Menu {
     private int menuImage;
     private String breadName;
     private String qrBreadName;
+
     private List<String> sauceName;
     private List<String> qrSauceName;
-    private String toppingName;
-    private String qrToppingName;
+    private List<String> toppingName;
+    private List<String> qrToppingName;
     private String menuName;
     private String qrMenuName;
     private String qrSideName;
@@ -78,6 +79,51 @@ public class Menu {
         }
     }
 
+    public List<String> getToppingName() {
+        return toppingName;
+    }
+
+    public void setToppingName(String toppingName) {
+
+        if (getToppingName() == null) {
+            this.toppingName = new ArrayList<>(); // sauce 필드에 빈 리스트 생성
+        }
+
+        if (getToppingName().isEmpty()) {
+            getToppingName().add(toppingName);
+        }else if(getToppingName().size() < 3){
+            getToppingName().add(toppingName);
+        }
+        else {
+            getToppingName().remove(0);
+            getToppingName().add(toppingName);
+        }
+
+    }
+
+    public List<String> getQrToppingName() {
+        return qrToppingName;
+    }
+
+
+    public void setQrToppingName(String qrToppingName) {
+
+        if (getQrToppingName() == null) {
+            this.qrToppingName = new ArrayList<>(); // sauce 필드에 빈 리스트 생성
+        }
+
+        if (getQrToppingName().isEmpty()) {
+            getQrToppingName().add(qrToppingName);
+        }else if(getQrToppingName().size() < 3){
+            getQrToppingName().add(qrToppingName);
+        }
+        else {
+            getQrToppingName().remove(0);
+            getQrToppingName().add(qrToppingName);
+        }
+    }
+
+
     public void setQrSauceName(String qrSauceName) {
 
         if (getQrSauceName() == null) {
@@ -100,14 +146,23 @@ public class Menu {
         return qrSauceName;
     }
 
-
-    public String getToppingName() {
-        return toppingName;
+    public void deleteQrSauceName(){
+        this.qrSauceName = null;
     }
 
-    public void setToppingName(String toppingName) {
-        this.toppingName = toppingName;
+    public void deleteSauceName(){
+        this.sauceName = null;
     }
+
+    public void deleteQrToppingName(){
+        this.qrToppingName = null;
+    }
+
+    public void deleteToppingName(){
+        this.toppingName = null;
+    }
+
+
     public String getqrSideName() {
         return qrSideName;
     }
@@ -124,14 +179,6 @@ public class Menu {
         this.qrBreadName = qrBreadName;
     }
 
-
-    public String getQrToppingName() {
-        return qrToppingName;
-    }
-
-    public void setQrToppingName(String qrToppingName) {
-        this.qrToppingName = qrToppingName;
-    }
 
     public String getQrSideName() {
         return qrSideName;

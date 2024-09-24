@@ -86,9 +86,14 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
 
         public void bind(Favor favor,Boolean isSelected) {
             String souce = "";
+            String topping = "";
 
             for(int i = 0; i < favor.getSauce().size(); i++){
                 souce += favor.getSauce().get(i) + " ";
+            }
+
+            for (int i = 0; i < favor.getToping().size(); i++) {
+                topping += favor.getToping().get(i) + " ";
             }
 
             // 데이터 바인딩
@@ -96,7 +101,7 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
             menuImageView.setImageResource(favor.getMenuImage()); // 메뉴 이미지 설정
             breadTextView.setText(favor.getBread()); // 빵  설정
             sauceTextView.setText(souce); // 소스 설정
-            topingTextView.setText(favor.getToping()); // 토핑 설정
+            topingTextView.setText(topping); // 토핑 설정
             sideTextView.setText(favor.getSide()); // 사이드 메뉴 설정
             requidTextView.setText(favor.getRequid().toString()); // 기타 요청 사항 설정
 

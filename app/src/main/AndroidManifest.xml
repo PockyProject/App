@@ -44,7 +44,7 @@
             android:exported="true">
 
         </activity>
-        <activity android:name=".presentation.screen.order.common.ToppingActivity"
+        <activity android:name=".presentation.screen.order.common.topping.ToppingActivity"
             android:exported="true">
 
         </activity>

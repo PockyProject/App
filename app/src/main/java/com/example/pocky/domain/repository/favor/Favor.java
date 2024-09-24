@@ -21,7 +21,7 @@ public class Favor {
 
     private String bread;
     private List<String> sauce;
-    private String toping;
+    private List<String> toping;
     private String side;
     private Boolean requid;
 
@@ -47,7 +47,7 @@ public class Favor {
     }
 
 
-    public String getToping() {
+    public List<String> getToping() {
         return toping;
     }
 
@@ -62,7 +62,7 @@ public class Favor {
     }
 
 
-    public Favor(int menuImage, String menuName, String favorNumber, String bread,  List<String> sauce, String toping, String side, Boolean requid) {
+    public Favor(int menuImage, String menuName, String favorNumber, String bread,  List<String> sauce, List<String> toping, String side, Boolean requid) {
         this.menuImage = menuImage;
         this.menuName = menuName;
         this.favorNumber = favorNumber;
