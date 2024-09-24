@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -16,17 +17,15 @@ public class BreadAdapter extends RecyclerView.Adapter<BreadAdapter.BreadViewHol
 
     private final BreadAdapter.OnItemClickListener listener;
     private final List<Integer> imageList;
-    private final List<String> isSelecteds;
     private final List<String> qrBreadList;
     private final List<String> breadList;
     private int selectedPosition = RecyclerView.NO_POSITION; // 처음에는 선택된 아이템 없음
 
-    public BreadAdapter(OnItemClickListener listener, List<Integer> imageList, List<String> isSelecteds, List<String> qrBreadList, List<String> breadList) {
+    public BreadAdapter(List<Integer> imageList, List<String> breadList, List<String> qrBreadList, OnItemClickListener listener) {
         this.listener = listener;
         this.imageList = imageList;
-        this.isSelecteds = isSelecteds;
-        this.qrBreadList = qrBreadList;
         this.breadList = breadList;
+        this.qrBreadList = qrBreadList;
     }
 
     public interface OnItemClickListener {
@@ -49,6 +48,8 @@ public class BreadAdapter extends RecyclerView.Adapter<BreadAdapter.BreadViewHol
                 .load(imageList.get(position))
                 .into(holder.imageView);
 
+        holder.textView.setText(breadList.get(position));
+
         //클릭 되었는지 안되어있는지
         holder.bind(isSelected);
 
@@ -61,10 +62,12 @@ public class BreadAdapter extends RecyclerView.Adapter<BreadAdapter.BreadViewHol
 
     class BreadViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
+        TextView textView;
 
         public BreadViewHolder(View itemView) {
             super(itemView);
-            imageView = itemView.findViewById(R.id.LongImageView);
+            imageView = itemView.findViewById(R.id.bread_ImageView);
+            textView = itemView.findViewById(R.id.bread_TextView);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
