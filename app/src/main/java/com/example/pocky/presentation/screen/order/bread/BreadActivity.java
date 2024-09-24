@@ -14,7 +14,7 @@ import com.example.pocky.R;
 import com.example.pocky.databinding.ActivityBreadBinding;
 import com.example.pocky.domain.model.menu.Menu;
 import com.example.pocky.domain.model.menu.MenuSingleton;
-import com.example.pocky.presentation.screen.order.common.SouceActivity;
+import com.example.pocky.presentation.screen.order.common.souce.SouceActivity;
 
 import java.util.Arrays;
 import java.util.List;

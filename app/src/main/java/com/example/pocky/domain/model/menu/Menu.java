@@ -1,12 +1,15 @@
 package com.example.pocky.domain.model.menu;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Menu {
 
     private int menuImage;
     private String breadName;
     private String qrBreadName;
-    private String sauceName;
-    private String qrSauceName;
+    private List<String> sauceName;
+    private List<String> qrSauceName;
     private String toppingName;
     private String qrToppingName;
     private String menuName;
@@ -14,6 +17,7 @@ public class Menu {
     private String qrSideName;
     private String sideName;
     private Boolean requid;
+
 
     public int getMenuImage() {
         return menuImage;
@@ -53,13 +57,49 @@ public class Menu {
         this.breadName = breadName;
     }
 
-    public String getSauceName() {
+    public List<String> getSauceName() {
         return sauceName;
     }
 
     public void setSauceName(String sauceName) {
-        this.sauceName = sauceName;
+
+        if (getSauceName() == null) {
+            this.sauceName = new ArrayList<>(); // sauce 필드에 빈 리스트 생성
+        }
+
+        if (getSauceName().isEmpty()) {
+            getSauceName().add(sauceName);
+        }else if(getSauceName().size() < 3){
+            getSauceName().add(sauceName);
+        }
+        else {
+            getSauceName().remove(0);
+            getSauceName().add(sauceName);
+        }
     }
+
+    public void setQrSauceName(String qrSauceName) {
+
+        if (getQrSauceName() == null) {
+            this.qrSauceName = new ArrayList<>(); // sauce 필드에 빈 리스트 생성
+        }
+
+        if (getQrSauceName().isEmpty()){
+            getQrSauceName().add(qrSauceName);
+        }else if(getQrSauceName().size() < 3){
+            getQrSauceName().add(qrSauceName);
+        }
+
+        else {
+            getQrSauceName().remove(0);
+            getQrSauceName().add(qrSauceName);
+        }
+    }
+
+    public List<String> getQrSauceName() {
+        return qrSauceName;
+    }
+
 
     public String getToppingName() {
         return toppingName;
@@ -84,13 +124,6 @@ public class Menu {
         this.qrBreadName = qrBreadName;
     }
 
-    public String getQrSauceName() {
-        return qrSauceName;
-    }
-
-    public void setQrSauceName(String qrSauceName) {
-        this.qrSauceName = qrSauceName;
-    }
 
     public String getQrToppingName() {
         return qrToppingName;
@@ -102,10 +135,6 @@ public class Menu {
 
     public String getQrSideName() {
         return qrSideName;
-    }
-
-    public void setQrSideName(String qrSideName) {
-        this.qrSideName = qrSideName;
     }
 
     public String getQrMenuName() {

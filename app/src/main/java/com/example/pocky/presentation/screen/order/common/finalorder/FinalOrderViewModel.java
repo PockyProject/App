@@ -324,77 +324,88 @@ public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderV
         }else{
             temp+="아니오";
         }
-        //사이드 이름
-        switch (menu.getSauceName()){
-            case BBQ: {
-                temp+="SAU1";
-                break;
-            }
-            case HONEYMUSTARD: {
-                temp+="SAU2";
-                break;
-            }
-            case HOTCHILI: {
-                temp+="SAU3";
-                break;
-            }
-            case ITALIANDRESSING: {
-                temp+="SAU4";
-                break;
-            }
-            case MAYONNAISE: {
-                temp+="SAU5";
-                break;
-            }
-            case MUSTARD: {
-                temp+="SAU6";
-                break;
-            }
-            case RANCH: {
-                temp+="SAU7";
-                break;
-            }
-            case REDWINE: {
-                temp+="SAU8";
-                break;
-            }
-            case SALT: {
-                temp+="SAU9";
-                break;
-            }
-            case SMOKEDBBQ: {
-                temp+="SAU10";
-                break;
-            }
-            case SOUTHWEST: {
-                temp+="SAU11";
-                break;
-            }
-            case SOY: {
-                temp+="SAU12";
-                break;
-            }
-            case SWEETCHILI: {
-                temp+="SAU13";
-                break;
-            }
-            case SWEETONION: {
-                temp+="SAU14";
-                break;
-            }
-            case TARTARE: {
-                temp+="SAU15";
-                break;
-            }
-            case THOUSANDISLAND: {
-                temp+="SAU16";
-                break;
-            }
-            case WASABIMAYO: {
-                temp+="SAU17";
-                break;
-            }
 
+        for (int i = 0; i < menu.getSauceName().size(); i++) {
+            //소스
+            switch (menu.getSauceName().get(i)){
+                case BBQ: {
+                    temp+="SAU1";
+                    break;
+                }
+                case HONEYMUSTARD: {
+                    temp+="SAU2";
+                    break;
+                }
+                case HOTCHILI: {
+                    temp+="SAU3";
+                    break;
+                }
+                case ITALIANDRESSING: {
+                    temp+="SAU4";
+                    break;
+                }
+                case MAYONNAISE: {
+                    temp+="SAU5";
+                    break;
+                }
+                case MUSTARD: {
+                    temp+="SAU6";
+                    break;
+                }
+                case OLIVEOIL: {
+                    temp+="SAU7";
+                    break;
+                }
+                case PAPER: {
+                    temp+="SAU8";
+                    break;
+                }
+                case RANCH: {
+                    temp+="SAU9";
+                    break;
+                }
+                case REDWINE: {
+                    temp+="SAU10";
+                    break;
+                }
+                case SALT: {
+                    temp+="SAU11";
+                    break;
+                }
+                case SMOKEDBBQ: {
+                    temp+="SAU12";
+                    break;
+                }
+                case SOUTHWEST: {
+                    temp+="SAU13";
+                    break;
+                }
+                case SOY: {
+                    temp+="SAU14";
+                    break;
+                }
+                case SWEETCHILI: {
+                    temp+="SAU15";
+                    break;
+                }
+                case SWEETONION: {
+                    temp+="SAU16";
+                    break;
+                }
+                case TARTARE: {
+                    temp+="SAU17";
+                    break;
+                }
+                case THOUSANDISLAND: {
+                    temp+="SAU18";
+                    break;
+                }
+                case WASABIMAYO: {
+                    temp+="SAU19";
+                    break;
+                }
+
+            }
         }
 
 

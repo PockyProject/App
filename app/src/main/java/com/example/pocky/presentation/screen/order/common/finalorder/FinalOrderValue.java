@@ -74,6 +74,9 @@ public interface FinalOrderValue {
     static final String ITALIANDRESSING = "ITALIANDRESSING";
     static final String MAYONNAISE = "MAYONNAISE";
     static final String MUSTARD = "MUSTARD";
+    static final String OLIVEOIL = "OLIVEOIL";
+    static final String PAPER = "PAPER";
+
     static final String RANCH = "RANCH";
     static final String REDWINE = "REDWINE";
     static final String SALT = "SALT";
