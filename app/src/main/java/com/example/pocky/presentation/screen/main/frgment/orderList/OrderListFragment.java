@@ -25,8 +25,6 @@ import com.example.pocky.presentation.screen.main.frgment.main.MainFrgment;
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
-import java.util.UUID;
-
 
 public class OrderListFragment extends Fragment {
     private FragmentOrderlistBinding binding;
@@ -91,36 +89,6 @@ public class OrderListFragment extends Fragment {
 
         // QR 코드 생성 버튼 클릭 이벤트 설정
         setupQrButton(view);
-
-        // 데이터 삽입 예시, 주문프로세스 완성 후 삭제 예정
-        binding.orderBtn.setOnClickListener(v -> {
-            Order order1 = new Order(R.drawable.resize_foldfork,
-                    "Burger",
-                    UUID.randomUUID().toString(),
-                    "bread",
-                    "sauce",
-                    "toping",
-                    "side",
-                    false);
-            Order order2 = new Order(R.drawable.resize_hamcheeze,
-                    "Burger",
-                    UUID.randomUUID().toString(),
-                    "bread",
-                    "sauce",
-                    "toping",
-                    "side",
-                    true);
-            Order order3 = new Order(R.drawable.resize_bestpartyflatter,
-                    "Burger",
-                    UUID.randomUUID().toString(),
-                    "bread",
-                    "sauce",
-                    "toping",
-                    "side",
-                    false);
-            viewModel.insertAll(order1,order2,order3);
-        });
-
         binding.gotoMainFrgmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

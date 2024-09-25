@@ -23,7 +23,7 @@ public class Favor {
     private List<String> sauce;
     private List<String> toping;
     private String side;
-    private Boolean requid;
+    private String requid;
 
     public String getMenuName() {
         return menuName;
@@ -57,12 +57,12 @@ public class Favor {
     }
 
 
-    public Boolean getRequid() {
+    public String getRequid() {
         return requid;
     }
 
 
-    public Favor(int menuImage, String menuName, String favorNumber, String bread,  List<String> sauce, List<String> toping, String side, Boolean requid) {
+    public Favor(int menuImage, String menuName, String favorNumber, String bread,  List<String> sauce, List<String> toping, String side, String requid) {
         this.menuImage = menuImage;
         this.menuName = menuName;
         this.favorNumber = favorNumber;

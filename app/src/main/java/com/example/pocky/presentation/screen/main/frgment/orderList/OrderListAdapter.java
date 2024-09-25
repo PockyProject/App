@@ -83,12 +83,23 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
         }
 
         public void bind(Order order,Boolean isSelected) {
+
+            String souce = "";
+            String topping = "";
+
+            for(int i = 0; i < order.getSauce().size(); i++){
+                souce += order.getSauce().get(i) + " ";
+            }
+
+            for (int i = 0; i < order.getToping().size(); i++) {
+                topping += order.getToping().get(i) + " ";
+            }
             // 데이터 바인딩
             menuNameTextView.setText(order.getMenuName()); // 메뉴 이름 설정
             menuImageView.setImageResource(order.getMenuImage()); // 메뉴 이미지 설정
             breadTextView.setText(order.getBread()); // 빵  설정
-            sauceTextView.setText(order.getSauce()); // 소스 설정
-            topingTextView.setText(order.getToping()); // 토핑 설정
+            sauceTextView.setText(souce); // 소스 설정
+            topingTextView.setText(topping); // 토핑 설정
             sideTextView.setText(order.getSide()); // 사이드 메뉴 설정
             requidTextView.setText(order.getRequid().toString()); // 기타 요청 사항 설정
 

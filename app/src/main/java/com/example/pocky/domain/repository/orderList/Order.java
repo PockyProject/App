@@ -5,8 +5,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.example.pocky.domain.repository.favor.Favor;
-
+import java.util.List;
 import java.util.Objects;
 
 @Entity(tableName = "Order")
@@ -20,16 +19,16 @@ public class Order {
     private String menuName;
 
     private String bread;
-    private String sauce;
-    private String toping;
+    private List<String> sauce;
+    private List<String> toping;
     private String side;
-    private Boolean requid;
+    private String requid;
 
     public String getMenuName() {
         return menuName;
     }
 
-    public String getSauce() {
+    public List<String> getSauce() {
         return sauce;
     }
 
@@ -38,7 +37,7 @@ public class Order {
     }
 
 
-    public String  getOrderNumber() {
+    public String getOrderNumber() {
         return this.orderNumber;
     }
 
@@ -47,7 +46,7 @@ public class Order {
     }
 
 
-    public String getToping() {
+    public List<String> getToping() {
         return toping;
     }
 
@@ -57,12 +56,12 @@ public class Order {
     }
 
 
-    public Boolean getRequid() {
+    public String getRequid() {
         return requid;
     }
 
 
-    public Order(int menuImage, String menuName, String orderNumber, String bread, String sauce, String toping, String side, Boolean requid) {
+    public Order(String orderNumber, int menuImage, String menuName, String bread, List<String> sauce, List<String> toping, String side, String requid) {
         this.menuImage = menuImage;
         this.menuName = menuName;
         this.orderNumber = orderNumber;
@@ -72,7 +71,6 @@ public class Order {
         this.side = side;
         this.requid = requid;
     }
-
 
 
     @Override
