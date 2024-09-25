@@ -27,8 +27,8 @@
         android:layout_height="0dp"
         android:layout_margin="10dp"
         android:orientation="vertical"
-        android:weightSum="4"
         android:visibility="invisible"
+        android:weightSum="4"
         app:layout_constraintBottom_toTopOf="@id/qrBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +61,7 @@
             android:layout_height="0dp"
             android:layout_weight="0.3"
             android:backgroundTint="@color/signature"
-            android:text="주문하기"/>
+            android:text="주문하기" />
 
     </LinearLayout>
 
@@ -85,7 +85,10 @@
         android:layout_marginTop="100dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/button_design"
-        android:text="qr생성"
+        android:fontFamily="@font/nanumbarungothicbold"
+        android:text="QR 출력"
+        android:textColor="@color/white"
+        android:textSize="18dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
