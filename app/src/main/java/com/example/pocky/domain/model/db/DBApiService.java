@@ -5,6 +5,6 @@ import retrofit2.http.Body;
 import retrofit2.http.POST;
 
 public interface DBApiService {
-    @POST("user/userpost")
+    @POST("users/userpost")
     Call<Void> sendUserData(@Body DBData DBData);
 }

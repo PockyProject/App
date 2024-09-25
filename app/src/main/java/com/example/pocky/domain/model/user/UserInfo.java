@@ -27,4 +27,6 @@ public class UserInfo {
     public String getProfileURl() {
         return profileURl;
     }
+
+    public String getUserId() { return userId; }
 }

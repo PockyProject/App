@@ -59,7 +59,8 @@ public class FinalOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 즐겨찾기 추가 버튼
-                viewModel.insertFavor(menu);
+                viewModel.insertFavor(menu); // 룸 저장
+                viewModel.storedDb(menu); // MySql 저장
             }
         });
     }

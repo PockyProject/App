@@ -8,7 +8,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitService {
         private static Retrofit retrofit;
         private static RetrofitService rs = null;
-        private static String baseUrl = "http://localhost:8080/";
+
+        //에뮬레이터 : 10.0.2.2
+        //실제 기기 : localhost
+        private static String baseUrl = "http://10.0.2.2:8080/";
         private static Gson gson = new GsonBuilder().setLenient().create();
         private RetrofitService() {
             retrofit = new Retrofit.Builder()

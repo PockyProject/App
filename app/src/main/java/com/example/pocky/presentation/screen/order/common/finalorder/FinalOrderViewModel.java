@@ -7,7 +7,11 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
+import com.example.pocky.domain.model.RetrofitService;
+import com.example.pocky.domain.model.db.DBApiService;
+import com.example.pocky.domain.model.db.DBData;
 import com.example.pocky.domain.model.menu.Menu;
+import com.example.pocky.domain.model.user.UserInfo;
 import com.example.pocky.domain.repository.favor.Favor;
 import com.example.pocky.domain.repository.favor.FavorRepository;
 import com.google.zxing.BarcodeFormat;
@@ -15,6 +19,10 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.List;
 import java.util.UUID;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderValue {
 
@@ -31,6 +39,45 @@ public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderV
 
         repository.insert(MenutoFavor(menu));
     }
+
+    public void storedDb(Menu menu){
+        DBApiService api = RetrofitService.getInstance().getRetrofit().create(DBApiService.class);
+
+        Call<Void> call = api.sendUserData( converteMenuToDB(menu));
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.isSuccessful()){
+                    Log.d("FinalOrderViewModel","데이터 전송 성공 : " + response.message());
+                }else{
+                    Log.d("FinalOrderViewModel","데이터 전송 실패 : " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                    Log.d("FinalOrderViewModel", "네트워크 오류 : " + t.getCause());
+            }
+        });
+
+
+    }
+
+    public DBData converteMenuToDB(Menu menu){
+        DBData db = new DBData(
+                UserInfo.getInstance().getUserId().toString(),
+                UserInfo.getInstance().getNickname().toString(),
+                menu.getMenuImage(),
+                menu.getBreadName(),
+                menu.getSauceName(),
+                menu.getToppingName(),
+                menu.getRequid()
+        );
+
+        return db;
+    }
+
 
     public void menuNullCheck(Menu menu){
         if(menu.getBreadName() == null){
