@@ -48,7 +48,8 @@ public class FinalOrderActivity extends AppCompatActivity {
         binding.gotoHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // 홈으로 버튼
+                // 주문완료 & 홈으로 버튼
+                viewModel.insertOrder(menu);
                 MenuSingleton.removeInstance(); // 메뉴 정보 담은 싱글톤 인스턴스 삭제
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class); // 최종 메뉴 확인 화면 이동
                 startActivity(intent);
@@ -59,7 +60,8 @@ public class FinalOrderActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 즐겨찾기 추가 버튼
-                viewModel.insertFavor(menu);
+                viewModel.insertFavor(menu); // 룸 저장
+                viewModel.storedDb(menu); // MySql 저장
             }
         });
     }

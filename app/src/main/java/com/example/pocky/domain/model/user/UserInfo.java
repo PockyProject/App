@@ -1,11 +1,13 @@
 package com.example.pocky.domain.model.user;
 
 public class UserInfo {
+    private String userId;
     private String nickname;
     private String profileURl;
 
     private UserInfo(){};
-    public void init(String nickname, String profileURl){
+    public void init(String userId,String nickname, String profileURl){
+                this.userId = userId;
                 this.nickname = nickname;
                 this.profileURl = profileURl;
     }
@@ -25,4 +27,6 @@ public class UserInfo {
     public String getProfileURl() {
         return profileURl;
     }
+
+    public String getUserId() { return userId; }
 }

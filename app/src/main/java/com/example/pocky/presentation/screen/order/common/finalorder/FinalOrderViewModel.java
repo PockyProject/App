@@ -7,21 +7,33 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
+import com.example.pocky.domain.model.RetrofitService;
+import com.example.pocky.domain.model.db.DBApiService;
+import com.example.pocky.domain.model.db.DBData;
 import com.example.pocky.domain.model.menu.Menu;
+import com.example.pocky.domain.model.user.UserInfo;
 import com.example.pocky.domain.repository.favor.Favor;
 import com.example.pocky.domain.repository.favor.FavorRepository;
+import com.example.pocky.domain.repository.orderList.Order;
+import com.example.pocky.domain.repository.orderList.OrderRepository;
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.List;
 import java.util.UUID;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderValue {
 
     private FavorRepository repository;
+    private OrderRepository orderRepository;
     public FinalOrderViewModel(@NonNull Application application) {
         super(application);
         repository = new FavorRepository(application);
+        orderRepository = new OrderRepository(application);
     }
 
 
@@ -31,6 +43,73 @@ public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderV
 
         repository.insert(MenutoFavor(menu));
     }
+
+    public void insertOrder(Menu menu){
+        menuNullCheck(menu);
+
+        orderRepository.insert(menuToOrder(menu));
+    }
+
+    public void storedDb(Menu menu){ //mysql 저장
+        DBApiService api = RetrofitService.getInstance().getRetrofit().create(DBApiService.class);
+
+        Call<Void> call = api.sendUserData( converteMenuToDB(menu));
+
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if(response.isSuccessful()){
+                    Log.d("FinalOrderViewModel","데이터 전송 성공 : " + response.message());
+                }else{
+                    Log.d("FinalOrderViewModel","데이터 전송 실패 : " + response.code());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                    Log.d("FinalOrderViewModel", "네트워크 오류 : " + t.getCause());
+            }
+        });
+    }
+
+
+    public Order menuToOrder(Menu menu){ // 주문내역 Room 저장 전 데이터 변환
+        String temp = "";
+        if(menu.getRequid()){
+            temp = "음료 여부 : 예";
+        }else{
+            temp = "음료 여부 : 아니오";
+        }
+
+
+        Order order = new Order(
+                UUID.randomUUID().toString(),
+                menu.getMenuImage(),
+                menu.getMenuName(),
+                menu.getBreadName(),
+                menu.getSauceName(),
+                menu.getToppingName(),
+                menu.getSideName(),
+                temp
+        );
+
+        return order;
+    }
+
+    public DBData converteMenuToDB(Menu menu){ // mysql 저장 전 데이터 변환
+        DBData db = new DBData(
+                UserInfo.getInstance().getUserId().toString(),
+                UserInfo.getInstance().getNickname().toString(),
+                menu.getMenuImage(),
+                menu.getBreadName(),
+                menu.getSauceName(),
+                menu.getToppingName(),
+                menu.getRequid()
+        );
+
+        return db;
+    }
+
 
     public void menuNullCheck(Menu menu){
         if(menu.getBreadName() == null){
@@ -47,6 +126,15 @@ public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderV
     }
 
     private Favor MenutoFavor(Menu menu){ // Menu 자료형 Favor로 변환
+        String temp = "";
+        if(menu.getRequid()){
+            temp = "음료 여부 : 예";
+        }else{
+            temp = "음료 여부 : 아니오";
+        }
+
+
+
         return new Favor(
                 menu.getMenuImage(),
                 menu.getMenuName(),
@@ -55,7 +143,7 @@ public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderV
                 menu.getSauceName(),
                 menu.getToppingName(),
                 menu.getSideName(),
-                menu.getRequid()
+                temp
         );
     }
 

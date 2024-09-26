@@ -69,10 +69,14 @@
                         Log.d("User", "id : " + user.getId());
                         Log.d("User", "NickName : " + user.getKakaoAccount().getProfile().getNickname());
                         Log.d("User","ProfileUrl :" + user.getKakaoAccount().getProfile().getThumbnailImageUrl());
+                        Log.d("User","연령대 :" + user.getKakaoAccount().getAgeRangeNeedsAgreement());
                         //아이디, 닉네임, 프로필 url 담아서 UserInfo 객체 선언
                         Log.e("로그인",user.getKakaoAccount().getProfile().getThumbnailImageUrl());
-                        UserInfo.getInstance().init(user.getKakaoAccount().getProfile().getNickname().toString(),
-                                user.getKakaoAccount().getProfile().getThumbnailImageUrl().toString());
+                        UserInfo.getInstance().init(
+                                user.getId().toString(),
+                                user.getKakaoAccount().getProfile().getNickname().toString(),
+                                user.getKakaoAccount().getProfile().getThumbnailImageUrl().toString()
+                        );
                         Intent nextintent = new Intent(LoginActivity.this, MainActivity.class);
                         startActivity(nextintent);
                         finish();
