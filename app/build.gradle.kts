@@ -30,6 +30,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String","kakaoSDK", properties["kakaoSDK"].toString())
+        manifestPlaceholders["KAKAO_APP_KEY"] = properties["kakaoSDK"].toString()
     }
 
     buildFeatures {
