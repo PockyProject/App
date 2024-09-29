@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Pocky</string>
-    <string name="kakao_app_key">432c8e499713dc07778219f7dc6ab3b1</string>
     <string name="cheese_burger">치즈버거\n5800원</string>
     <string name="doublecheese_burger">더블치즈버거\n6300원</string>
     <string name="classic_burger">클래식버거\n6600원</string>

@@ -39,22 +39,21 @@
             app:layout_constraintVertical_weight="0.3">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:padding="10dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:padding="10dp">
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    app:layout_constraintHorizontal_weight="0.3"
                     android:id="@+id/profileImageView"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    app:layout_constraintEnd_toStartOf="@id/usernameText"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/usernameText"
+                    app:layout_constraintHorizontal_weight="0.3"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    app:layout_constraintHorizontal_weight="0.2"
                     android:id="@+id/usernameText"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -63,15 +62,15 @@
                     android:gravity="center|end"
                     android:hint="이름"
                     android:text="@{name}"
-                    android:textSize="24dp"
                     android:textColor="@color/signature"
+                    android:textSize="24dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@id/recommendText"
+                    app:layout_constraintHorizontal_weight="0.2"
                     app:layout_constraintStart_toEndOf="@id/profileImageView"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    app:layout_constraintHorizontal_weight="0.5"
                     android:id="@+id/recommendText"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
@@ -81,6 +80,7 @@
                     android:textSize="24dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_weight="0.5"
                     app:layout_constraintStart_toEndOf="@id/usernameText"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -105,92 +105,92 @@
             app:layout_constraintTop_toBottomOf="@id/firstCardView"
             app:layout_constraintVertical_weight="0.75">
 
-            <TextView
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/nanumbarungothicbold"
-                android:padding="10dp"
-                android:text="추천메뉴"
-                android:textSize="24dp" />
+                android:layout_height="match_parent"
+                android:padding="8dp">
 
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:columnCount="3"
-                android:orientation="horizontal"
-                android:padding="10dp"
-                android:rowCount="1">
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/recommentTitleText"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/nanumbarungothicbold"
+                    android:text="추천메뉴"
+                    android:textSize="24dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:id="@+id/recommend1stImg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/sandwich_foldforkchezz"
+                    app:layout_constraintBottom_toTopOf="@id/recomment1stText"
+                    app:layout_constraintEnd_toStartOf="@id/recommend2ndImg"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recommentTitleText" />
+
+                <TextView
+                    android:id="@+id/recomment1stText"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:text="폴드포크샌드위치"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/recomment2ndText"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recommend1stImg" />
 
-                    <ImageButton
-                        android:id="@+id/Suggest_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white" />
+                <ImageView
+                    android:id="@+id/recommend2ndImg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/blt_sandwitch"
+                    app:layout_constraintBottom_toTopOf="@id/recomment2ndText"
+                    app:layout_constraintEnd_toStartOf="@id/recommned3rdImg"
+                    app:layout_constraintStart_toEndOf="@id/recommend1stImg"
+                    app:layout_constraintTop_toBottomOf="@id/recommentTitleText" />
 
-                    <TextView
-                        android:id="@+id/menuNameFirst"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/cheese_burger"
-                        android:textAlignment="center"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                <TextView
+                    android:id="@+id/recomment2ndText"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:text="BLT샌드위치"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@id/recommnet3rdText"
+                    app:layout_constraintStart_toEndOf="@id/recomment1stText"
+                    app:layout_constraintTop_toBottomOf="@id/recommend2ndImg" />
 
-                    <ImageButton
-                        android:id="@+id/Suggest_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white" />
+                <ImageView
+                    android:id="@+id/recommned3rdImg"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:src="@drawable/k_bbq_sandwitch"
+                    app:layout_constraintBottom_toTopOf="@id/recommnet3rdText"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/recommend2ndImg"
+                    app:layout_constraintTop_toBottomOf="@id/recommentTitleText" />
 
-                    <TextView
-                        android:id="@+id/menuNameSecond"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/doublecheese_burger"
-                        android:textAlignment="center"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
+                <TextView
+                    android:id="@+id/recommnet3rdText"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:fontFamily="@font/nanumbarungothicbold"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:text="KBBQ샌드위치"
+                    android:textSize="18dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/recomment2ndText"
+                    app:layout_constraintTop_toBottomOf="@id/recommned3rdImg" />
 
-                    <ImageButton
-                        android:id="@+id/Suggest_3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
-                    <TextView
-                        android:id="@+id/menuNameThird"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/classic_burger"
-                        android:textAlignment="center"
-                        android:textSize="12dp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-            </GridLayout>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView

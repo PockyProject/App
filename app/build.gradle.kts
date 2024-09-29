@@ -7,10 +7,8 @@ plugins {
     id("com.android.application")
 }
 
-val properties = Properties()
-val localProperties = rootProject.file("local.properties")
-if (localProperties.exists()) {
-    properties.load(FileInputStream(localProperties))
+val properties = Properties().apply {
+    load(FileInputStream(rootProject.file("local.properties")))
 }
 
 
@@ -30,15 +28,19 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String","kakaoSDK", properties["kakaoSDK"].toString())
-        manifestPlaceholders["KAKAO_APP_KEY"] = properties["kakaoSDK"].toString()
     }
 
     buildFeatures {
         buildConfig = true
     }
     buildTypes {
+        debug {
+            isMinifyEnabled = false
+            manifestPlaceholders["kakaoSDKforManifest"] = properties["kakaoSDKforManifest"].toString()
+        }
         release {
             isMinifyEnabled = false
+            manifestPlaceholders["kakaoSDKforManifest"] = properties["kakaoSDKforManifest"].toString()
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
