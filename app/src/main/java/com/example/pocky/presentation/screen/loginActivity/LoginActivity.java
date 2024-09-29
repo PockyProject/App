@@ -32,6 +32,8 @@
             //카카오 init
             KakaoSdk.init(this,KAKAO_KEY);
 
+            Log.d("LoginActivity",KAKAO_KEY);
+
             //카카오톡 설치 여부 확인 메서드
             Function2<OAuthToken, Throwable, Unit> callback = new Function2<OAuthToken, Throwable, Unit>() {
                 @Override
@@ -69,7 +71,7 @@
                         Log.d("User", "id : " + user.getId());
                         Log.d("User", "NickName : " + user.getKakaoAccount().getProfile().getNickname());
                         Log.d("User","ProfileUrl :" + user.getKakaoAccount().getProfile().getThumbnailImageUrl());
-                        Log.d("User","연령대 :" + user.getKakaoAccount().getAgeRangeNeedsAgreement());
+                        Log.d("User","연령대 :" + user.getKakaoAccount().getAgeRange());
                         //아이디, 닉네임, 프로필 url 담아서 UserInfo 객체 선언
                         Log.e("로그인",user.getKakaoAccount().getProfile().getThumbnailImageUrl());
                         UserInfo.getInstance().init(
