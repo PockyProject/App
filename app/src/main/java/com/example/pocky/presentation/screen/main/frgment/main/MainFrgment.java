@@ -124,4 +124,10 @@ public class MainFrgment extends Fragment {
         recyclerViewAdapter.setArr(menuName,menuImg);
 
     }
+
+    void init(){ //추천메뉴 MOCK 데이터 초기화
+
+
+    }
+
 }
