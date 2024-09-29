@@ -21,7 +21,7 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
     private static OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
     private FavorViewModel viewModel;
 
-    private int selectedPosition;
+    private int selectedPosition = RecyclerView.NO_POSITION; // 선택된 아이템 없음
 
 
     public interface OnItemClickListener {

@@ -20,7 +20,7 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
 
     private static OrderListAdapter.OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
     private OrderViewModel viewModel;
-    private int selectedPosition;
+    private int selectedPosition = RecyclerView.NO_POSITION; // 선택된 아이템 없음
 
     public interface OnItemClickListener {
         void onItemClick(Order Order); // 클릭된 아이템 데이터를 전달할 메서드
