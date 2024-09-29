@@ -20,7 +20,7 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
 
     private static OrderListAdapter.OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
     private OrderViewModel viewModel;
-    private int selectedPosition;
+    private int selectedPosition = RecyclerView.NO_POSITION; // 처음에는 선택된 아이템이 없음
 
     public interface OnItemClickListener {
         void onItemClick(Order Order); // 클릭된 아이템 데이터를 전달할 메서드
@@ -60,12 +60,20 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(getItem(position));
-                        notifyItemChanged(selectedPosition); // 이전 선택된 아이템 업데이트
-                        selectedPosition = position; // 현재 선택된 아이템 위치 저장
-                        notifyItemChanged(selectedPosition); // 현재 선택된 아이템 업데이트
-                    }
+
+                    //클릭된 아이템의 포지션을 전달
+                    listener.onItemClick(getItem(position));
+
+                    // 이전 선택된 아이템 업데이트
+                    notifyItemChanged(selectedPosition);
+
+                    // 현재 선택된 아이템 위치 저장
+                    selectedPosition = position;
+
+                    // 현재 선택된 아이템 업데이트
+                    notifyItemChanged(selectedPosition);
+
+
                 }
             });
             itemView.findViewById(R.id.orderCancelBtn).setOnClickListener(new View.OnClickListener() {

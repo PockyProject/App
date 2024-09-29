@@ -21,7 +21,7 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
     private static OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
     private FavorViewModel viewModel;
 
-    private int selectedPosition;
+    private int selectedPosition = RecyclerView.NO_POSITION; // 처음에는 선택된 아이템이 없음
 
 
     public interface OnItemClickListener {
@@ -34,6 +34,23 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
         super(FavorDiffUtil);
         this.viewModel = viewModel;
         FavorAdapter.listener = listener;
+    }
+
+    @NonNull
+    @Override
+    public FavorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        // 아이템 레이아웃을 인플레이트하여 ViewHolder 생성
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_favor_recycerview, parent, false);
+
+        return new FavorViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull FavorViewHolder holder, int position) {
+        // 데이터 바인딩
+        Favor favor = getItem(position);
+        boolean isSelected = position == selectedPosition; // 현재 아이템이 선택된 아이템인지 확인
+        holder.bind(favor,isSelected);
     }
 
 
@@ -62,12 +79,18 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
-                    if (position != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(getItem(position));
-                        notifyItemChanged(selectedPosition); // 이전 선택된 아이템 업데이트
-                        selectedPosition = position; // 현재 선택된 아이템 위치 저장
-                        notifyItemChanged(selectedPosition); // 현재 선택된 아이템 업데이트
-                    }
+
+                    //클릭된 아이템의 포지션을 전달
+                    listener.onItemClick(getItem(position));
+
+                    // 이전 선택된 아이템 업데이트
+                    notifyItemChanged(selectedPosition);
+
+                    // 현재 선택된 아이템 위치 저장
+                    selectedPosition = position;
+
+                    // 현재 선택된 아이템 업데이트
+                    notifyItemChanged(selectedPosition);
                 }
             });
             itemView.findViewById(R.id.cancelBtn).setOnClickListener(new View.OnClickListener() {
@@ -112,23 +135,6 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
                 itemView.setBackgroundResource(R.drawable.defaultselected); // 기본 아이템 테두리
             }
         }
-    }
-
-    @NonNull
-    @Override
-    public FavorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // 아이템 레이아웃을 인플레이트하여 ViewHolder 생성
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_favor_recycerview, parent, false);
-
-        return new FavorViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull FavorViewHolder holder, int position) {
-        // 데이터 바인딩
-        Favor favor = getItem(position);
-        boolean isSelected = position == selectedPosition; // 현재 아이템이 선택된 아이템인지 확인
-        holder.bind(favor,isSelected);
     }
 
     // DiffUtil 정의
