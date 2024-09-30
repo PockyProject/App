@@ -2,6 +2,7 @@ package com.example.pocky.domain.repository.orderList;
 
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -18,8 +19,11 @@ public class Order {
     private int menuImage;
     private String menuName;
 
+    @Nullable
     private String bread;
+    @Nullable
     private List<String> sauce;
+    @Nullable
     private List<String> toping;
     private String side;
     private String requid;
