@@ -75,11 +75,14 @@ public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderV
 
     public Order menuToOrder(Menu menu){ // 주문내역 Room 저장 전 데이터 변환
         String temp = "";
+
         if(menu.getRequid()){
             temp = "음료 여부 : 예";
         }else{
             temp = "음료 여부 : 아니오";
         }
+
+        menuNullCheck(menu);
 
 
         Order order = new Order(
@@ -124,6 +127,7 @@ public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderV
             menu.setMenuName("");
         }
     }
+
 
     private Favor MenutoFavor(Menu menu){ // Menu 자료형 Favor로 변환
         String temp = "";

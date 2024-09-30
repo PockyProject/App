@@ -88,14 +88,17 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
             String souce = "";
             String topping = "";
 
-            for(int i = 0; i < favor.getSauce().size(); i++){
-                souce += favor.getSauce().get(i) + " ";
+            if(favor.getSauce() != null){
+                for(int i = 0; i < favor.getSauce().size(); i++){
+                    souce += favor.getSauce().get(i) + " ";
+                }
             }
 
-            for (int i = 0; i < favor.getToping().size(); i++) {
-                topping += favor.getToping().get(i) + " ";
+            if(favor.getToping() != null){
+                for (int i = 0; i < favor.getToping().size(); i++) {
+                    topping += favor.getToping().get(i) + " ";
+                }
             }
-
             // 데이터 바인딩
             menuNameTextView.setText(favor.getMenuName()); // 메뉴 이름 설정
             menuImageView.setImageResource(favor.getMenuImage()); // 메뉴 이미지 설정

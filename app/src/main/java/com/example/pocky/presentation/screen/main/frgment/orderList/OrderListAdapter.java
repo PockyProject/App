@@ -87,12 +87,16 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
             String souce = "";
             String topping = "";
 
-            for(int i = 0; i < order.getSauce().size(); i++){
-                souce += order.getSauce().get(i) + " ";
+            if(order.getSauce() != null){
+                for(int i = 0; i < order.getSauce().size(); i++){
+                    souce += order.getSauce().get(i) + " ";
+                }
             }
 
-            for (int i = 0; i < order.getToping().size(); i++) {
-                topping += order.getToping().get(i) + " ";
+            if(order.getToping() != null){
+                for (int i = 0; i < order.getToping().size(); i++) {
+                    topping += order.getToping().get(i) + " ";
+                }
             }
             // 데이터 바인딩
             menuNameTextView.setText(order.getMenuName()); // 메뉴 이름 설정
