@@ -52,11 +52,11 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
             // 뷰 요소 연결
             menuNameTextView = itemView.findViewById(R.id.menuText);
             menuImageView = itemView.findViewById(R.id.foodImageView);
-            breadTextView = itemView.findViewById(R.id.bread);
-            sauceTextView = itemView.findViewById(R.id.sauce);
-            topingTextView = itemView.findViewById(R.id.toping);
-            sideTextView = itemView.findViewById(R.id.side);
-            requidTextView = itemView.findViewById(R.id.requid);
+            breadTextView = itemView.findViewById(R.id.favor_bread);
+            sauceTextView = itemView.findViewById(R.id.favor_sauce);
+            topingTextView = itemView.findViewById(R.id.favor_toping);
+            sideTextView = itemView.findViewById(R.id.favor_side);
+            requidTextView = itemView.findViewById(R.id.favor_requid);
             // 클릭 이벤트 처리
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -102,11 +102,26 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
             // 데이터 바인딩
             menuNameTextView.setText(favor.getMenuName()); // 메뉴 이름 설정
             menuImageView.setImageResource(favor.getMenuImage()); // 메뉴 이미지 설정
-            breadTextView.setText(favor.getBread()); // 빵  설정
-            sauceTextView.setText(souce); // 소스 설정
-            topingTextView.setText(topping); // 토핑 설정
-            sideTextView.setText(favor.getSide()); // 사이드 메뉴 설정
-            requidTextView.setText(favor.getRequid().toString()); // 기타 요청 사항 설정
+            if (favor.getBread() != null && !favor.getBread().isEmpty()) { // 빵
+                breadTextView.setText("빵 종류 : " + favor.getBread()); // 빵  설정
+            } else{
+                breadTextView.setVisibility(View.GONE); // 없으면 뷰에서 가림
+            }
+
+            if (favor.getSauce() != null && favor.getSauce().isEmpty()) { // 소스
+                sauceTextView.setText("선택한 소스 : " + souce); // 소스 설정
+            } else{
+                sauceTextView.setVisibility(View.GONE); // 없으면 뷰에서 가림
+            }
+
+            if (favor.getToping() != null && favor.getToping().isEmpty()) { // 토핑
+                topingTextView.setText("선택한 토핑 : " + topping); // 토핑 설정
+            } else{
+                topingTextView.setVisibility(View.GONE); // 없으면 뷰에서 가림
+            }
+
+            sideTextView.setText("선택한 사이드 : " + favor.getSide()); // 사이드 메뉴 설정
+            requidTextView.setText("음료 여부 : " + favor.getRequid().toString()); // 기타 요청 사항 설정
 
             // 선택 상태에 따라 테두리 색상 변경
             if (isSelected) {

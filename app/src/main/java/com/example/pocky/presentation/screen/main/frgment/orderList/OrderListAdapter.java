@@ -101,10 +101,26 @@ public class OrderListAdapter extends ListAdapter<Order, OrderListAdapter.OrderV
             // 데이터 바인딩
             menuNameTextView.setText(order.getMenuName()); // 메뉴 이름 설정
             menuImageView.setImageResource(order.getMenuImage()); // 메뉴 이미지 설정
-            breadTextView.setText(order.getBread()); // 빵  설정
-            sauceTextView.setText(souce); // 소스 설정
-            topingTextView.setText(topping); // 토핑 설정
-            sideTextView.setText(order.getSide()); // 사이드 메뉴 설정
+
+            if (order.getBread() != null && !order.getBread().isEmpty()) { // 빵
+                breadTextView.setText("빵 종류 : " + order.getBread()); // 빵  설정
+            }else{
+                breadTextView.setVisibility(View.GONE);
+            }
+
+            if(order.getSauce() != null && order.getSauce().isEmpty()){ // 소스
+                sauceTextView.setText("소스 종류 : " +  souce); // 소스 설정
+            }else{
+                sauceTextView.setVisibility(View.GONE);
+            }
+
+            if(order.getToping() != null && order.getToping().isEmpty()){ // 소스
+                topingTextView.setText("토핑 종류 : " + topping); // 소스 설정
+            }else{
+                topingTextView.setVisibility(View.GONE);
+            }
+
+            sideTextView.setText("선택한 사이드 : " +  order.getSide()); // 사이드 메뉴 설정
             requidTextView.setText(order.getRequid().toString()); // 기타 요청 사항 설정
 
             // 선택 상태에 따라 테두리 색상 변경
