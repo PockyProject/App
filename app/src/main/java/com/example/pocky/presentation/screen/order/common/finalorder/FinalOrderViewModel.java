@@ -301,7 +301,15 @@ public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderV
         }
 
         if(!menu.getQrToppingName().isEmpty()) {
-            temp +="T";
+
+            if(menu.getQrToppingName().size() == 2){
+                temp+="T00";
+            }else if(menu.getQrToppingName().size() == 1){
+                temp+="T0000";
+            }else {
+                temp +="T";
+            }
+
             for (int i = 0; i < menu.getQrToppingName().size(); i++) {
                 //토핑 이름
                 switch (menu.getQrToppingName().get(i)) {
@@ -386,7 +394,15 @@ public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderV
 
 
         if(!menu.getQrSauceName().isEmpty()) {
-            temp += " SAU";
+
+            if(menu.getQrSauceName().size() == 2){
+                temp+=" SAU00";
+            }else if(menu.getQrSauceName().size() == 1){
+                temp+=" SAU0000";
+            }else{
+                temp += " SAU";
+            }
+
             for (int i = 0; i < menu.getQrSauceName().size(); i++) {
                 //소스
                 switch (menu.getQrSauceName().get(i)) {
