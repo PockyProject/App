@@ -14,9 +14,10 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.pocky.R;
 import com.example.pocky.databinding.ActivityMainBinding;
 import com.example.pocky.presentation.screen.main.frgment.favor.FavorFragment;
+import com.example.pocky.presentation.screen.main.frgment.feed.FeedFragment;
 import com.example.pocky.presentation.screen.main.frgment.main.MainFrgment;
 import com.example.pocky.presentation.screen.main.frgment.main.MainViewModel;
-import com.example.pocky.presentation.screen.main.frgment.more.MoreFragment;
+import com.example.pocky.presentation.screen.main.frgment.mypage.MypageFragment;
 import com.example.pocky.presentation.screen.main.frgment.orderList.OrderListFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -65,8 +66,11 @@ public class MainActivity extends AppCompatActivity{
                     //주문내역 버튼 클릭 시
                     loadFragment(new OrderListFragment());
                     return true;
-                }else if(menuItem.getItemId() == R.id.bottomMoreBtn){
-                    loadFragment(new MoreFragment());
+                }else if(menuItem.getItemId() == R.id.bottomFeedBtn){
+                    loadFragment(new FeedFragment());
+                    return true;
+                }else if(menuItem.getItemId() == R.id.bottomMypageBtn){
+                    loadFragment(new MypageFragment());
                     return true;
                 }
                 return false;
