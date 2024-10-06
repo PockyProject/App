@@ -12,16 +12,20 @@
         android:iconTint="#FFFFFF"
         android:title="즐겨찾기" />
     <item
+        android:id="@+id/bottomFeedBtn"
+        android:enabled="true"
+        android:icon="@drawable/iconoir_community"
+        android:title="피드" />
+    <item
+        android:id="@+id/bottomMypageBtn"
+        android:enabled="true"
+        android:icon="@drawable/mdi_selfie_outline"
+        android:title="마이페이지" />
+    <item
         android:id="@+id/bottomOrderListBtn"
         android:enabled="true"
         android:icon="@drawable/orderlist_btn"
         android:title="주문내역" />
-
-    <item
-        android:id="@+id/bottomMoreBtn"
-        android:enabled="true"
-        android:icon="@drawable/outline_settings_24"
-        android:title="더보기" />
 
 
 </menu>
