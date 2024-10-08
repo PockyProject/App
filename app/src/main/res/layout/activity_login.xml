@@ -34,7 +34,7 @@
         android:id="@+id/kakaologin_btn"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingBottom="50dp"
+        android:paddingBottom="10dp"
         android:layout_gravity="center"
         android:background="@android:color/transparent"
         android:drawableBottom="@drawable/kakao_login_large_narrow"
