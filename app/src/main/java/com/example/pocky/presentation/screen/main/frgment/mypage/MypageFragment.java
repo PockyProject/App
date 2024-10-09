@@ -1,5 +1,6 @@
 package com.example.pocky.presentation.screen.main.frgment.mypage;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,7 @@ import com.example.pocky.domain.model.feed.FeedData;
 import com.example.pocky.domain.model.user.UserInfo;
 import com.example.pocky.domain.repository.favor.Favor;
 import com.example.pocky.presentation.screen.main.frgment.favor.FavorAdapter;
+import com.example.pocky.presentation.screen.main.frgment.mypage.addfeeds.chooseActivity.ChooseActivity;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -90,6 +92,9 @@ public class MypageFragment extends Fragment {
 
         //프로필 화면 초기화
         initProfile();
+
+        //클릭 이벤트 초기화
+        initListener();
     }
 
 
@@ -120,8 +125,16 @@ public class MypageFragment extends Fragment {
         viewModel.getOrderList().observe(getViewLifecycleOwner(), orders -> {
             binding.orderListNumberText.setText("최근 주문 수\n" + String.valueOf(orders.size()));
         });
+    }
 
-
+    private void initListener(){
+        binding.addFeedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), ChooseActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
