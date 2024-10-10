@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,7 +13,7 @@ import java.util.Objects;
 // 테이블 정의
 
 @Entity(tableName = "Favor") //테이블 이름 선언
-public class Favor {
+public class Favor implements Serializable {
     @PrimaryKey // 기본키 선언
     @NonNull
     private String favorNumber;
