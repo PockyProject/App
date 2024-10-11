@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pocky.databinding.ActivityAddfeedBinding;
+import com.example.pocky.domain.model.menu.Menu;
+import com.example.pocky.domain.model.menu.MenuSingleton;
 import com.example.pocky.domain.repository.favor.Favor;
 
 public class AddFeedActivity extends AppCompatActivity {
@@ -24,11 +26,16 @@ public class AddFeedActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         Intent intent = getIntent();
-        Favor favor = (Favor) intent.getSerializableExtra("data");
-        Log.d("AddFeedAcitivity",favor.getMenuName());
+        isChooseFeed = intent.getBooleanExtra("isChooseFeed",false);
+        isChooseFavor = intent.getBooleanExtra("isChooseFavor",false);
 
+        if(isChooseFeed){
+            Menu menu = MenuSingleton.getInstance();
+            Log.d("AddFeedAcitivity","새로 만든 주문 : " + menu.getMenuName());
 
-
-
+        }else if(isChooseFavor){
+            Favor favor = (Favor) intent.getSerializableExtra("data");
+            Log.d("AddFeedAcitivity","즐겨찾기에서 가져온 주문 : " + favor.getMenuName());
+        }
     }
 }

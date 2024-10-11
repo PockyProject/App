@@ -84,6 +84,7 @@ public class FeedFavorActivity extends AppCompatActivity {
                 }else{
                     Intent intent = new Intent(getApplicationContext(), AddFeedActivity.class);
                     intent.putExtra("data",selectedFavor);
+                    intent.putExtra("isChooseFavor",true);
                     startActivity(intent);
                 }
             }

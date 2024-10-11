@@ -78,6 +78,7 @@ public class DrinkActivity extends AppCompatActivity {
 
                     if(isChooseFeed){ // 피드에서 사용하는 상태라면,
                         Intent intent = new Intent(getApplicationContext(), AddFeedActivity.class); // 피드 추가 액티비티로
+                        intent.putExtra("isChooseFeed",true);
                         startActivity(intent);
                     }else{ // 주문 프로세스에서 사용하는 상태라면,
                         Intent intent = new Intent(getApplicationContext(), ConfirmationActivity.class); // 최종 메뉴 확인 화면 이동
