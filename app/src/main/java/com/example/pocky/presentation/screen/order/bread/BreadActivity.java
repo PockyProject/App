@@ -24,6 +24,7 @@ public class BreadActivity extends AppCompatActivity {
     private static List<String> breadName;
     private static List<String> qrBreadName; // 메뉴 객체에 들어갈 리스트
     private ActivityBreadBinding binding;
+    private Boolean isFeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +34,9 @@ public class BreadActivity extends AppCompatActivity {
 
         setContentView(binding.getRoot());
 
-
         init();
+
+        initIsFeedState();
 
         Menu arr = MenuSingleton.getInstance();
 
@@ -66,7 +68,8 @@ public class BreadActivity extends AppCompatActivity {
                     myToast.show();
                 }else{
                     Log.d("BreakFastActivity","최종적으로 선택된 아이템 : " + arr.getBreadName()+" "+ arr.getQrBreadName());
-                    Intent intent = new Intent(getApplicationContext(), SouceActivity.class); // 아침메뉴
+                    Intent intent = new Intent(getApplicationContext(), SouceActivity.class); // 소스 선택
+                    intent.putExtra("isFeed",isFeed);
                     startActivity(intent);
                 }
 
@@ -82,6 +85,15 @@ public class BreadActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void initIsFeedState(){
+        if(getIntent() != null){
+            Intent intent = getIntent();
+            isFeed = intent.getBooleanExtra("isFeed",false);
+        }else{
+            isFeed = false;
+        }
     }
 
     void init(){

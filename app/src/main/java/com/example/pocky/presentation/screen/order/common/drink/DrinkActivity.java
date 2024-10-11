@@ -14,6 +14,7 @@ import com.example.pocky.R;
 import com.example.pocky.databinding.ActivityDrinkBinding;
 import com.example.pocky.domain.model.menu.Menu;
 import com.example.pocky.domain.model.menu.MenuSingleton;
+import com.example.pocky.presentation.screen.main.frgment.mypage.addfeeds.addFeedActivity.AddFeedActivity;
 import com.example.pocky.presentation.screen.order.common.confirmation.ConfirmationActivity;
 
 import java.util.Arrays;
@@ -23,6 +24,7 @@ public class DrinkActivity extends AppCompatActivity {
     private static List<Integer> imageList;
     private static List<String> isSelected;
     private ActivityDrinkBinding binding;
+    private Boolean isFeed;
 
 
 
@@ -36,7 +38,9 @@ public class DrinkActivity extends AppCompatActivity {
 
         Menu arr = MenuSingleton.getInstance(); // 메뉴 객체 싱글톤 가져오기
 
+        initIsFeedState();
         init();
+
 
         RecyclerView recyclerView = findViewById(R.id.drink_RecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -71,11 +75,26 @@ public class DrinkActivity extends AppCompatActivity {
                     myToast.show();
                 }else{
                     Log.d("DrinkActivity","최종적으로 선택된 아이템 : " + arr.getMenuName()+" "+ arr.getMenuImage() +" " + arr.getSideName() + " " + arr.getRequid());
-                    Intent intent = new Intent(getApplicationContext(), ConfirmationActivity.class); // 최종 메뉴 확인 화면 이동
-                    startActivity(intent);
+
+                    if(isFeed){ // 피드에서 사용하는 상태라면,
+                        Intent intent = new Intent(getApplicationContext(), AddFeedActivity.class); // 피드 추가 액티비티로
+                        startActivity(intent);
+                    }else{ // 주문 프로세스에서 사용하는 상태라면,
+                        Intent intent = new Intent(getApplicationContext(), ConfirmationActivity.class); // 최종 메뉴 확인 화면 이동
+                        startActivity(intent);
+                    }
                 }
             }
         });
+    }
+
+    private void initIsFeedState(){
+        if(getIntent() != null){
+            Intent intent = getIntent();
+            isFeed = intent.getBooleanExtra("isFeed",false);
+        }else{
+            isFeed = false;
+        }
     }
 
 
@@ -91,5 +110,6 @@ public class DrinkActivity extends AppCompatActivity {
                 "아니오"
         );
     }
+
 
 }

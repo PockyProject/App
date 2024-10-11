@@ -26,5 +26,7 @@ public class AddFeedActivity extends AppCompatActivity {
         Log.d("AddFeedAcitivity",favor.getMenuName());
 
 
+
+
     }
 }

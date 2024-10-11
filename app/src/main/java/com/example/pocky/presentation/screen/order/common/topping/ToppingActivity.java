@@ -25,6 +25,7 @@ public class ToppingActivity extends AppCompatActivity {
     private static List<String> toppingName;
     private static List<String> qrToppingName; // 메뉴 객체에 들어갈 리스트
     private ActivityToppingBinding binding;
+    private Boolean isFeed; // 피드에서 사용하는지 확인하는 상태변수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class ToppingActivity extends AppCompatActivity {
 
         setContentView(binding.getRoot());
 
-
+        initIsFeedState();
         init();
 
         Menu arr = MenuSingleton.getInstance();
@@ -70,7 +71,8 @@ public class ToppingActivity extends AppCompatActivity {
                     Log.d("BreakFastActivity","최종적으로 선택된 아이템 : " +
                             arr.getToppingName().get(0)+" "+
                             arr.getQrToppingName().get(0));
-                    Intent intent = new Intent(getApplicationContext(), SideActivity.class); // 아침메뉴
+                    Intent intent = new Intent(getApplicationContext(), SideActivity.class); // 사이드 선택
+                    intent.putExtra("isFeed",isFeed);
                     startActivity(intent);
                 }
 
@@ -87,6 +89,22 @@ public class ToppingActivity extends AppCompatActivity {
             }
         });
     }
+
+
+    private void initAdapter(){
+
+    }
+
+
+    private void initIsFeedState(){
+        if(getIntent() != null){
+            Intent intent = getIntent();
+            isFeed = intent.getBooleanExtra("isFeed",false);
+        }else{
+            isFeed = false;
+        }
+    }
+
 
     void init(){
         // 소스 이름, 이미지 초기화
@@ -154,7 +172,5 @@ public class ToppingActivity extends AppCompatActivity {
                 "PIMENTO",
                 "TOMATO"
         );
-
-        // 사이드 이름 추가
     }
 }

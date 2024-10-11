@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.pocky.databinding.ActivitiyChooseBinding;
 import com.example.pocky.presentation.screen.main.frgment.mypage.addfeeds.chooseActivity.feedFavorActivity.FeedFavorActivity;
+import com.example.pocky.presentation.screen.order.sandwitch.SandwitchActivity;
 
 public class ChooseActivity extends AppCompatActivity {
 
@@ -43,8 +44,9 @@ public class ChooseActivity extends AppCompatActivity {
         binding.gotoOrderBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(getActivity(), ChooseActivity.class);
-//                startActivity(intent);
+                  Intent intent = new Intent(getApplicationContext(), SandwitchActivity.class);
+                  intent.putExtra("isFeed",true);
+                  startActivity(intent);
             }
         });
     }

@@ -1,4 +1,4 @@
-package com.example.pocky.domain.model.Feed;
+package com.example.pocky.domain.model.feed;
 
 public class FeedDTO {
 }
