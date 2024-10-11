@@ -45,7 +45,7 @@ public class ChooseActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                   Intent intent = new Intent(getApplicationContext(), SandwitchActivity.class);
-                  intent.putExtra("isFeed",true);
+                  intent.putExtra("isChooseFeed",true);
                   startActivity(intent);
             }
         });

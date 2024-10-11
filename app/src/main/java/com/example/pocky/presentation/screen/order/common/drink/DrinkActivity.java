@@ -24,7 +24,7 @@ public class DrinkActivity extends AppCompatActivity {
     private static List<Integer> imageList;
     private static List<String> isSelected;
     private ActivityDrinkBinding binding;
-    private Boolean isFeed;
+    private Boolean isChooseFeed;
 
 
 
@@ -76,7 +76,7 @@ public class DrinkActivity extends AppCompatActivity {
                 }else{
                     Log.d("DrinkActivity","최종적으로 선택된 아이템 : " + arr.getMenuName()+" "+ arr.getMenuImage() +" " + arr.getSideName() + " " + arr.getRequid());
 
-                    if(isFeed){ // 피드에서 사용하는 상태라면,
+                    if(isChooseFeed){ // 피드에서 사용하는 상태라면,
                         Intent intent = new Intent(getApplicationContext(), AddFeedActivity.class); // 피드 추가 액티비티로
                         startActivity(intent);
                     }else{ // 주문 프로세스에서 사용하는 상태라면,
@@ -91,9 +91,9 @@ public class DrinkActivity extends AppCompatActivity {
     private void initIsFeedState(){
         if(getIntent() != null){
             Intent intent = getIntent();
-            isFeed = intent.getBooleanExtra("isFeed",false);
+            isChooseFeed = intent.getBooleanExtra("isChooseFeed",false);
         }else{
-            isFeed = false;
+            isChooseFeed = false;
         }
     }
 

@@ -13,6 +13,8 @@ import com.example.pocky.domain.repository.favor.Favor;
 public class AddFeedActivity extends AppCompatActivity {
 
     private static ActivityAddfeedBinding binding;
+    private Boolean isChooseFeed;
+    private Boolean isChooseFavor;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -25,7 +25,7 @@ public class ToppingActivity extends AppCompatActivity {
     private static List<String> toppingName;
     private static List<String> qrToppingName; // 메뉴 객체에 들어갈 리스트
     private ActivityToppingBinding binding;
-    private Boolean isFeed; // 피드에서 사용하는지 확인하는 상태변수
+    private Boolean isChooseFeed; // 피드에서 사용하는지 확인하는 상태변수
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class ToppingActivity extends AppCompatActivity {
                             arr.getToppingName().get(0)+" "+
                             arr.getQrToppingName().get(0));
                     Intent intent = new Intent(getApplicationContext(), SideActivity.class); // 사이드 선택
-                    intent.putExtra("isFeed",isFeed);
+                    intent.putExtra("isChooseFeed",isChooseFeed);
                     startActivity(intent);
                 }
 
@@ -99,9 +99,9 @@ public class ToppingActivity extends AppCompatActivity {
     private void initIsFeedState(){
         if(getIntent() != null){
             Intent intent = getIntent();
-            isFeed = intent.getBooleanExtra("isFeed",false);
+            isChooseFeed = intent.getBooleanExtra("isChooseFeed",false);
         }else{
-            isFeed = false;
+            isChooseFeed = false;
         }
     }
 

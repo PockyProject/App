@@ -25,7 +25,7 @@ public class SandwitchActivity extends AppCompatActivity {
     private static List<String> sandwitchName;
     private static List<String> qrSandwitchName; // 메뉴 객체에 들어갈 리스트
     private ActivitySandwitchBinding binding;
-    private Boolean isFeed;
+    private Boolean isChooseFeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +73,7 @@ public class SandwitchActivity extends AppCompatActivity {
                 }else{
                     Log.d("BreakFastActivity","최종적으로 선택된 아이템 : " + arr.getMenuName()+" "+ arr.getMenuImage());
                     Intent intent = new Intent(getApplicationContext(), BreadActivity.class); // 빵 선택
-                    intent.putExtra("isFeed",isFeed);
+                    intent.putExtra("isChooseFeed",isChooseFeed);
                     startActivity(intent);
                 }
             }
@@ -93,9 +93,9 @@ public class SandwitchActivity extends AppCompatActivity {
     private void initIsFeedState(){
         if(getIntent() != null){
             Intent intent = getIntent();
-            isFeed = intent.getBooleanExtra("isFeed",false);
+            isChooseFeed = intent.getBooleanExtra("isChooseFeed",false);
         }else{
-            isFeed = false;
+            isChooseFeed = false;
         }
     }
 

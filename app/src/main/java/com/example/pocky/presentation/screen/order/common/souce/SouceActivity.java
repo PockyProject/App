@@ -24,7 +24,7 @@ public class SouceActivity extends AppCompatActivity {
     private static List<String> souceName;
     private static List<String> qrSouceName; // 메뉴 객체에 들어갈 리스트
     private ActivitySouceBinding binding;
-    private Boolean isFeed;
+    private Boolean isChooseFeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +72,7 @@ public class SouceActivity extends AppCompatActivity {
                             arr.getSauceName().get(0)+" "+
                             arr.getQrSauceName().get(0));
                     Intent intent = new Intent(getApplicationContext(), ToppingActivity.class); // 토핑 메뉴
-                    intent.putExtra("isFeed",isFeed);
+                    intent.putExtra("isChooseFeed",isChooseFeed);
                     startActivity(intent);
                 }
             }
@@ -92,9 +92,9 @@ public class SouceActivity extends AppCompatActivity {
     private void initIsFeedState(){
         if(getIntent() != null){
             Intent intent = getIntent();
-            isFeed = intent.getBooleanExtra("isFeed",false);
+            isChooseFeed = intent.getBooleanExtra("isChooseFeed",false);
         }else{
-            isFeed = false;
+            isChooseFeed = false;
         }
     }
 
