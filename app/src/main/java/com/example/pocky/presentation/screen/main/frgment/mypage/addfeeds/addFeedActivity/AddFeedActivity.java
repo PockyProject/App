@@ -21,6 +21,7 @@ public class AddFeedActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         //바인딩 설정
         binding = ActivityAddfeedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

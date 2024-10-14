@@ -12,8 +12,11 @@ public class FeedData {
     @SerializedName("userUid")
     private String userUid;
 
-    @SerializedName("profileImage")
-    private String profileImage;
+//    @SerializedName("profileImage")
+//    private String profileImage;
+
+    @SerializedName("qrImage")
+    private String qrImage;
 
     @SerializedName("menuImage")
     private int menuImage;
@@ -31,9 +34,9 @@ public class FeedData {
     private Timestamp updateAt;
 
 
-    public String getProfileImage() {
-        return profileImage;
-    }
+//    public String getProfileImage() {
+//        return profileImage;
+//    }
     public int getMenuImage() {
         return menuImage;
     }
@@ -102,9 +105,9 @@ public class FeedData {
         this.updateAt = updateAt;
     }
 
-    public void setProfileImage(String profileImage) {
-        this.profileImage = profileImage;
-    }
+//    public void setProfileImage(String profileImage) {
+//        this.profileImage = profileImage;
+//    }
 
 
     public void setMenuImage(int menuImage) {
@@ -120,6 +123,7 @@ public class FeedData {
         this.writedDate = writedDate;
         this.deleteAt = deleteAt;
         this.updateAt = updateAt;
+//        this.menuImage = menuImage;
     }
 
     @Override
