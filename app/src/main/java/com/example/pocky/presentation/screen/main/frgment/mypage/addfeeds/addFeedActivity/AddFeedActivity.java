@@ -17,6 +17,7 @@ public class AddFeedActivity extends AppCompatActivity {
     private static ActivityAddfeedBinding binding;
     private Boolean isChooseFeed;
     private Boolean isChooseFavor;
+    private int imageResouceLocation;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,16 +27,29 @@ public class AddFeedActivity extends AppCompatActivity {
         binding = ActivityAddfeedBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        accordingToStateValueInit();
+        initView();
+
+
+    }
+
+    private void initView(){ // 뷰 요소 초기화
+        binding.menuImage.setImageResource(imageResouceLocation);
+    }
+
+    private void accordingToStateValueInit(){ // 상태에 따른 값 초기화
         Intent intent = getIntent();
         isChooseFeed = intent.getBooleanExtra("isChooseFeed",false);
         isChooseFavor = intent.getBooleanExtra("isChooseFavor",false);
 
         if(isChooseFeed){
             Menu menu = MenuSingleton.getInstance();
+            imageResouceLocation = menu.getMenuImage();
             Log.d("AddFeedAcitivity","새로 만든 주문 : " + menu.getMenuName());
 
         }else if(isChooseFavor){
             Favor favor = (Favor) intent.getSerializableExtra("data");
+            imageResouceLocation = favor.getMenuImage();
             Log.d("AddFeedAcitivity","즐겨찾기에서 가져온 주문 : " + favor.getMenuName());
         }
     }
