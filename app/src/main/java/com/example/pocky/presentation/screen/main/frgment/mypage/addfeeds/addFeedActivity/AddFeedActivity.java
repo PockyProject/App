@@ -17,6 +17,8 @@ import com.example.pocky.domain.model.feed.FeedData;
 import com.example.pocky.domain.model.menu.Menu;
 import com.example.pocky.domain.model.menu.MenuSingleton;
 import com.example.pocky.domain.repository.favor.Favor;
+import com.example.pocky.presentation.screen.main.MainActivity;
+import com.example.pocky.presentation.screen.main.frgment.mypage.addfeeds.chooseActivity.ChooseActivity;
 
 public class AddFeedActivity extends AppCompatActivity {
 
@@ -63,8 +65,38 @@ public class AddFeedActivity extends AppCompatActivity {
                 } else if(postedData.getTitle().isEmpty() || postedData.getTitle().isEmpty()){
                     Toast.makeText(getApplicationContext(), "제목, 내용을 입력해주세요", Toast.LENGTH_SHORT).show();
                 }else{
-                    viewModel.storedFeedDB(postedData);
+
+                    //등록된 콜백의 결과에 따라 화면 이동 구현
+                    viewModel.storedFeedDB(postedData, new AddFeedViewModel.isSuccessCallback<Boolean>() {
+                        @Override
+                        public void onSuccess(Boolean result) {
+                            moveToT(result); // 저장 성공, 실패에 따른 액티비티 이동
+                        }
+
+                        @Override
+                        public void onFailure(Boolean result) {
+                            moveToT(result);
+                        }
+                    });
                 }
+            }
+        });
+
+        binding.contentEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                postedData.setContent(s.toString());
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                postedData.setContent(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                postedData.setContent(s.toString());
+                Log.d(TAG,"내용 : " + s.toString());
             }
         });
     }
@@ -110,23 +142,18 @@ public class AddFeedActivity extends AppCompatActivity {
                 Log.d(TAG,"제목 : " + s.toString());
             }
         });
+    }
 
-        binding.contentEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                postedData.setContent(s.toString());
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                postedData.setContent(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                postedData.setContent(s.toString());
-                Log.d(TAG,"내용 : " + s.toString());
-            }
-        });
+    private void moveToT(Boolean temp){
+        if(temp){
+            Log.d(TAG,"피드 등록에 성공했습니다");
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }else{
+            Log.d(TAG,"피드 등록에 실패했습니다");
+            Toast.makeText(getApplicationContext(), "피드 등록에 실패했습니다.", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), ChooseActivity.class);
+            startActivity(intent);
+        }
     }
 }

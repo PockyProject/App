@@ -1,7 +1,81 @@
 package com.example.pocky.presentation.screen.main.frgment.mypage.addfeeds.addFeedActivity;
 
 
-import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.*;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.AMERICANCHEESE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.AVOCADO;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.BACON;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.BACONCHEESEWEDGEPOTATO;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.BBQ;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.BLTSANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.CHEESEWEDGEPOTATO;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.CHICKENAVOCADOSANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.CHICKENBACONWRAP;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.CHICKENSLICESANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.CHICKENTERIYAKISANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.CHOCOLATECHIP;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.CORNSOUP;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.CUCUMBER;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.DOUBLECHOCOLATECHIP;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.EGGMAYO;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.EGGMAYOSANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.EGGSLICE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.EGGSLICESANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.FLATBREAD;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.HAMSANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.HASHBROWN;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.HEARTY;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.HONEYMUSTARD;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.HONEYOAT;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.HOTCHILI;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.ITALIANBMTSANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.ITALIANDRESSING;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.JALAPENO;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.KBBQSANDWITCH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.LETTUCE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.MAYONNAISE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.MEAT;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.MILK;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.MOZZARELLACHEESE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.MUSHROOMSOUP;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.MUSTARD;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.OATMEAL;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.OLIVEOIL;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.OLIVES;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.OMELETTE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.ONION;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.PAPER;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.PARMESAN;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.PEPPERONI;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.PICKLE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.PIMENTO;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.PORKCHEESESANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.POTATOCHIPS;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.RANCH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.RASPBERRYCHEESECOOKIE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.REDWINE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.ROASTEDCHICKENSANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.ROTISSERIEBBQCHICKEN;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.SALT;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.SHOEREDDCHEESE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.SHRIMPSANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.SMOKEDBBQ;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.SOUTHWEST;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.SOY;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.SPICYITALIANSANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.SPICYSHRIMPSANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.STEAKCHEESESANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.SUBWAYCLUBSANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.SWEETCHILI;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.SWEETONION;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.TARTARE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.THOUSANDISLAND;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.TOMATO;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.VEGGIESANDWICH;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.WASABIMAYO;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.WEDGEPOTATO;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.WHEAT;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.WHITE;
+import static com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValue.WHITEMACADAMIACOOKIE;
 
 import android.app.Application;
 import android.graphics.Bitmap;
@@ -23,6 +97,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.UUID;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,6 +107,12 @@ import retrofit2.Response;
 public class AddFeedViewModel extends AndroidViewModel {
 
     private static String TAG = "AddFeedViewModel";
+
+    public interface isSuccessCallback<T> { // 피드 등록 성공, 실패를 확인하기 위한 콜백 인터페이스 정의
+        void onSuccess(T result);
+        void onFailure(T result);
+    }
+
 
     public AddFeedViewModel(@NonNull Application application) {
         super(application);
@@ -70,40 +152,54 @@ public class AddFeedViewModel extends AndroidViewModel {
         return data;
     }
 
+
     // 변경된 모델 DB에 저장
-    public void storedFeedDB(FeedData data){
+    public void storedFeedDB(FeedData data,isSuccessCallback<Boolean> callback){
 
-        // API 인터페이스 연결
-        FeedApiService api = RetrofitService.getInstance().getRetrofit().create(FeedApiService.class);
-        Log.d(TAG,"피드 데이터 : "+ data.getFeedUid());
-        Log.d(TAG,"피드 데이터 : "+ data.getUserUid());
-        Log.d(TAG,"피드 데이터 : "+ data.getTitle());
-        Log.d(TAG,"피드 데이터 : "+ data.getContent());
-        Log.d(TAG,"피드 데이터 : "+ data.getDeleteAt());
-        Log.d(TAG,"피드 데이터 : "+ data.getLikeCount());
-        Log.d(TAG,"피드 데이터 : "+ data.getWritedDate());
-        Log.d(TAG,"피드 데이터 : "+ data.getUpdateAt());
-        api.postFeedData(data).enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                if(response.isSuccessful()){
-                    Log.d(TAG,"피드 등록 성공 : "+ response.message());
-                    Log.d(TAG,"피드 등록 성공 : "+ response.code());
-                }else{
-                    Log.d(TAG,"피드 등록 실패 : "+ response.code());
-                    Log.d(TAG,"피드 등록 실패 : "+ response.errorBody());
+
+        // ExecutorService 생성 (스레드 풀)
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+
+        // 비동기 작업 시작
+        executor.execute(() -> {
+            // API 인터페이스 연결
+            FeedApiService api = RetrofitService.getInstance().getRetrofit().create(FeedApiService.class);
+            Log.d(TAG, "피드 데이터 : " + data.getFeedUid());
+            Log.d(TAG, "피드 데이터 : " + data.getUserUid());
+            Log.d(TAG, "피드 데이터 : " + data.getTitle());
+            Log.d(TAG, "피드 데이터 : " + data.getContent());
+            Log.d(TAG, "피드 데이터 : " + data.getDeleteAt());
+            Log.d(TAG, "피드 데이터 : " + data.getLikeCount());
+            Log.d(TAG, "피드 데이터 : " + data.getWritedDate());
+            Log.d(TAG, "피드 데이터 : " + data.getUpdateAt());
+            api.postFeedData(data).enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if (response.isSuccessful()) {
+                        Log.d(TAG, "피드 등록 성공 : " + response.message());
+                        Log.d(TAG, "피드 등록 성공 : " + response.code());
+
+                        // 콜백을 true로 설정
+                        callback.onSuccess(true);
+                    } else {
+                        Log.d(TAG, "피드 등록 실패 : " + response.code());
+                        Log.d(TAG, "피드 등록 실패 : " + response.errorBody());
+
+                        // 콜백을 false로 설정
+                        callback.onFailure(false);
+                    }
                 }
-            }
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-                Log.d(TAG,"피드 등록 실패 : "+ t.getCause());
-                Log.d(TAG,"피드 등록 실패 : "+ t.getMessage());
 
-            }
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Log.d(TAG, "피드 등록 실패 : " + t.getCause());
+                    Log.d(TAG, "피드 등록 실패 : " + t.getMessage());
+
+                }
+            });
         });
-
-
     }
+
 
     // 저장한 데이터 로컬 캐시 처리
 
@@ -150,6 +246,7 @@ public class AddFeedViewModel extends AndroidViewModel {
 
     // 현재 시간 구하는 함수
     public Timestamp calcCurrentTime(){
+
         // 현재 날짜와 시간 구하기
         LocalDateTime currentDateTime = LocalDateTime.now();
 
@@ -911,4 +1008,5 @@ public class AddFeedViewModel extends AndroidViewModel {
 
         return temp;
     }
+
 }
