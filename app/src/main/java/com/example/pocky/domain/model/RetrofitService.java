@@ -11,7 +11,7 @@ public class RetrofitService {
 
         //에뮬레이터 : 10.0.2.2
         //실제 기기 : localhost
-        private static String baseUrl = "http://10.0.2.2:8080/";
+        private static String baseUrl = "http://121.143.11.133:5003";
         private static Gson gson = new GsonBuilder().setLenient().create();
         private RetrofitService() {
             retrofit = new Retrofit.Builder()
