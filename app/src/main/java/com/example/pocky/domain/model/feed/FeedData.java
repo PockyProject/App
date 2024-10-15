@@ -12,9 +12,6 @@ public class FeedData {
     @SerializedName("userUid")
     private String userUid;
 
-//    @SerializedName("profileImage")
-//    private String profileImage;
-
     @SerializedName("qrImage")
     private String qrImage;
 
