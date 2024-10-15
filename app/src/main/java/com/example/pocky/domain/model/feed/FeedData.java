@@ -12,8 +12,8 @@ public class FeedData {
     @SerializedName("userUid")
     private String userUid;
 
-    @SerializedName("qrImage")
-    private String qrImage;
+    @SerializedName("qrimage")
+    private byte[] qrImage;
 
     @SerializedName("menuImage")
     private int menuImage;
@@ -23,12 +23,12 @@ public class FeedData {
     private String content;
     @SerializedName("likeCount")
     private int likeCount;
-    @SerializedName("writedDate")
-    private Timestamp writedDate;
-    @SerializedName("deleteAt")
-    private Timestamp deleteAt;
-    @SerializedName("updateAt")
-    private Timestamp updateAt;
+    @SerializedName("createdat")
+    private Timestamp createdat;
+    @SerializedName("deletedat")
+    private Timestamp deletedat;
+    @SerializedName("updatedat")
+    private Timestamp updatedat;
 
 
 //    public String getProfileImage() {
@@ -73,54 +73,55 @@ public class FeedData {
     public int getLikeCount() {
         return likeCount;
     }
+    public byte[] getQrImage() {
+        return qrImage;
+    }
+
 
     public void setLikeCount(int likeCount) {
         this.likeCount = likeCount;
     }
 
     public Timestamp getWritedDate() {
-        return writedDate;
+        return createdat;
     }
 
     public void setWritedDate(Timestamp writedDate) {
-        this.writedDate = writedDate;
+        this.createdat = writedDate;
     }
 
     public Timestamp getDeleteAt() {
-        return deleteAt;
+        return deletedat;
     }
 
     public void setDeleteAt(Timestamp deleteAt) {
-        this.deleteAt = deleteAt;
+        this.deletedat = deleteAt;
     }
 
     public Timestamp getUpdateAt() {
-        return updateAt;
+        return updatedat;
     }
 
     public void setUpdateAt(Timestamp updateAt) {
-        this.updateAt = updateAt;
+        this.updatedat = updateAt;
     }
 
-//    public void setProfileImage(String profileImage) {
-//        this.profileImage = profileImage;
-//    }
 
 
     public void setMenuImage(int menuImage) {
         this.menuImage = menuImage;
     }
 
-    public FeedData(String feedUid, String userUid, String title, String content, int likeCount, Timestamp writedDate, Timestamp deleteAt, Timestamp updateAt) {
+    public FeedData(String feedUid, String userUid, String title, String content, int likeCount, Timestamp writedDate, Timestamp deleteAt, Timestamp updateAt,byte[] qrImage) {
         this.feedUid = feedUid;
         this.userUid = userUid;
         this.title = title;
         this.content = content;
         this.likeCount = likeCount;
-        this.writedDate = writedDate;
-        this.deleteAt = deleteAt;
-        this.updateAt = updateAt;
-//        this.menuImage = menuImage;
+        this.createdat = writedDate;
+        this.deletedat = deleteAt;
+        this.updatedat = updateAt;
+        this.qrImage = qrImage;
     }
 
     @Override

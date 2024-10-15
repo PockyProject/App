@@ -66,8 +66,44 @@ public class Favor implements Serializable {
         return requid;
     }
 
+    public String getQrBreadName() {
+        return qrBreadName;
+    }
 
-    public Favor(int menuImage, String menuName, String favorNumber, String bread,  List<String> sauce, List<String> toping, String side, String requid) {
+    public List<String> getQrSauceName() {
+        return qrSauceName;
+    }
+
+    public List<String> getQrToppingName() {
+        return qrToppingName;
+    }
+
+    public String getQrMenuName() {
+        return qrMenuName;
+    }
+
+    public String getQrSideName() {
+        return qrSideName;
+    }
+    public Boolean getQrRequid() {
+        return qrRequid;
+    }
+
+    private String qrBreadName;
+    private List<String> qrSauceName;
+    private List<String> qrToppingName;
+    private String qrMenuName;
+    private String qrSideName;
+
+    private Boolean qrRequid;
+
+
+    public Favor(int menuImage, String menuName, String favorNumber,
+                 String bread,  List<String> sauce, List<String> toping,
+                 String side, String requid, String qrBreadName,
+                 List<String> qrSauceName, List<String> qrToppingName,
+                 String qrMenuName, String qrSideName, Boolean qrRequid)
+    {
         this.menuImage = menuImage;
         this.menuName = menuName;
         this.favorNumber = favorNumber;
@@ -76,6 +112,12 @@ public class Favor implements Serializable {
         this.toping = toping;
         this.side = side;
         this.requid = requid;
+        this.qrBreadName = qrBreadName;
+        this. qrSauceName = qrSauceName;
+        this. qrToppingName = qrToppingName;
+        this.qrMenuName = qrMenuName;
+        this.qrSideName = qrSideName;
+        this.qrRequid = qrRequid;
     }
 
 
