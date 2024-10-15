@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderValue {
+public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValue {
 
     private FavorRepository repository;
     private OrderRepository orderRepository;
@@ -147,7 +147,13 @@ public class FinalOrderViewModel extends AndroidViewModel implements FinalOrderV
                 menu.getSauceName(),
                 menu.getToppingName(),
                 menu.getSideName(),
-                temp
+                temp,
+                menu.getQrBreadName(),
+                menu.getQrSauceName(),
+                menu.getQrToppingName(),
+                menu.getQrMenuName(),
+                menu.getQrSideName(),
+                menu.getRequid()
         );
     }
 

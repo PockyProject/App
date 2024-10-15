@@ -48,12 +48,12 @@ public class AddFeedActivity extends AppCompatActivity {
         accordingToStateValueInit();
         initView();
 
-
     }
 
     private void initView(){ // 뷰 요소 초기화
         binding.menuImage.setImageResource(imageResouceLocation);
         binding.infoMenuTextView.setText(menuName);
+
 
         binding.confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +70,7 @@ public class AddFeedActivity extends AppCompatActivity {
     }
 
     private void accordingToStateValueInit(){ // 상태에 따른 값 초기화
+
         Intent intent = getIntent();
         isChooseFeed = intent.getBooleanExtra("isChooseFeed",false);
         isChooseFavor = intent.getBooleanExtra("isChooseFavor",false);
@@ -127,7 +128,5 @@ public class AddFeedActivity extends AppCompatActivity {
                 Log.d(TAG,"내용 : " + s.toString());
             }
         });
-//        titleText = binding.titleEditText.getText().toString();
-//        contentText = binding.contentEditText.getText().toString();
     }
 }
