@@ -1,6 +1,6 @@
 package com.example.pocky.presentation.screen.order.common.finalorder;
 
-public interface FinalOrderValue {
+public interface qrOrderValue {
 
     //샌드위치
     static final String BLTSANDWICH = "BLTSANDWICH";
