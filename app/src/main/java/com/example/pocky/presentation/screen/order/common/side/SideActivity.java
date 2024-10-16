@@ -25,6 +25,7 @@ public class SideActivity extends AppCompatActivity {
     private static List<Integer> imageList;
     private static List<String> sideName;
     private static List<String> arrSideName; // 메뉴 객체에 들어갈 리스트
+    private Boolean isChooseFeed;
 
 
     @Override
@@ -33,6 +34,7 @@ public class SideActivity extends AppCompatActivity {
         binding = ActivitySideBinding.inflate(getLayoutInflater());
 
         setContentView(binding.getRoot());
+        initIsFeedState();
         init();
 
         Menu arr = MenuSingleton.getInstance(); // 메뉴 객체 싱글톤 가져오기
@@ -64,6 +66,7 @@ public class SideActivity extends AppCompatActivity {
                 }else{
                     Log.d("SideActivity","최종적으로 선택된 아이템 : " +arr.getQrSideName());
                     Intent intent = new Intent(getApplicationContext(), DrinkActivity.class); // 아침메뉴
+                    intent.putExtra("isChooseFeed",isChooseFeed);
                     startActivity(intent);
                 }
 
@@ -80,6 +83,15 @@ public class SideActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    private void initIsFeedState(){
+        if(getIntent() != null){
+            Intent intent = getIntent();
+            isChooseFeed = intent.getBooleanExtra("isChooseFeed",false);
+        }else{
+            isChooseFeed = false;
+        }
     }
 
     void init(){ // 사이드 이름, 이미지 초기화

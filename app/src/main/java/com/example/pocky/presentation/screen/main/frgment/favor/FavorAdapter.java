@@ -20,6 +20,7 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
 
     private static OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
     private FavorViewModel viewModel;
+    private Boolean isFeed = false; // 재활용을 위한 UI상태 변수
 
     private int selectedPosition = RecyclerView.NO_POSITION; // 선택된 아이템 없음
 
@@ -36,6 +37,9 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
         FavorAdapter.listener = listener;
     }
 
+    public void setIsFeed(Boolean isFeed){
+        this.isFeed = isFeed;
+    }
 
     // ViewHolder 정의
     public class FavorViewHolder extends RecyclerView.ViewHolder {
@@ -57,6 +61,11 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
             topingTextView = itemView.findViewById(R.id.favor_toping);
             sideTextView = itemView.findViewById(R.id.favor_side);
             requidTextView = itemView.findViewById(R.id.favor_requid);
+
+            //피드에서 어댑터를 호출하면 즐겨찾기 삭제 버튼 비활성화
+            if(isFeed){
+                itemView.findViewById(R.id.cancelBtn).setVisibility(View.INVISIBLE);
+            }
             // 클릭 이벤트 처리
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

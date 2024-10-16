@@ -16,24 +16,21 @@ import com.bumptech.glide.Glide;
 import com.example.pocky.R;
 import com.example.pocky.domain.model.feed.FeedData;
 import com.example.pocky.domain.model.user.UserInfo;
-import com.example.pocky.domain.repository.favor.Favor;
-import com.example.pocky.presentation.screen.main.frgment.favor.FavorAdapter;
 
 import java.util.Objects;
 
 public class MypageAdapter extends ListAdapter<FeedData,MypageAdapter.ViewHolder> {
 
-    private static FavorAdapter.OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
+    private static OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
 
     public interface OnItemClickListener {
-        void onItemClick(Favor favor); // 클릭된 아이템 데이터를 전달할 메서드
+        void onItemClick(FeedData feedData); // 클릭된 아이템 데이터를 전달할 메서드
     }
 
 
-    public MypageAdapter(FavorAdapter.OnItemClickListener listener){
+    public MypageAdapter(OnItemClickListener listener){
         super(FeedDiffUtil);
         MypageAdapter.listener = listener;
-
     }
 
 
@@ -66,6 +63,17 @@ public class MypageAdapter extends ListAdapter<FeedData,MypageAdapter.ViewHolder
             menuNameTextView = itemView.findViewById(R.id.feed_menuNameNtext);
             titleTextView = itemView.findViewById(R.id.feed_titeText);
             profileImageView = itemView.findViewById(R.id.feed_profileImage);
+
+            // 클릭 이벤트 처리
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(getItem(position));
+                    }
+                }
+            });
 
         }
 

@@ -25,16 +25,19 @@ public class SandwitchActivity extends AppCompatActivity {
     private static List<String> sandwitchName;
     private static List<String> qrSandwitchName; // 메뉴 객체에 들어갈 리스트
     private ActivitySandwitchBinding binding;
+    private Boolean isChooseFeed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
+
         binding = ActivitySandwitchBinding.inflate(getLayoutInflater());
 
         setContentView(binding.getRoot());
 
-
+        initIsFeedState();
         init();
 
         Menu arr = MenuSingleton.getInstance();
@@ -50,6 +53,7 @@ public class SandwitchActivity extends AppCompatActivity {
                 arr.setMenuName(sideName);
                 arr.setQrMenuName(qrName);
                 arr.setMenuImage(imageResId);
+
 
                 Log.d("SideActivity", "선택된 아이템: " + imageResId);
                 Log.d("SideActivity", "선택된 메뉴: " + arr.getMenuName());
@@ -68,10 +72,10 @@ public class SandwitchActivity extends AppCompatActivity {
                     myToast.show();
                 }else{
                     Log.d("BreakFastActivity","최종적으로 선택된 아이템 : " + arr.getMenuName()+" "+ arr.getMenuImage());
-                    Intent intent = new Intent(getApplicationContext(), BreadActivity.class); // 아침메뉴
+                    Intent intent = new Intent(getApplicationContext(), BreadActivity.class); // 빵 선택
+                    intent.putExtra("isChooseFeed",isChooseFeed);
                     startActivity(intent);
                 }
-
             }
         });
 
@@ -84,6 +88,15 @@ public class SandwitchActivity extends AppCompatActivity {
                 finish();
             }
         });
+    }
+
+    private void initIsFeedState(){
+        if(getIntent() != null){
+            Intent intent = getIntent();
+            isChooseFeed = intent.getBooleanExtra("isChooseFeed",false);
+        }else{
+            isChooseFeed = false;
+        }
     }
 
     void init(){
