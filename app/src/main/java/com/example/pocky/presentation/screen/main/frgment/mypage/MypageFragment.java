@@ -40,6 +40,7 @@ public class MypageFragment extends Fragment {
         MypageViewModelFactory factory = new MypageViewModelFactory(requireActivity().getApplication());
         viewModel = new ViewModelProvider(this, factory).get(MypageViewModel.class);
 
+        // 리사이클러뷰 어댑터 초기화
         initAdapter(Collections.emptyList());
 
         return binding.getRoot();
@@ -50,6 +51,7 @@ public class MypageFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        // 피드 데이터 호출
         viewModel.getMyFeed();
 
         viewModel.getFeed().observe((LifecycleOwner) requireContext(), new Observer<List<FeedData>>() {

@@ -17,6 +17,8 @@ import com.example.pocky.domain.repository.orderList.Order;
 import com.example.pocky.domain.repository.orderList.OrderRepository;
 
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -63,26 +65,30 @@ public class MypageViewModel extends AndroidViewModel {
     public  LiveData<List<Favor>> getFavorList() {return Favors;} // 즐겨찾기 데이터 가져다 쓰는 함수
     public LiveData<List<Order>> getOrderList() {return Order;} // 주문내역 데이터 가져다 쓰는 함수
 
-    public void getMyFeed(){
+    public void getMyFeed() {
         FeedApiService api = RetrofitService.getInstance().getRetrofit().create(FeedApiService.class);
+        // ExecutorService 생성 (스레드 풀)
+        ExecutorService executor = Executors.newSingleThreadExecutor();
 
-        api.getFeedData("123").enqueue(new Callback<List<FeedData>>() {
-            @Override
-            public void onResponse(Call<List<FeedData>> call, Response<List<FeedData>> response) {
-                if(response.isSuccessful()){
-                    Log.d(TAG,"데이터 요청 성공 : " + response.body());
-                    Log.d(TAG,"데이터 요청 성공 : " + response.body().isEmpty());
-                    updateFeedArr(response.body());
-                }else{
-                    Log.d(TAG,"데이터 요청 실패 : " + response.message());
+        // 네트워크 요청 비동기 처린
+        executor.execute(() -> {
+            api.getFeedData("123").enqueue(new Callback<List<FeedData>>() {
+                @Override
+                public void onResponse(Call<List<FeedData>> call, Response<List<FeedData>> response) {
+                    if (response.isSuccessful()) {
+                        Log.d(TAG, "데이터 요청 성공 : " + response.body());
+                        Log.d(TAG, "데이터 요청 성공 : " + response.body().isEmpty());
+                        updateFeedArr(response.body());
+                    } else {
+                        Log.d(TAG, "데이터 요청 실패 : " + response.message());
+                    }
                 }
-            }
 
-            @Override
-            public void onFailure(Call<List<FeedData>> call, Throwable t) {
-                Log.d(TAG,"DB와 연결 실패 : " + t.getMessage());
-            }
+                @Override
+                public void onFailure(Call<List<FeedData>> call, Throwable t) {
+                    Log.d(TAG, "DB와 연결 실패 : " + t.getMessage());
+                }
+            });
         });
     }
-
 }
