@@ -2,6 +2,7 @@ package com.example.pocky.presentation.screen.main.frgment.mypage;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +19,6 @@ import com.bumptech.glide.Glide;
 import com.example.pocky.databinding.FragmentMypageBinding;
 import com.example.pocky.domain.model.feed.FeedData;
 import com.example.pocky.domain.model.user.UserInfo;
-import com.example.pocky.domain.repository.favor.Favor;
-import com.example.pocky.presentation.screen.main.frgment.favor.FavorAdapter;
 import com.example.pocky.presentation.screen.main.frgment.mypage.addfeeds.chooseActivity.ChooseActivity;
 
 import java.util.Collections;
@@ -30,6 +29,9 @@ public class MypageFragment extends Fragment {
     private FragmentMypageBinding binding;
     private MypageAdapter adapter;
     private MypageViewModel viewModel;
+
+    // 클릭한 피드 저장할 변수 선언
+    private FeedData clikedData;
 
     @Nullable
     @Override
@@ -57,7 +59,6 @@ public class MypageFragment extends Fragment {
         viewModel.getFeed().observe((LifecycleOwner) requireContext(), new Observer<List<FeedData>>() {
             @Override
             public void onChanged(List<FeedData> feedData) {
-
                 // 어댑터 초기화 피드 바뀔떄마다 옵저버 패턴으로 호출
                 initAdapter(feedData);
             }
@@ -73,10 +74,11 @@ public class MypageFragment extends Fragment {
 
 
     private void initAdapter(List<FeedData> data){
-        adapter = new MypageAdapter(new FavorAdapter.OnItemClickListener() {
+        adapter  = new MypageAdapter(new MypageAdapter.OnItemClickListener() {
             @Override
-            public void onItemClick(Favor favor) {
-
+            public void onItemClick(FeedData feedData) {
+                clikedData = feedData;
+                Log.d(TAG,"클릭된 아이템 : " + clikedData.getTitle());
             }
         });
         adapter.submitList(data);
