@@ -6,6 +6,7 @@
     import android.view.View;
 
     import androidx.appcompat.app.AppCompatActivity;
+    import androidx.lifecycle.ViewModelProvider;
 
     import com.example.pocky.BuildConfig;
     import com.example.pocky.databinding.ActivityLoginBinding;
@@ -22,12 +23,18 @@
     public class LoginActivity extends AppCompatActivity {
         private ActivityLoginBinding binding; // 바인딩
         private final String KAKAO_KEY = BuildConfig.kakaoSDK;
+
+        private static LoginViewModel viewModel;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             binding = ActivityLoginBinding.inflate(getLayoutInflater());
             View view = binding.getRoot();
             super.onCreate(savedInstanceState);
             setContentView(view);
+
+            //뷰모델 초기화
+            LoginViewModelFactory factory = new LoginViewModelFactory(this.getApplication());
+            viewModel = new ViewModelProvider(this, factory).get(LoginViewModel.class);
 
             //카카오 init
             KakaoSdk.init(this,KAKAO_KEY);
