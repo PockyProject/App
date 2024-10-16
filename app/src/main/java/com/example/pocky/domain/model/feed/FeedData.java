@@ -31,9 +31,6 @@ public class FeedData {
     private Timestamp updatedat;
 
 
-//    public String getProfileImage() {
-//        return profileImage;
-//    }
     public int getMenuImage() {
         return menuImage;
     }
