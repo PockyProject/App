@@ -18,7 +18,6 @@
     import com.kakao.sdk.user.UserApiClient;
     import com.kakao.sdk.user.model.User;
 
-    import java.util.StringTokenizer;
     import java.util.concurrent.ExecutorService;
     import java.util.concurrent.Executors;
 
@@ -145,38 +144,5 @@
                     age
             );
         }
-
-
-            public int convertAgeFormat(String arr){
-                int count = 0;
-                int age = 0;
-                Log.d("convertAgeFormat", String.valueOf(count));
-                Log.d("convertAgeFormat", "기존 문자열: "+ arr);
-                StringTokenizer st = new StringTokenizer(arr,"_");
-                try{
-                    Log.d("convertAgeFormat", "토큰 개수 : "+String.valueOf(st.countTokens()));
-                    Log.d("convertAgeFormat", "토큰 개수 : "+String.valueOf(st.nextToken()));
-                    Log.d("convertAgeFormat", "토큰 개수 : "+String.valueOf(st.nextToken()));
-                    Log.d("convertAgeFormat", "토큰 개수 : "+String.valueOf(st.nextToken()));
-
-                    while (st.hasMoreTokens()){
-                        if(count == 1){
-                            age = Integer.parseInt(st.nextToken());
-                            Log.d("convertAgeFormat", "가져온 포맷 " + age);
-                            break;
-                        }
-                        count++;
-                        Log.d("convertAgeFormat", String.valueOf(count));
-                    }
-                    Log.d("convertAgeFormat", String.valueOf(count));
-                } catch (Exception e){
-                    Log.d(TAG,"나이 문자열 포맷 오류 : " + e.getCause());
-                    Log.d(TAG,"나이 문자열 포맷 오류 : " + e.getMessage());
-                    return 0;
-                }
-
-                Log.d("convertAgeFormat", "최종 포맷 " + age);
-                return age;
-            }
 
     }
