@@ -88,6 +88,7 @@ import com.example.pocky.domain.model.RetrofitService;
 import com.example.pocky.domain.model.feed.FeedApiService;
 import com.example.pocky.domain.model.feed.FeedData;
 import com.example.pocky.domain.model.menu.Menu;
+import com.example.pocky.domain.model.user.UserInfo;
 import com.example.pocky.domain.repository.favor.Favor;
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
@@ -122,7 +123,7 @@ public class AddFeedViewModel extends AndroidViewModel {
     public FeedData menuToFeed(Menu menu,String title, String content){
         FeedData data = new FeedData(
                 UUID.randomUUID().toString(),
-                "123",
+                UserInfo.getInstance().getUserId(),
                 title,
                 content,
                 0,
@@ -139,7 +140,7 @@ public class AddFeedViewModel extends AndroidViewModel {
     public FeedData favorToFeed(Favor favor,String title, String content){
         FeedData data = new FeedData(
                 UUID.randomUUID().toString(),
-                "123",
+                UserInfo.getInstance().getUserId(),
                 title,
                 content,
                 0,
