@@ -109,7 +109,10 @@ public class FeedData {
         this.menuImage = menuImage;
     }
 
-    public FeedData(String feedUid, String userUid, String title, String content, int likeCount, Timestamp writedDate, Timestamp deleteAt, Timestamp updateAt,byte[] qrImage) {
+    public FeedData(String feedUid, String userUid, String title, String content,
+                    int likeCount, Timestamp writedDate, Timestamp deleteAt,
+                    Timestamp updateAt,byte[] qrImage,
+                    int menuImage) {
         this.feedUid = feedUid;
         this.userUid = userUid;
         this.title = title;
@@ -119,6 +122,7 @@ public class FeedData {
         this.deletedat = deleteAt;
         this.updatedat = updateAt;
         this.qrImage = qrImage;
+        this.menuImage = menuImage;
     }
 
     @Override

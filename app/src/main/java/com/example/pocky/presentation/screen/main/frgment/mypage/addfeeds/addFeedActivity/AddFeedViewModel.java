@@ -130,7 +130,8 @@ public class AddFeedViewModel extends AndroidViewModel {
                 calcCurrentTime(),
                 calcCurrentTime(),
                 calcCurrentTime(),
-                menuGenerateQrCode(menu)
+                menuGenerateQrCode(menu),
+                menu.getMenuImage()
         );
 
         return data;
@@ -147,7 +148,8 @@ public class AddFeedViewModel extends AndroidViewModel {
                 calcCurrentTime(),
                 calcCurrentTime(),
                 calcCurrentTime(),
-                favorGenerateQrCode(favor)
+                favorGenerateQrCode(favor),
+                favor.getMenuImage()
         );
 
         return data;
@@ -173,6 +175,7 @@ public class AddFeedViewModel extends AndroidViewModel {
             Log.d(TAG, "피드 데이터 : " + data.getLikeCount());
             Log.d(TAG, "피드 데이터 : " + data.getWritedDate());
             Log.d(TAG, "피드 데이터 : " + data.getUpdateAt());
+            Log.d(TAG, "피드 데이터 이미지 : " + data.getMenuImage());
             api.postFeedData(data).enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
