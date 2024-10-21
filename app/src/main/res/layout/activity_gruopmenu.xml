@@ -12,19 +12,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/backspace_btn"
+        <View
+            android:id="@+id/dummyView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@android:color/transparent"
-            android:contentDescription="뒤로가기버튼"
             android:padding="8dp"
             android:src="@drawable/backspace_btn"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/titleTextView"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="0.08" />
+            app:layout_constraintEnd_toStartOf="@id/titleTextView"
+            app:layout_constraintHorizontal_weight="0.08"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/titleTextView"
@@ -33,16 +32,17 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="0dp"
             android:fontFamily="@font/nanumbarungothicbold"
-            android:text="그룹메뉴"
-            android:textSize="30sp"
-            app:layout_constraintStart_toEndOf="@id/backspace_btn"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/confirm_btn"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_weight="0.2"
             android:gravity="center"
+            android:text="그룹메뉴"
+            android:textColor="@color/black"
+            android:textSize="30sp"
             android:textStyle="bold"
-            android:textColor="@color/black"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/confirm_btn"
+            app:layout_constraintHorizontal_weight="0.2"
+            app:layout_constraintStart_toEndOf="@id/dummyView"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <Button
             android:id="@+id/confirm_btn"
             android:layout_width="0dp"
@@ -50,14 +50,14 @@
             android:background="@android:color/transparent"
             android:fontFamily="@font/nanumbarungothicbold"
             android:text="완료"
-            android:textStyle="bold"
             android:textColor="@android:color/black"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:textSize="24dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/titleTextView"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_weight="0.08"
-            android:textSize="24dp"/>
+            app:layout_constraintStart_toEndOf="@id/titleTextView"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     <!-- 리사이클러 뷰 -->
@@ -69,6 +69,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonGroupLayout"/>
+        app:layout_constraintTop_toBottomOf="@id/buttonGroupLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
