@@ -116,6 +116,7 @@ public class AddFeedActivity extends AppCompatActivity {
 
         }else if(isChooseFavor){
             Favor favor = (Favor) intent.getSerializableExtra("data");
+            Log.d(TAG,"즐겨찾기 메뉴 이미지 : " + favor.getMenuImage());
             imageResouceLocation = favor.getMenuImage();
             menuName = favor.getMenuName();
             postedData = viewModel.favorToFeed(favor,"","");

@@ -88,6 +88,7 @@ import com.example.pocky.domain.model.RetrofitService;
 import com.example.pocky.domain.model.feed.FeedApiService;
 import com.example.pocky.domain.model.feed.FeedData;
 import com.example.pocky.domain.model.menu.Menu;
+import com.example.pocky.domain.model.user.UserInfo;
 import com.example.pocky.domain.repository.favor.Favor;
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
@@ -122,14 +123,15 @@ public class AddFeedViewModel extends AndroidViewModel {
     public FeedData menuToFeed(Menu menu,String title, String content){
         FeedData data = new FeedData(
                 UUID.randomUUID().toString(),
-                "123",
+                UserInfo.getInstance().getUserId(),
                 title,
                 content,
                 0,
                 calcCurrentTime(),
                 calcCurrentTime(),
                 calcCurrentTime(),
-                menuGenerateQrCode(menu)
+                menuGenerateQrCode(menu),
+                menu.getMenuImage()
         );
 
         return data;
@@ -139,14 +141,15 @@ public class AddFeedViewModel extends AndroidViewModel {
     public FeedData favorToFeed(Favor favor,String title, String content){
         FeedData data = new FeedData(
                 UUID.randomUUID().toString(),
-                "123",
+                UserInfo.getInstance().getUserId(),
                 title,
                 content,
                 0,
                 calcCurrentTime(),
                 calcCurrentTime(),
                 calcCurrentTime(),
-                favorGenerateQrCode(favor)
+                favorGenerateQrCode(favor),
+                favor.getMenuImage()
         );
 
         return data;
@@ -172,6 +175,7 @@ public class AddFeedViewModel extends AndroidViewModel {
             Log.d(TAG, "피드 데이터 : " + data.getLikeCount());
             Log.d(TAG, "피드 데이터 : " + data.getWritedDate());
             Log.d(TAG, "피드 데이터 : " + data.getUpdateAt());
+            Log.d(TAG, "피드 데이터 이미지 : " + data.getMenuImage());
             api.postFeedData(data).enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {

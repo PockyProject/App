@@ -11,6 +11,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.pocky.domain.model.RetrofitService;
 import com.example.pocky.domain.model.feed.FeedApiService;
 import com.example.pocky.domain.model.feed.FeedData;
+import com.example.pocky.domain.model.user.UserInfo;
 import com.example.pocky.domain.repository.favor.Favor;
 import com.example.pocky.domain.repository.favor.FavorRepository;
 import com.example.pocky.domain.repository.orderList.Order;
@@ -67,12 +68,13 @@ public class MypageViewModel extends AndroidViewModel {
 
     public void getMyFeed() {
         FeedApiService api = RetrofitService.getInstance().getRetrofit().create(FeedApiService.class);
+        String userId = UserInfo.getInstance().getUserId();
         // ExecutorService 생성 (스레드 풀)
         ExecutorService executor = Executors.newSingleThreadExecutor();
 
         // 네트워크 요청 비동기 처린
         executor.execute(() -> {
-            api.getFeedData("123").enqueue(new Callback<List<FeedData>>() {
+            api.getFeedData(userId).enqueue(new Callback<List<FeedData>>() {
                 @Override
                 public void onResponse(Call<List<FeedData>> call, Response<List<FeedData>> response) {
                     if (response.isSuccessful()) {
