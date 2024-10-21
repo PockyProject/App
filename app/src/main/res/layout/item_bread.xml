@@ -19,6 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:textColor="@color/black"
         android:id="@+id/bread_TextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -14,7 +14,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white">
+        android:backgroundTint="@color/white">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/feed_profileImage"
@@ -37,6 +37,7 @@
             android:fontFamily="@font/nanumbarungothicbold"
             android:gravity="center|bottom"
             android:text="피드제목"
+            android:textColor="@color/black"
             android:textSize="18dp"
             app:layout_constraintBottom_toTopOf="@id/feed_menuNameNtext"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,6 +52,7 @@
             android:fontFamily="@font/nanumbarungothicbold"
             android:gravity="center|top"
             android:text="메뉴 이름"
+            android:textColor="@color/black"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

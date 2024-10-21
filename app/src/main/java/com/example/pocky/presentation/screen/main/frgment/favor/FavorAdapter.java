@@ -1,5 +1,6 @@
 package com.example.pocky.presentation.screen.main.frgment.favor;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,8 @@ import com.example.pocky.domain.repository.favor.Favor;
 import java.util.Objects;
 
 public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolder> {
+
+    private static final String TAG = "FavorAdapter";
 
     private static OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
     private FavorViewModel viewModel;
@@ -134,6 +137,7 @@ public class FavorAdapter extends ListAdapter<Favor, FavorAdapter.FavorViewHolde
 
             // 선택 상태에 따라 테두리 색상 변경
             if (isSelected) {
+                Log.d(TAG,"아이템선택됨 : " + isSelected);
                 itemView.setBackgroundResource(R.drawable.selectedvalue); // 선택된 아이템 테두리
             } else {
                 itemView.setBackgroundResource(R.drawable.defaultselected); // 기본 아이템 테두리

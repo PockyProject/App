@@ -89,7 +89,6 @@ public class FavorFragment extends Fragment {
                 binding.favorRecyclerView.setVisibility(View.VISIBLE); // 내역 보여주는 리사이클러뷰 보이기
                 binding.emptyView.setVisibility(View.INVISIBLE);            // 주문유도창 숨기기
                 favorAdapter.submitList(favors);  // 데이터를 어댑터에 설정
-
             }
         });
 

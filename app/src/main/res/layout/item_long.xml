@@ -23,6 +23,7 @@
             android:focusable="true" />
 
         <TextView
+            android:textColor="@color/black"
             android:id="@+id/tv_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

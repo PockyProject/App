@@ -13,19 +13,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="0.1">
 
-        <ImageButton
-            android:id="@+id/backspace_btn"
+        <View
+            android:id="@+id/dummyView"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:background="@android:color/transparent"
-            android:contentDescription="뒤로가기버튼"
             android:padding="8dp"
             android:src="@drawable/backspace_btn"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/titleTextView"
-            app:layout_constraintHorizontal_weight="0.08"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/titleTextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_weight="0.08" />
 
         <TextView
             android:id="@+id/titleTextView"
@@ -42,7 +41,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/confirm_View"
             app:layout_constraintHorizontal_weight="0.2"
-            app:layout_constraintStart_toEndOf="@id/backspace_btn"
+            app:layout_constraintStart_toEndOf="@id/dummyView"
             app:layout_constraintTop_toTopOf="parent" />
 
         <View
@@ -106,6 +105,7 @@
         android:backgroundTint="@color/signature"
         android:fontFamily="@font/nanumbarungothicbold"
         android:text="주문 완료"
+        android:textColor="@color/white"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
