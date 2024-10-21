@@ -59,14 +59,6 @@ public class DrinkActivity extends AppCompatActivity {
         }, imageList, isSelected);
         recyclerView.setAdapter(adapter);
 
-        binding.backspaceBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                arr.setRequid(false);
-                finish();
-            }
-        });
-
         binding.confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

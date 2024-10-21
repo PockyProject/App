@@ -61,13 +61,6 @@ public class BreakFastActivity extends AppCompatActivity {
             }
         });
 
-        binding.backspaceBtn.setOnClickListener(new View.OnClickListener() { // 뒤로 가기 버튼
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
         RecyclerView recyclerView = findViewById(R.id.breakFastRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 

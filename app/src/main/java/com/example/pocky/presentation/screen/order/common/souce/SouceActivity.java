@@ -77,16 +77,6 @@ public class SouceActivity extends AppCompatActivity {
                 }
             }
         });
-
-        //뒤로가기 버튼
-        binding.backspaceBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                arr.deleteQrSauceName();
-                arr.deleteSauceName();
-                finish();
-            }
-        });
     }
 
     private void initIsFeedState(){

@@ -40,14 +40,6 @@ public class ConfirmationActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        binding.backspaceBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-
     }
 
     void init(Menu arr){
