@@ -64,19 +64,19 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:src="@drawable/chickenbaconavocadosandwitch"
-        app:layout_constraintBottom_toTopOf="@id/captureBtn"
+        app:layout_constraintBottom_toTopOf="@id/shareBtn"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/buttonGroupLayout"
         app:layout_constraintVertical_weight="0.3" />
 
     <Button
-        android:id="@+id/captureBtn"
+        android:id="@+id/shareBtn"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:backgroundTint="@color/round"
         android:fontFamily="@font/nanumbarungothicbold"
-        android:text="캡처하기"
+        android:text="공유하기"
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@id/gotoHomeBtn"
         app:layout_constraintEnd_toStartOf="@id/favorBtn"
@@ -95,7 +95,7 @@
         android:textColor="@color/black"
         app:layout_constraintBottom_toTopOf="@id/gotoHomeBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/captureBtn"
+        app:layout_constraintStart_toEndOf="@id/shareBtn"
         app:layout_constraintTop_toBottomOf="@id/qrImageView"
         app:layout_constraintVertical_weight="0.02" />
 
