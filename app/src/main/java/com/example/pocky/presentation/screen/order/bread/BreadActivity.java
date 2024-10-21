@@ -75,16 +75,6 @@ public class BreadActivity extends AppCompatActivity {
 
             }
         });
-
-        //뒤로가기 버튼
-        binding.backspaceBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                arr.setBreadName("");
-                arr.setQrBreadName("");
-                finish();
-            }
-        });
     }
 
     private void initIsFeedState(){

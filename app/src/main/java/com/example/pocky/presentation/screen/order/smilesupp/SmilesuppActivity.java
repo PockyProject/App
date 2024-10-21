@@ -71,16 +71,6 @@ public class SmilesuppActivity extends AppCompatActivity {
 
             }
         });
-
-        //뒤로가기 버튼
-        binding.backspaceBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                arr.setMenuName("");
-                arr.setQrMenuName("");
-                finish();
-            }
-        });
     }
 
     void init(){
