@@ -6,6 +6,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.pocky.domain.model.RetrofitService;
 import com.example.pocky.domain.model.db.DBApiService;
@@ -28,8 +30,17 @@ import retrofit2.Response;
 
 public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValue {
 
+    private static final String TAG = "FinalOrderViewModel";
     private FavorRepository repository;
     private OrderRepository orderRepository;
+
+    // QR 코드 비트맵 LiveData
+    private final MutableLiveData<Bitmap> qrCodeBitmap = new MutableLiveData<>();
+
+    public LiveData<Bitmap> getQrCodeBitmap() {
+        return qrCodeBitmap;
+    }
+
     public FinalOrderViewModel(@NonNull Application application) {
         super(application);
         repository = new FavorRepository(application);
@@ -44,41 +55,41 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
         repository.insert(MenutoFavor(menu));
     }
 
-    public void insertOrder(Menu menu){
+    public void insertOrder(Menu menu) {
         menuNullCheck(menu);
 
         orderRepository.insert(menuToOrder(menu));
     }
 
-    public void storedDb(Menu menu){ //mysql 저장
+    public void storedDb(Menu menu) { //mysql 저장
         DBApiService api = RetrofitService.getInstance().getRetrofit().create(DBApiService.class);
 
-        Call<Void> call = api.sendUserData( converteMenuToDB(menu));
+        Call<Void> call = api.sendUserData(converteMenuToDB(menu));
 
         call.enqueue(new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                if(response.isSuccessful()){
-                    Log.d("FinalOrderViewModel","데이터 전송 성공 : " + response.message());
-                }else{
-                    Log.d("FinalOrderViewModel","데이터 전송 실패 : " + response.code());
+                if (response.isSuccessful()) {
+                    Log.d("FinalOrderViewModel", "데이터 전송 성공 : " + response.message());
+                } else {
+                    Log.d("FinalOrderViewModel", "데이터 전송 실패 : " + response.code());
                 }
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                    Log.d("FinalOrderViewModel", "네트워크 오류 : " + t.getCause());
+                Log.d("FinalOrderViewModel", "네트워크 오류 : " + t.getCause());
             }
         });
     }
 
 
-    public Order menuToOrder(Menu menu){ // 주문내역 Room 저장 전 데이터 변환
+    public Order menuToOrder(Menu menu) { // 주문내역 Room 저장 전 데이터 변환
         String temp = "";
 
-        if(menu.getRequid()){
+        if (menu.getRequid()) {
             temp = "음료 여부 : 예";
-        }else{
+        } else {
             temp = "음료 여부 : 아니오";
         }
 
@@ -99,7 +110,7 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
         return order;
     }
 
-    public DBData converteMenuToDB(Menu menu){ // mysql 저장 전 데이터 변환
+    public DBData converteMenuToDB(Menu menu) { // mysql 저장 전 데이터 변환
         DBData db = new DBData(
                 UserInfo.getInstance().getUserId().toString(),
                 UserInfo.getInstance().getNickname().toString(),
@@ -114,29 +125,28 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
     }
 
 
-    public void menuNullCheck(Menu menu){
-        if(menu.getBreadName() == null){
+    public void menuNullCheck(Menu menu) {
+        if (menu.getBreadName() == null) {
             menu.setBreadName("");
         }
 
-        if(menu.getToppingName() == null){
+        if (menu.getToppingName() == null) {
             menu.setToppingName("");
         }
 
-        if(menu.getSauceName() == null){
+        if (menu.getSauceName() == null) {
             menu.setMenuName("");
         }
     }
 
 
-    private Favor MenutoFavor(Menu menu){ // Menu 자료형 Favor로 변환
+    private Favor MenutoFavor(Menu menu) { // Menu 자료형 Favor로 변환
         String temp = "";
-        if(menu.getRequid()){
+        if (menu.getRequid()) {
             temp = "음료 여부 : 예";
-        }else{
+        } else {
             temp = "음료 여부 : 아니오";
         }
-
 
 
         return new Favor(
@@ -167,6 +177,7 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
             // 한글 안됌
             String content = ConvertQrValue(menu);
             Bitmap bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.QR_CODE, 300, 300);
+            qrCodeBitmap.setValue(bitmap);
 
             return bitmap;
         } catch (Exception e) {
@@ -175,9 +186,8 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
         }
     }
 
-
     //최종적으로 qr 데이터 변환 메서드
-    private String ConverListValuetoString(List<String> menu){
+    private String ConverListValuetoString(List<String> menu) {
         String temp = "";
 
         for (int i = 0; i < menu.size(); i++) {
@@ -187,133 +197,134 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
         return temp;
     }
 
-    private String ConvertBooleantoString(Boolean menu){
-        if(menu){
+    private String ConvertBooleantoString(Boolean menu) {
+        if (menu) {
             return "YES";
-        }else{
+        } else {
             return "NO";
         }
     }
+
     //최종적으로 qr 데이터 변환 메서드
-    private String ConvertQrValue(Menu menu){
+    private String ConvertQrValue(Menu menu) {
         String temp = "";
 
         //메뉴 이름
-        switch (menu.getQrMenuName()){
-            case  BLTSANDWICH :{
-                temp+="M1 ";
+        switch (menu.getQrMenuName()) {
+            case BLTSANDWICH: {
+                temp += "M1 ";
                 break;
 
             }
-            case  CHICKENAVOCADOSANDWICH :{
-                temp+="M2 ";
+            case CHICKENAVOCADOSANDWICH: {
+                temp += "M2 ";
                 break;
             }
-            case  CHICKENSLICESANDWICH :{
-                temp+="M3 ";
+            case CHICKENSLICESANDWICH: {
+                temp += "M3 ";
                 break;
             }
-            case  CHICKENTERIYAKISANDWICH :{
-                temp+="M4 ";
+            case CHICKENTERIYAKISANDWICH: {
+                temp += "M4 ";
                 break;
             }
-            case  EGGSLICESANDWICH :{
-                temp+="M5 ";
+            case EGGSLICESANDWICH: {
+                temp += "M5 ";
                 break;
             }
-            case  EGGMAYOSANDWICH :{
-                temp+="M6 ";
+            case EGGMAYOSANDWICH: {
+                temp += "M6 ";
                 break;
             }
-            case  HAMSANDWICH :{
-                temp+="M7 ";
+            case HAMSANDWICH: {
+                temp += "M7 ";
                 break;
             }
-            case  ITALIANBMTSANDWICH :{
-                temp+="M8 ";
+            case ITALIANBMTSANDWICH: {
+                temp += "M8 ";
                 break;
             }
-            case  KBBQSANDWITCH :{
-                temp+="M9 ";
+            case KBBQSANDWITCH: {
+                temp += "M9 ";
                 break;
             }
-            case  PORKCHEESESANDWICH :{
-                temp+="M10 ";
+            case PORKCHEESESANDWICH: {
+                temp += "M10 ";
                 break;
             }
-            case  ROASTEDCHICKENSANDWICH :{
-                temp+="M11 ";
+            case ROASTEDCHICKENSANDWICH: {
+                temp += "M11 ";
                 break;
             }
-            case  ROTISSERIEBBQCHICKEN :{
-                temp+="M12 ";
+            case ROTISSERIEBBQCHICKEN: {
+                temp += "M12 ";
                 break;
             }
-            case  SHRIMPSANDWICH :{
-                temp+="M13 ";
+            case SHRIMPSANDWICH: {
+                temp += "M13 ";
                 break;
             }
-            case  SPICYITALIANSANDWICH :{
-                temp+="M14 ";
+            case SPICYITALIANSANDWICH: {
+                temp += "M14 ";
                 break;
             }
-            case  SPICYSHRIMPSANDWICH :{
-                temp+="M15 ";
+            case SPICYSHRIMPSANDWICH: {
+                temp += "M15 ";
                 break;
             }
-            case  STEAKCHEESESANDWICH :{
-                temp+="M16 ";
+            case STEAKCHEESESANDWICH: {
+                temp += "M16 ";
                 break;
             }
-            case  SUBWAYCLUBSANDWICH :{
-                temp+="M17 ";
+            case SUBWAYCLUBSANDWICH: {
+                temp += "M17 ";
                 break;
             }
-            case  VEGGIESANDWICH :{
-                temp+="M18 ";
+            case VEGGIESANDWICH: {
+                temp += "M18 ";
                 break;
             }
 
 
         }
         //빵 이름
-        switch (menu.getQrBreadName()){
-            case  WHITE :{
-                temp+="B1 ";
+        switch (menu.getQrBreadName()) {
+            case WHITE: {
+                temp += "B1 ";
                 break;
 
             }
-            case  WHEAT :{
-                temp+="B2 ";
+            case WHEAT: {
+                temp += "B2 ";
                 break;
             }
-            case  PARMESAN :{
-                temp+="B3 ";
+            case PARMESAN: {
+                temp += "B3 ";
                 break;
             }
-            case  HONEYOAT :{
-                temp+="B4 ";
+            case HONEYOAT: {
+                temp += "B4 ";
                 break;
             }
-            case  HEARTY :{
-                temp+="B5 ";
+            case HEARTY: {
+                temp += "B5 ";
                 break;
             }
-            case  FLATBREAD :{
-                temp+="B6 ";
+            case FLATBREAD: {
+                temp += "B6 ";
                 break;
             }
 
         }
 
-        if(!menu.getQrToppingName().isEmpty()) {
+        if (!menu.getQrToppingName().isEmpty()) {
 
-            if(menu.getQrToppingName().size() == 2){
-                temp+="T00";
-            }else if(menu.getQrToppingName().size() == 1){
-                temp+="T0000";
-            }else {
-                temp +="T";
+            if (menu.getQrToppingName().size() == 2) {
+                temp += "T00";
+            } else if (menu.getQrToppingName().size() == 1) {
+                temp += "T0000";
+            } else {
+                temp += "T";
             }
 
             for (int i = 0; i < menu.getQrToppingName().size(); i++) {
@@ -384,7 +395,7 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
                         break;
                     }
 
-                    case PIMENTO:{
+                    case PIMENTO: {
                         temp += "17";
                         break;
                     }
@@ -399,13 +410,13 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
         }
 
 
-        if(!menu.getQrSauceName().isEmpty()) {
+        if (!menu.getQrSauceName().isEmpty()) {
 
-            if(menu.getQrSauceName().size() == 2){
-                temp+=" SAU00";
-            }else if(menu.getQrSauceName().size() == 1){
-                temp+=" SAU0000";
-            }else{
+            if (menu.getQrSauceName().size() == 2) {
+                temp += " SAU00";
+            } else if (menu.getQrSauceName().size() == 1) {
+                temp += " SAU0000";
+            } else {
                 temp += " SAU";
             }
 
@@ -493,7 +504,7 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
             }
         }
 
-        if(!menu.getQrSideName().isEmpty()) {
+        if (!menu.getQrSideName().isEmpty()) {
             temp += " SI";
             //사이드 이름
             switch (menu.getQrSideName()) {
@@ -557,13 +568,13 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
         }
 
         //음료 이름
-        if(menu.getRequid()){
-            temp+=" YES";
-        }else{
-            temp+=" NO";
+        if (menu.getRequid()) {
+            temp += " YES";
+        } else {
+            temp += " NO";
         }
 
-        Log.d("FinalOrederViewModel","qr값 : " + temp);
+        Log.d("FinalOrederViewModel", "qr값 : " + temp);
 
 
         return temp;
