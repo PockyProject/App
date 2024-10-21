@@ -179,11 +179,12 @@
         android:fontFamily="@font/nanumbarungothicbold"
         android:text="주문 완료"
         android:textSize="16dp"
+        android:textColor="@color/white"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textLayer"
-        app:layout_constraintVertical_weight="0.03" />
+        app:layout_constraintVertical_weight="0.04" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
