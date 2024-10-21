@@ -12,7 +12,7 @@ public class FeedData {
     @SerializedName("userUid")
     private String userUid;
 
-    @SerializedName("qrimage")
+    @SerializedName("qrImage")
     private byte[] qrImage;
 
     @SerializedName("menuImage")
