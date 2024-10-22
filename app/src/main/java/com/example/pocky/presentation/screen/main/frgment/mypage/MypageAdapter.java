@@ -1,5 +1,9 @@
 package com.example.pocky.presentation.screen.main.frgment.mypage;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.pocky.R;
 import com.example.pocky.domain.model.feed.FeedData;
-import com.example.pocky.domain.model.user.UserInfo;
 
 import java.util.Objects;
 
@@ -82,7 +84,7 @@ public class MypageAdapter extends ListAdapter<FeedData,MypageAdapter.ViewHolder
             titleTextView.setText(feedData.getTitle());
 
             Glide.with(itemView)
-                    .load(UserInfo.getInstance().getProfileURl())
+                    .load(decodeBase64ToBitmap(feedData.getQrImage()))
                     .circleCrop()
                     .into(profileImageView);
         }
@@ -105,14 +107,20 @@ public class MypageAdapter extends ListAdapter<FeedData,MypageAdapter.ViewHolder
         }
     };
 
-    protected MypageAdapter(@NonNull DiffUtil.ItemCallback<FeedData> diffCallback) {
-        super(diffCallback);
-    }
 
-    protected MypageAdapter(@NonNull AsyncDifferConfig<FeedData> config) {
-        super(config);
-    }
 
+
+    public Bitmap decodeBase64ToBitmap(String base64String) {
+        try {
+            // Base64.NO_WRAP을 사용하여 줄바꿈 문자 문제 방지
+            byte[] decodedString = Base64.decode(base64String, Base64.NO_WRAP);
+            return BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            Log.e("DecodeError", "Base64 문자열이 잘못되었습니다: " + base64String);
+            return null;
+        }
+    }
 
 
 }

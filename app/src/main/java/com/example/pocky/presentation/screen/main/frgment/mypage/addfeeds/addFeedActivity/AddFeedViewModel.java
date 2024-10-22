@@ -79,6 +79,7 @@ import static com.example.pocky.presentation.screen.order.common.finalorder.qrOr
 
 import android.app.Application;
 import android.graphics.Bitmap;
+import android.util.Base64;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -139,6 +140,7 @@ public class AddFeedViewModel extends AndroidViewModel {
 
     //즐겨찾기 인스턴스 가져와서 피드 모델로 변경
     public FeedData favorToFeed(Favor favor,String title, String content){
+        Log.d(TAG,"피드큐알이미지post값 :" + favorGenerateQrCode(favor));
         FeedData data = new FeedData(
                 UUID.randomUUID().toString(),
                 UserInfo.getInstance().getUserId(),
@@ -209,38 +211,43 @@ public class AddFeedViewModel extends AndroidViewModel {
 
     // qr코드 변경 로직
 
-    private byte[] menuGenerateQrCode(Menu menu) {
+    private String menuGenerateQrCode(Menu menu) {
         try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
-
-            // favor에서 필요한 데이터를 QR 코드에 넣기
-            // qr 비트맵이미지 생성
+            // 메뉴 데이터를 QR 코드에 넣기
             String content = menuConvertQrValue(menu);
+
+            // QR 비트맵 이미지 생성
             Bitmap bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.QR_CODE, 300, 300);
 
-            // longblob형으로 넣기 위해
             // Bitmap을 byte[]로 변환
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            return stream.toByteArray();  // 바이트 배열로 반환
+            byte[] byteArray = stream.toByteArray();
 
+            // byte[] 데이터를 Base64로 인코딩
+            return Base64.encodeToString(byteArray, Base64.DEFAULT);
         } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
 
-    private byte[] favorGenerateQrCode(Favor favor) {
+    private String favorGenerateQrCode(Favor favor) {
         try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
 
             // favor에서 필요한 데이터를 QR 코드에 넣기
             String content = favorConvertQrValue(favor);
             Bitmap bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.QR_CODE, 300, 300);
+
             // Bitmap을 byte[]로 변환
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-            return stream.toByteArray();  // 바이트 배열로 반환
+            byte[] byteArray = stream.toByteArray();
+
+            // byte[] 데이터를 Base64로 인코딩
+            return Base64.encodeToString(byteArray, Base64.DEFAULT);
 
         } catch (Exception e) {
             e.printStackTrace();
