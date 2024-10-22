@@ -13,7 +13,7 @@ public class FeedData {
     private String userUid;
 
     @SerializedName("qrImage")
-    private byte[] qrImage;
+    private String qrImage;
 
     @SerializedName("menuImage")
     private int menuImage;
@@ -30,7 +30,6 @@ public class FeedData {
     @SerializedName("updatedat")
     private Timestamp updatedat;
 
-
     public int getMenuImage() {
         return menuImage;
     }
@@ -39,16 +38,8 @@ public class FeedData {
         return feedUid;
     }
 
-    public void setFeedUid(String feedUid) {
-        this.feedUid = feedUid;
-    }
-
     public String getUserUid() {
         return userUid;
-    }
-
-    public void setUserUid(String userUid) {
-        this.userUid = userUid;
     }
 
     public String getTitle() {
@@ -70,7 +61,7 @@ public class FeedData {
     public int getLikeCount() {
         return likeCount;
     }
-    public byte[] getQrImage() {
+    public String getQrImage() {
         return qrImage;
     }
 
@@ -83,26 +74,12 @@ public class FeedData {
         return createdat;
     }
 
-    public void setWritedDate(Timestamp writedDate) {
-        this.createdat = writedDate;
-    }
-
     public Timestamp getDeleteAt() {
         return deletedat;
     }
-
-    public void setDeleteAt(Timestamp deleteAt) {
-        this.deletedat = deleteAt;
-    }
-
     public Timestamp getUpdateAt() {
         return updatedat;
     }
-
-    public void setUpdateAt(Timestamp updateAt) {
-        this.updatedat = updateAt;
-    }
-
 
 
     public void setMenuImage(int menuImage) {
@@ -111,7 +88,7 @@ public class FeedData {
 
     public FeedData(String feedUid, String userUid, String title, String content,
                     int likeCount, Timestamp writedDate, Timestamp deleteAt,
-                    Timestamp updateAt,byte[] qrImage,
+                    Timestamp updateAt,String qrImage,
                     int menuImage) {
         this.feedUid = feedUid;
         this.userUid = userUid;
