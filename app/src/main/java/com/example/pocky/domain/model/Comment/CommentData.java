@@ -1,5 +1,6 @@
 package com.example.pocky.domain.model.Comment;
 
+import com.example.pocky.domain.model.feed.FeedData;
 import com.google.gson.annotations.SerializedName;
 
 import java.sql.Timestamp;
@@ -80,5 +81,16 @@ public class CommentData {
         this.likedCount = likedCount;
         this.deleteAt = deleteAt;
         this.updateAt = updateAt;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true; // 동일한 객체일 경우
+        if (obj == null || getClass() != obj.getClass()) return false; // 클래스 타입이 다르면 다름
+
+        CommentData commentData = (CommentData) obj; // 형변환
+
+        // 피드 UID를 비교하여 맞는지 확인
+        return feedUid.equals(commentData.getFeedUid());
     }
 }
