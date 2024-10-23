@@ -5,7 +5,6 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.pocky.domain.model.RetrofitService;
@@ -22,7 +21,7 @@ import retrofit2.Response;
 
 public class FeedViewModel extends AndroidViewModel {
 
-    private final static String TAG = "FeedFragments";
+    private final static String TAG = "FeedViewModel";
     private MutableLiveData<List<FeedData>> feedArr;
 
     public MutableLiveData<List<FeedData>> getFeed() {
