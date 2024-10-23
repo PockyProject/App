@@ -2,7 +2,6 @@ package com.example.pocky.presentation.screen.main.frgment.mypage;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.pocky.databinding.FragmentMypageBinding;
 import com.example.pocky.domain.model.feed.FeedData;
 import com.example.pocky.domain.model.user.UserInfo;
+import com.example.pocky.presentation.screen.main.frgment.feed.FeeddetailActivity.FeeddetailActivity;
 import com.example.pocky.presentation.screen.main.frgment.mypage.addfeeds.chooseActivity.ChooseActivity;
 
 import java.util.Collections;
@@ -78,7 +78,11 @@ public class MypageFragment extends Fragment {
             @Override
             public void onItemClick(FeedData feedData) {
                 clikedData = feedData;
-                Log.d(TAG,"클릭된 아이템 : " + clikedData.getTitle());
+
+
+                Intent intent = new Intent(MypageFragment.super.getContext(), FeeddetailActivity.class);
+                intent.putExtra("FeedData",clikedData);
+                startActivity(intent);
             }
         });
         adapter.submitList(data);
@@ -112,7 +116,4 @@ public class MypageFragment extends Fragment {
             }
         });
     }
-
-
-
 }

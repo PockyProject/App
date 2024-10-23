@@ -2,9 +2,10 @@ package com.example.pocky.domain.model.feed;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 
-public class FeedData {
+public class FeedData implements Serializable {
 
     @SerializedName("feedUid")
     private String feedUid; // 기본키
