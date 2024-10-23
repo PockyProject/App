@@ -1,4 +1,4 @@
-package com.example.pocky.domain.model.Comment;
+package com.example.pocky.domain.model.comment;
 
 import java.util.List;
 

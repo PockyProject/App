@@ -1,6 +1,5 @@
-package com.example.pocky.domain.model.Comment;
+package com.example.pocky.domain.model.comment;
 
-import com.example.pocky.domain.model.feed.FeedData;
 import com.google.gson.annotations.SerializedName;
 
 import java.sql.Timestamp;
