@@ -18,7 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.pocky.databinding.FragmentMypageBinding;
 import com.example.pocky.domain.model.feed.FeedData;
 import com.example.pocky.domain.model.user.UserInfo;
-import com.example.pocky.presentation.screen.main.frgment.feed.FeeddetailActivity.FeeddetailActivity;
+import com.example.pocky.presentation.screen.main.frgment.feed.feeddetail.FeeddetailActivity;
 import com.example.pocky.presentation.screen.main.frgment.mypage.addfeeds.chooseActivity.ChooseActivity;
 
 import java.util.Collections;

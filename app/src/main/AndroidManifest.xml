@@ -98,7 +98,7 @@
         <activity android:name="com.example.pocky.presentation.screen.main.frgment.mypage.addfeeds.addFeedActivity.AddFeedActivity" />
         <activity android:name="com.example.pocky.presentation.screen.main.frgment.mypage.addfeeds.chooseActivity.ChooseActivity" />
         <activity android:name="com.example.pocky.presentation.screen.main.frgment.mypage.addfeeds.chooseActivity.feedFavorActivity.FeedFavorActivity" />
-        <activity android:name=".presentation.screen.main.frgment.feed.FeeddetailActivity.FeeddetailActivity"/>
+        <activity android:name=".presentation.screen.main.frgment.feed.feeddetail.FeeddetailActivity"/>
         
     </application>
 

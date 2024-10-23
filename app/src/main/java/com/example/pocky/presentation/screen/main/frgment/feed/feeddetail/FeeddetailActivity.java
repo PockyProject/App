@@ -1,4 +1,4 @@
-package com.example.pocky.presentation.screen.main.frgment.feed.FeeddetailActivity;
+package com.example.pocky.presentation.screen.main.frgment.feed.feeddetail;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.pocky.databinding.FragmentFeedBinding;
 import com.example.pocky.domain.model.feed.FeedData;
-import com.example.pocky.presentation.screen.main.frgment.feed.FeeddetailActivity.FeeddetailActivity;
+import com.example.pocky.presentation.screen.main.frgment.feed.feeddetail.FeeddetailActivity;
 
 import java.util.List;
 
