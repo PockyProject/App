@@ -12,7 +12,8 @@ public interface FeedApiService {
 
     @GET("/get/feed/{userid}")
     Call<List<FeedData>> getFeedData(@Path("userid") String  userid);
-
+    @GET("/get/feedAll")
+    Call<List<FeedData>> getAllFeedData();
     @POST("/save/feed")
     Call<Void> postFeedData(@Body FeedData feedData);
 }
