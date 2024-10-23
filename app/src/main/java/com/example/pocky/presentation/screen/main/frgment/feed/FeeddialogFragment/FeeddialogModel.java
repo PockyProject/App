@@ -7,11 +7,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.pocky.domain.model.Comment.CommentApiService;
-import com.example.pocky.domain.model.Comment.CommentData;
+import com.example.pocky.domain.model.comment.CommentApiService;
+import com.example.pocky.domain.model.comment.CommentData;
 import com.example.pocky.domain.model.RetrofitService;
-
-import org.w3c.dom.Comment;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;

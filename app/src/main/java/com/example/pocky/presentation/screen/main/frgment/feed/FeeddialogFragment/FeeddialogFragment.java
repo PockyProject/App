@@ -9,19 +9,15 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pocky.R;
 import com.example.pocky.databinding.ActivityFeeddialogBinding;
-import com.example.pocky.domain.model.Comment.CommentData;
+import com.example.pocky.domain.model.comment.CommentData;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
-
-import org.w3c.dom.Comment;
 
 import java.util.List;
 
