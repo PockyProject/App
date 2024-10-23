@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,9 +19,8 @@ public class FeedDetailCommentBottomSheet  extends BottomSheetDialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.modal_bottom_sheet_content,container,false);
+        View view = inflater.inflate(R.layout.qr_modal_bottom_sheet_content,container,false);
         ConstraintLayout bottomSheet = view.findViewById(R.id.bottomSheet);
-        ImageView imageViewQrCode = view.findViewById(R.id.imageQrCode);
 
 
 
