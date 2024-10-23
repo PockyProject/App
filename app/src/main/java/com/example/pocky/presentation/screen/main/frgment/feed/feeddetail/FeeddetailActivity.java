@@ -11,13 +11,16 @@ import androidx.lifecycle.ViewModelProvider;
 import com.bumptech.glide.Glide;
 import com.example.pocky.databinding.ActivityFeeddetailBinding;
 import com.example.pocky.domain.model.feed.FeedData;
-import com.example.pocky.presentation.screen.main.frgment.favor.FavorModalBottomsheet;
+import com.example.pocky.presentation.screen.main.frgment.feed.bottomsheet.FeedDetailCommentBottomSheet;
+import com.example.pocky.presentation.screen.main.frgment.feed.bottomsheet.FeedDetailQrBottomSheet;
 
 public class FeeddetailActivity extends AppCompatActivity {
 
     private ActivityFeeddetailBinding binding;
     private FeedDetailViewModel viewModel;
-    private FavorModalBottomsheet bottomsheet;
+    private FeedDetailQrBottomSheet qrBottomsheet;
+    private FeedDetailCommentBottomSheet commentBottomSheet;
+
     private FeedData data;
 
 
@@ -42,16 +45,28 @@ public class FeeddetailActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this, factory).get(FeedDetailViewModel.class);
 
         //QR 바텀 다이얼로그 초기화
-        bottomsheet = new FavorModalBottomsheet();
+        qrBottomsheet = new FeedDetailQrBottomSheet();
+
+        // comment 바텀 다이얼로그 초기화
+        commentBottomSheet = new FeedDetailCommentBottomSheet();
 
         binding.feedqrOp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // qr 띄우기
-                bottomsheet.setQrBitmap(viewModel.decodeBase64ToBitmap(data.getQrImage()));
-                bottomsheet.show(getSupportFragmentManager(),bottomsheet.getTag());
+                qrBottomsheet.setQrBitmap(viewModel.decodeBase64ToBitmap(data.getQrImage()));
+                qrBottomsheet.show(getSupportFragmentManager(),qrBottomsheet.getTag());
             }
         });
+
+        binding.commentBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 댓글 띄우기
+                commentBottomSheet.show(getSupportFragmentManager(),commentBottomSheet.getTag());
+            }
+        });
+
     }
 
     private void initData(){
