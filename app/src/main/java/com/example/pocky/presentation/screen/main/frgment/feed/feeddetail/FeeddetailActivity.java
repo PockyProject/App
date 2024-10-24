@@ -63,6 +63,7 @@ public class FeeddetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 댓글 띄우기
+                commentBottomSheet.setCommentData(data.getFeedUid());
                 commentBottomSheet.show(getSupportFragmentManager(),commentBottomSheet.getTag());
             }
         });
