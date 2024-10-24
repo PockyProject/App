@@ -15,6 +15,9 @@ public class CommentData {
     @SerializedName("writer")
     private String writer;
 
+    @SerializedName("userUid")
+    private String userUid;
+
     @SerializedName("writerImage")
     private String writerImage;
 
@@ -24,8 +27,8 @@ public class CommentData {
     @SerializedName("writedDate")
     private Timestamp writedDate;
 
-    @SerializedName("likedCount")
-    private int likedCount;
+    @SerializedName("likeCount")
+    private int likeCount;
 
     @SerializedName("deleteAt")
     private Timestamp deleteAt;
@@ -59,7 +62,7 @@ public class CommentData {
     }
 
     public int getLikedCount() {
-        return likedCount;
+        return likeCount;
     }
 
     public Timestamp getDeleteAt() {
@@ -77,7 +80,7 @@ public class CommentData {
         this.writerImage = writerImage;
         this.content = content;
         this.writedDate = writedDate;
-        this.likedCount = likedCount;
+        this.likeCount = likedCount;
         this.deleteAt = deleteAt;
         this.updateAt = updateAt;
     }
@@ -90,6 +93,6 @@ public class CommentData {
         CommentData commentData = (CommentData) obj; // 형변환
 
         // 피드 UID를 비교하여 맞는지 확인
-        return feedUid.equals(commentData.getFeedUid());
+        return feedUid.equals(commentData.getCommentUid());
     }
 }
