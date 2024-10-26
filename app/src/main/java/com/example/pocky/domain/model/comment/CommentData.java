@@ -18,17 +18,16 @@ public class CommentData {
     @SerializedName("userUid")
     private String userUid;
 
-    @SerializedName("writerImage")
+    @SerializedName("writeImage")
     private String writerImage;
 
     @SerializedName("content")
     private String content;
 
-    @SerializedName("writedDate")
-    private Timestamp writedDate;
-
     @SerializedName("likeCount")
     private int likeCount;
+    @SerializedName("writedDate")
+    private Timestamp writedDate;
 
     @SerializedName("deleteAt")
     private Timestamp deleteAt;
@@ -40,6 +39,7 @@ public class CommentData {
     public String getCommentUid() {
         return commentUid;
     }
+    public String getUserUid() { return userUid; }
 
     public String getFeedUid() {
         return feedUid;
@@ -73,7 +73,10 @@ public class CommentData {
         return updateAt;
     }
 
-    public CommentData(String commentUid, String feedUid, String writer, String writerImage, String content, Timestamp writedDate, int likedCount, Timestamp deleteAt, Timestamp updateAt) {
+    public CommentData(String commentUid, String feedUid, String writer,
+                       String writerImage, String content, Timestamp writedDate,
+                       int likedCount, Timestamp deleteAt, Timestamp updateAt,
+                       String userUid) {
         this.commentUid = commentUid;
         this.feedUid = feedUid;
         this.writer = writer;
@@ -83,6 +86,7 @@ public class CommentData {
         this.likeCount = likedCount;
         this.deleteAt = deleteAt;
         this.updateAt = updateAt;
+        this.userUid = userUid;
     }
 
     @Override

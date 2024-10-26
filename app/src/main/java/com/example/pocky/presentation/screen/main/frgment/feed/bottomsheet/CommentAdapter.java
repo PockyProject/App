@@ -13,8 +13,11 @@ import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.pocky.R;
 import com.example.pocky.domain.model.comment.CommentData;
+import com.example.pocky.domain.model.user.UserInfo;
 import com.example.pocky.presentation.screen.main.frgment.favor.FavorAdapter;
 
 import java.util.Objects;
@@ -84,12 +87,22 @@ public class CommentAdapter extends ListAdapter<CommentData, CommentAdapter.Comm
         }
 
         public void bind(CommentData commentData) {
+
+            if(!Objects.equals(commentData.getUserUid(), UserInfo.getInstance().getUserId())){
+                itemView.findViewById(R.id.commentDeleteBtn).setVisibility(ViewGroup.GONE);
+            }else{
+                itemView.findViewById(R.id.commentDeleteBtn).setVisibility(ViewGroup.VISIBLE);
+            }
+
+
+
             userName.setText(commentData.getWriter());
             userComment.setText(commentData.getContent());
 
-            Glide.with(itemView)
+            Glide.with(this.itemView)
                     .load(commentData.getWriterImage())
                     .circleCrop()
+                    .apply(RequestOptions.bitmapTransform(new RoundedCorners(10)))
                     .into(userImage);
 
         }

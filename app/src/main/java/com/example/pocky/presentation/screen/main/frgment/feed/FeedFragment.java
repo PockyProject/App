@@ -22,6 +22,7 @@ import java.util.List;
 public class FeedFragment extends Fragment {
     private FragmentFeedBinding binding;
     private FeedViewModel viewModel;
+    private static final String TAG = "FeedFragment";
 
     @Nullable
     @Override

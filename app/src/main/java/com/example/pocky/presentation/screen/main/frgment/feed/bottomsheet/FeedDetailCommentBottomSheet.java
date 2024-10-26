@@ -1,14 +1,18 @@
 package com.example.pocky.presentation.screen.main.frgment.feed.bottomsheet;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -16,12 +20,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.pocky.R;
 import com.example.pocky.databinding.BottomSheetCommentBinding;
 import com.example.pocky.domain.model.comment.CommentData;
+import com.example.pocky.domain.model.user.UserInfo;
 import com.example.pocky.presentation.screen.main.frgment.feed.feeddetail.FeedDetailViewModel;
 import com.example.pocky.presentation.screen.main.frgment.feed.feeddetail.FeedDetailViewModelFactory;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
+import java.util.UUID;
 
 public class FeedDetailCommentBottomSheet  extends BottomSheetDialogFragment {
     static String TAG = "ModalBottomSheet";
@@ -32,6 +38,7 @@ public class FeedDetailCommentBottomSheet  extends BottomSheetDialogFragment {
     private FeedDetailViewModel viewModel;
 
     private String feedUid = "";
+    private String content = "";
 
     @Nullable
     @Override
@@ -55,16 +62,15 @@ public class FeedDetailCommentBottomSheet  extends BottomSheetDialogFragment {
 
         viewModel.getComment(feedUid);
         viewModel.getData().observe((LifecycleOwner) requireContext(), commentData -> {
-            Log.d(TAG,commentData.get(0).getContent());
+            //Log.d(TAG,commentData.get(0).getContent());
             initAdpater(commentData);
         });
     }
 
     private void initView(){
-        getActivity().getWindowManager().getDefaultDisplay();
 
-        FrameLayout bottomSheet = binding.tempLayout;
-        BottomSheetBehavior<FrameLayout> bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
+        ConstraintLayout bottomSheet = binding.commentBottomSheet;
+        BottomSheetBehavior<ConstraintLayout> bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet);
         bottomSheetBehavior.setPeekHeight(0);  // 처음에 완전히 표시되도록 설정
         bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);  // 시작할 때 확장 상태로 설정
         bottomSheetBehavior.setSkipCollapsed(true);  // 축소 상태를 건너뜀
@@ -85,6 +91,21 @@ public class FeedDetailCommentBottomSheet  extends BottomSheetDialogFragment {
                 //없어도 됌
             }
         });
+
+        binding.confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 사용자가 입력한 텍스트 가져오기
+                String inputText = binding.textInputLayer.getEditText().getText().toString();
+                if(inputText.isEmpty()){
+                    Toast.makeText(requireContext(),"한 글자 이상의 댓글을 입력하세요",Toast.LENGTH_SHORT).show();
+                }else{
+                    postData(inputText);
+                    hideKeyboard();
+                    binding.textInputLayer.getEditText().setText("");
+                }
+            }
+        });
     }
 
 
@@ -99,14 +120,32 @@ public class FeedDetailCommentBottomSheet  extends BottomSheetDialogFragment {
 
     }
 
-    private void initData(){
-        viewModel.getData().observe(getViewLifecycleOwner(),commentData -> {
-            adapter.submitList(commentData);
-        });
+    private void postData(String content){
+
+            CommentData data = new CommentData(
+                    UUID.randomUUID().toString(),
+                    feedUid,
+                    UserInfo.getInstance().getNickname(),
+                    UserInfo.getInstance().getProfileURl(),
+                    content,
+                    viewModel.calcCurrentTime(),
+                    0,
+                    viewModel.calcCurrentTime(),
+                    viewModel.calcCurrentTime(),
+                    UserInfo.getInstance().getUserId()
+            );
+            viewModel.postComment(data);
     }
 
     public void setCommentData(String feedUid){
         this.feedUid = feedUid;
+    }
+
+    private void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) requireActivity().getSystemService(INPUT_METHOD_SERVICE);
+        if (getView() != null) {
+            imm.hideSoftInputFromWindow(getView().getWindowToken(), 0);
+        }
     }
 
 }
