@@ -113,7 +113,7 @@ public class FeedDetailCommentBottomSheet  extends BottomSheetDialogFragment {
 
 
         // Adapter 초기화
-        adapter = new CommentAdapter();
+        adapter = new CommentAdapter(viewModel);
         binding.commentRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         binding.commentRecyclerView.setAdapter(adapter);
         adapter.submitList(data);

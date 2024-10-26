@@ -4,6 +4,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,17 +20,20 @@ import com.example.pocky.R;
 import com.example.pocky.domain.model.comment.CommentData;
 import com.example.pocky.domain.model.user.UserInfo;
 import com.example.pocky.presentation.screen.main.frgment.favor.FavorAdapter;
+import com.example.pocky.presentation.screen.main.frgment.feed.feeddetail.FeedDetailViewModel;
 
 import java.util.Objects;
 
 public class CommentAdapter extends ListAdapter<CommentData, CommentAdapter.CommentViewHolder> {
     private static final String TAG = "CommentAdapter";
+    private static FeedDetailViewModel viewModel = null;
 
     private static FavorAdapter.OnItemClickListener listener; // 클릭 이벤트를 전달할 리스너
 
     // 생성자
-    public CommentAdapter() { //OnItemClickListener listener
+    public CommentAdapter(FeedDetailViewModel viewModel) { //OnItemClickListener listener
         super(CommentDiffUtil);
+        this.viewModel = viewModel;
     }
 
 
@@ -55,6 +59,7 @@ public class CommentAdapter extends ListAdapter<CommentData, CommentAdapter.Comm
         private final TextView userName;
         private final ImageView userImage;
         private final TextView userComment;
+        private final ImageButton deleteBtn;
 
 
         public CommentViewHolder(@NonNull View itemView) {
@@ -63,30 +68,19 @@ public class CommentAdapter extends ListAdapter<CommentData, CommentAdapter.Comm
             userName = itemView.findViewById(R.id.userName);
             userImage = itemView.findViewById(R.id.userImage);
             userComment = itemView.findViewById(R.id.commentContent);
+            deleteBtn = itemView.findViewById(R.id.commentDeleteBtn);
 
-//            // 클릭 이벤트 처리
-//            itemView.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    int position = getAdapterPosition();
-//                    if (position != RecyclerView.NO_POSITION) {
-//
-//                    }
-//                }
-//            });
-//            itemView.findViewById(R.id.cancelBtn).setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    // 현재 클릭된 포지션 가져오기
-//                    int position = getAdapterPosition();
-//                    if (position != RecyclerView.NO_POSITION) {
-//
-//                    }
-//                }
-//            });
         }
 
         public void bind(CommentData commentData) {
+
+            deleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    viewModel.deleteComment(commentData.getCommentUid());
+                }
+            });
+
 
             if(!Objects.equals(commentData.getUserUid(), UserInfo.getInstance().getUserId())){
                 itemView.findViewById(R.id.commentDeleteBtn).setVisibility(ViewGroup.GONE);

@@ -108,6 +108,31 @@ public class FeedDetailViewModel extends AndroidViewModel {
         });
     }
 
+    public void deleteComment(String commentUid){
+        CommentApiService api = RetrofitService.getInstance().getRetrofit().create(CommentApiService.class);
+        // ExecutorService 생성 (스레드 풀)
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+
+        // 네트워크 요청 비동기 처린
+        executor.execute(() -> {
+            api.deleteCommentData(commentUid).enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if(response.isSuccessful()){
+                        Log.d(TAG,"데이터 삭제 성공 : " + response.code());
+                    }else{
+                        Log.d(TAG,"데이터 삭제 실패 : " + response.code());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Log.d(TAG,"서버와 연결 실패  : " + t.getMessage());
+                }
+            });
+        });
+    }
+
     // 현재 시간 구하는 함수
     public Timestamp calcCurrentTime(){
 
