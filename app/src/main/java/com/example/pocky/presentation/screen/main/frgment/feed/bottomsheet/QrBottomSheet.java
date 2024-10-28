@@ -23,7 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import java.io.File;
 import java.io.FileOutputStream;
 
-public class FeedDetailQrBottomSheet extends BottomSheetDialogFragment {
+public class QrBottomSheet extends BottomSheetDialogFragment {
     static String TAG = "ModalBottomSheet";
     private Bitmap qrBitmap;
 

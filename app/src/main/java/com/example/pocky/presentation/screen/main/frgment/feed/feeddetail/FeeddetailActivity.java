@@ -11,15 +11,17 @@ import androidx.lifecycle.ViewModelProvider;
 import com.bumptech.glide.Glide;
 import com.example.pocky.databinding.ActivityFeeddetailBinding;
 import com.example.pocky.domain.model.feed.FeedData;
-import com.example.pocky.presentation.screen.main.frgment.feed.bottomsheet.FeedDetailCommentBottomSheet;
-import com.example.pocky.presentation.screen.main.frgment.feed.bottomsheet.FeedDetailQrBottomSheet;
+import com.example.pocky.presentation.screen.main.frgment.feed.bottomsheet.CommentBottomSheetDialog;
+import com.example.pocky.presentation.screen.main.frgment.feed.bottomsheet.QrBottomSheet;
 
 public class FeeddetailActivity extends AppCompatActivity {
 
     private ActivityFeeddetailBinding binding;
+    private static final String TAG = "FeedDetailActivity";
     private FeedDetailViewModel viewModel;
-    private FeedDetailQrBottomSheet qrBottomsheet;
-    private FeedDetailCommentBottomSheet commentBottomSheet;
+    private QrBottomSheet qrBottomsheet;
+
+    private CommentBottomSheetDialog commentBottomSheetDialog;
 
     private FeedData data;
 
@@ -27,11 +29,13 @@ public class FeeddetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        data = (FeedData) intent.getSerializableExtra("FeedData");
+
         // 뷰 초기화
         initView();
 
-        // 피드 데이터 초기화
-        initData();
     }
 
     private void initView(){
@@ -45,10 +49,10 @@ public class FeeddetailActivity extends AppCompatActivity {
         viewModel = new ViewModelProvider(this, factory).get(FeedDetailViewModel.class);
 
         //QR 바텀 다이얼로그 초기화
-        qrBottomsheet = new FeedDetailQrBottomSheet();
+        qrBottomsheet = new QrBottomSheet();
 
         // comment 바텀 다이얼로그 초기화
-        commentBottomSheet = new FeedDetailCommentBottomSheet();
+        commentBottomSheetDialog = new CommentBottomSheetDialog(data.getFeedUid());
 
         binding.feedqrOp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,18 +67,11 @@ public class FeeddetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // 댓글 띄우기
-                commentBottomSheet.setCommentData(data.getFeedUid());
-                commentBottomSheet.show(getSupportFragmentManager(),commentBottomSheet.getTag());
+                commentBottomSheetDialog.show(getSupportFragmentManager(),commentBottomSheetDialog.getTag());
+
             }
         });
 
-    }
-
-    private void initData(){
-        Intent intent = getIntent();
-        data = (FeedData) intent.getSerializableExtra("FeedData");
-
-        // 전달받은 이미지를 표시
         Glide.with(this)
                 .load(data.getMenuImage())
                 .into(binding.mainImage);
@@ -82,4 +79,5 @@ public class FeeddetailActivity extends AppCompatActivity {
         binding.maincomment.setText(data.getTitle());
         binding.titleText.setText(data.getContent());
     }
+
 }

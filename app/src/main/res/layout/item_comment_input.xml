@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/commentInputParentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:backgroundTint="@color/white">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayer"
+        style="@style/Widget.Material3.TextInputEditText.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:hint="댓글을 입력하세요"
+        android:textColorHint="@color/black"
+        app:boxStrokeColor="@color/black"
+        app:hintTextColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/confirmBtn"
+        app:layout_constraintHorizontal_weight="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:inputType="text"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageButton
+        android:id="@+id/confirmBtn"
+        style="@style/Widget.Material3.MaterialTimePicker.ImageButton"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:backgroundTint="@color/white"
+        android:src="@drawable/uploadbtn"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_weight="0.1"
+        app:layout_constraintStart_toEndOf="@id/textInputLayer"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
