@@ -77,7 +77,7 @@ public class CommentAdapter extends ListAdapter<CommentData, CommentAdapter.Comm
             deleteBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    viewModel.deleteComment(commentData.getCommentUid());
+                    viewModel.deleteComment(commentData);
                 }
             });
 

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,11 +19,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.pocky.databinding.ItemCommentInputBinding;
 import com.example.pocky.databinding.ItemCommentViewBinding;
+import com.example.pocky.domain.model.comment.CommentData;
+import com.example.pocky.domain.model.user.UserInfo;
 import com.example.pocky.presentation.screen.main.frgment.feed.feeddetail.FeedDetailViewModel;
 import com.example.pocky.presentation.screen.main.frgment.feed.feeddetail.FeedDetailViewModelFactory;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 public class CommentBottomSheetDialog extends BottomSheetDialogFragment {
 
@@ -32,6 +40,7 @@ public class CommentBottomSheetDialog extends BottomSheetDialogFragment {
     private CommentAdapter adpater;
     private FeedDetailViewModel viewModel;
     private String feedUid;
+    private UserInfo userInfo;
 
     public CommentBottomSheetDialog(String feeduid){
         this.feedUid = feeduid;
@@ -81,7 +90,7 @@ public class CommentBottomSheetDialog extends BottomSheetDialogFragment {
                 // binding과 editBinding 추가
                 linearLayout.addView(binding.getRoot(), new LinearLayout.LayoutParams(
                         LinearLayout.LayoutParams.MATCH_PARENT,
-                        0, 1f  // binding을 화면의 남은 공간을 채우도록 함
+                        LinearLayout.LayoutParams.MATCH_PARENT, 1f  // binding을 화면의 남은 공간을 채우도록 함
                 ));
 
                 linearLayout.addView(editBinding.getRoot(), new LinearLayout.LayoutParams(
@@ -104,19 +113,61 @@ public class CommentBottomSheetDialog extends BottomSheetDialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel.getComment(feedUid);
         recyclerView = binding.commentRecyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         adpater = new CommentAdapter(viewModel);
+        recyclerView.setAdapter(adpater);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        viewModel.getComment(feedUid);
+        userInfo = UserInfo.getInstance();
+
         viewModel.getData().observe((LifecycleOwner) requireContext(), commentData -> {
             adpater.submitList(commentData);
         });
-        recyclerView.setAdapter(adpater);
     }
 
     @Override
     public void onStart() {
         super.onStart();
+        initBottomSheetDialog();
+
+        editBinding.confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String temp = editBinding.textInputLayer.getEditText().getText().toString();
+
+                if(!temp.isEmpty()){
+                    viewModel.postComment(initCommentData(temp));
+                    editBinding.textInputLayer.getEditText().setText("");
+                }else{
+                    Toast.makeText(requireContext(),"한 글자 이상 입력하세요",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    private CommentData initCommentData(String content){
+        CommentData data = new CommentData(
+                UUID.randomUUID().toString(),
+                feedUid,
+                userInfo.getNickname(),
+                userInfo.getProfileURl(),
+                content,
+                calcCurrentTime(),
+                0,
+                calcCurrentTime(),
+                calcCurrentTime(),
+                userInfo.getUserId()
+        );
+        return data;
+    }
+
+    private void initBottomSheetDialog() {
         // BottomSheetDialog를 가져옵니다.
         BottomSheetDialog bottomSheetDialog = (BottomSheetDialog) getDialog();
 
@@ -130,6 +181,8 @@ public class CommentBottomSheetDialog extends BottomSheetDialogFragment {
             BottomSheetBehavior<View> behavior = BottomSheetBehavior.from(bottomSheet);
 
             behavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
+
+            behavior.setDraggable(true);
 
             behavior.setPeekHeight(0);
 
@@ -151,5 +204,26 @@ public class CommentBottomSheetDialog extends BottomSheetDialogFragment {
 
             behavior.addBottomSheetCallback(bottomSheetCallback);
         }
+    }
+
+
+    // 현재 시간 구하는 함수
+    private Timestamp calcCurrentTime(){
+
+        // 현재 날짜와 시간 구하기
+        LocalDateTime currentDateTime = LocalDateTime.now();
+
+        // 정확한 형식으로 변환 (yyyy-MM-dd HH:mm:ss)
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedDateTime = currentDateTime.format(formatter);
+
+        // 변환된 문자열을 Timestamp로 변환
+        Timestamp timestamp = Timestamp.valueOf(formattedDateTime);
+
+        // 로그 출력
+        Log.d("AddFeedViewModel", "피드 등록 날짜 및 시간 : " + currentDateTime);
+        Log.d("AddFeedViewModel", "피드 등록 날짜 및 시간 : " + timestamp);
+
+        return timestamp;
     }
 }

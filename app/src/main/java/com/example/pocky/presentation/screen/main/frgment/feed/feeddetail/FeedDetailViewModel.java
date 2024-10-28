@@ -95,6 +95,7 @@ public class FeedDetailViewModel extends AndroidViewModel {
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if(response.isSuccessful()){
                         Log.d(TAG,"데이터 등록 성공 : " + response.code());
+                        getComment(data.getFeedUid());
                     }else{
                         Log.d(TAG,"데이터 등록 실패 : " + response.code());
                     }
@@ -108,18 +109,19 @@ public class FeedDetailViewModel extends AndroidViewModel {
         });
     }
 
-    public void deleteComment(String commentUid){
+    public void deleteComment(CommentData data){
         CommentApiService api = RetrofitService.getInstance().getRetrofit().create(CommentApiService.class);
         // ExecutorService 생성 (스레드 풀)
         ExecutorService executor = Executors.newSingleThreadExecutor();
 
         // 네트워크 요청 비동기 처린
         executor.execute(() -> {
-            api.deleteCommentData(commentUid).enqueue(new Callback<Void>() {
+            api.deleteCommentData(data.getCommentUid()).enqueue(new Callback<Void>() {
                 @Override
                 public void onResponse(Call<Void> call, Response<Void> response) {
                     if(response.isSuccessful()){
                         Log.d(TAG,"데이터 삭제 성공 : " + response.code());
+                        getComment(data.getFeedUid());
                     }else{
                         Log.d(TAG,"데이터 삭제 실패 : " + response.code());
                     }
