@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +19,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.pocky.databinding.FragmentMainBinding;
+import com.example.pocky.domain.model.recommend.viewRecommendDTO;
 import com.example.pocky.domain.model.user.UserInfo;
 import com.example.pocky.presentation.screen.order.breakfast.BreakFastActivity;
 import com.example.pocky.presentation.screen.order.groupmenu.GroupmenuActivity;
@@ -129,7 +132,19 @@ public class MainFrgment extends Fragment {
 
     void init(){ //추천메뉴 MOCK 데이터 초기화
         viewModel.getCommentData(UserInfo.getInstance().getUserAge());
+        viewModel.getRecommendMenuImage().observe((LifecycleOwner) requireContext(), new Observer<List<viewRecommendDTO>>() {
+            @Override
+            public void onChanged(List<viewRecommendDTO> viewRecommendDTOS) {
+                binding.recommend1stImg.setImageResource(viewRecommendDTOS.get(0).getMenuImage());
+                binding.recomment1stText.setText(viewRecommendDTOS.get(0).getMenuName());
 
+                binding.recommend2ndImg.setImageResource(viewRecommendDTOS.get(1).getMenuImage());
+                binding.recomment2ndText.setText(viewRecommendDTOS.get(1).getMenuName());
+
+                binding.recommned3rdImg.setImageResource(viewRecommendDTOS.get(2).getMenuImage());
+                binding.recommnet3rdText.setText(viewRecommendDTOS.get(2).getMenuName());
+            }
+        });
     }
 
 }
