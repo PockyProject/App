@@ -142,6 +142,7 @@ public class FeeddetailActivity extends AppCompatActivity {
                 data.getQrImage(),
                 data.getMenuImage()
         );
+        Log.d(TAG,"테스트 "+UserInfo.getInstance().getUserId());
         return temp;
     }
 

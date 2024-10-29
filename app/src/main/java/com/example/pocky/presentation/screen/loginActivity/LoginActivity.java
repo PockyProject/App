@@ -119,7 +119,8 @@
                             UserInfo.getInstance().init(
                                     userid,
                                     nickName,
-                                    profileUrl
+                                    profileUrl,
+                                    convertAge
                             );
 
 

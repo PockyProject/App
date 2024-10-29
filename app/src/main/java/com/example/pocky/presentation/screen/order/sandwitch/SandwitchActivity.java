@@ -26,7 +26,7 @@ public class SandwitchActivity extends AppCompatActivity {
     private static List<String> qrSandwitchName; // 메뉴 객체에 들어갈 리스트
     private ActivitySandwitchBinding binding;
     private Boolean isChooseFeed;
-
+    private static final String TAG = "SandwitchActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,6 +38,7 @@ public class SandwitchActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         initIsFeedState();
+        Log.d(TAG,"뭐야이거" + isChooseFeed.toString());
         init();
 
         Menu arr = MenuSingleton.getInstance();
