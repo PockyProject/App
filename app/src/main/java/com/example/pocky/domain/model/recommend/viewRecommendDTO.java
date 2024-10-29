@@ -3,7 +3,11 @@ package com.example.pocky.domain.model.recommend;
 public class viewRecommendDTO {
     private String menuName;
     private int menuImage;
+    private String menuQrName;
 
+    public String getMenuQrName() {
+        return menuQrName;
+    }
 
     public String getMenuName() {
         return menuName;
@@ -20,4 +24,8 @@ public class viewRecommendDTO {
     public void setMenuImage(int menuImage) {
         this.menuImage = menuImage;
     }
+    public void setMenuQrName(String menuQrName) {
+        this.menuQrName = menuQrName;
+    }
+
 }

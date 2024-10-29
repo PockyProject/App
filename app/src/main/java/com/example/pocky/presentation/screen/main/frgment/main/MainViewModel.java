@@ -120,91 +120,109 @@ public class MainViewModel extends ViewModel implements qrOrderValue {
                 case BLTSANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_bltsandwitch);
                     temp2.get(i).setMenuName("비엘티샌드위치");
+                    temp2.get(i).setMenuQrName("BLTSANDWICH");
                     break;
                 }
                 case CHICKENAVOCADOSANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_chickenbaconavocadosandwitch);
                     temp2.get(i).setMenuName("치킨아보카도샌드위치");
+                    temp2.get(i).setMenuQrName("CHICKENAVOCADOSANDWICH");
                     break;
                 }
                 case CHICKENSLICESANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_chickenslicesandwitch);
                     temp2.get(i).setMenuName("치킨슬라이스샌드위치");
+                    temp2.get(i).setMenuQrName("CHICKENSLICESANDWICH");
                     break;
                 }
                 case CHICKENTERIYAKISANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_chickenteriyakisandwitch);
                     temp2.get(i).setMenuName("치킨데리야끼샌드위치");
+                    temp2.get(i).setMenuQrName("CHICKENTERIYAKISANDWICH");
                     break;
                 }
                 case EGGSLICESANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_eggslicesandwitch);
                     temp2.get(i).setMenuName("에그슬라이스샌드위치");
+                    temp2.get(i).setMenuQrName("EGGSLICESANDWICH");
                     break;
                 }
                 case EGGMAYOSANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_eggmayosandwitch);
                     temp2.get(i).setMenuName("에그마요샌드위치");
+                    temp2.get(i).setMenuQrName("EGGMAYOSANDWICH");
                     break;
                 }
                 case HAMSANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_hamsandwitch);
                     temp2.get(i).setMenuName("햄샌드위치");
+                    temp2.get(i).setMenuQrName("HAMSANDWICH");
                     break;
                 }
                 case ITALIANBMTSANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_italianbmtsandwitch);
                     temp2.get(i).setMenuName("이탈리안비엠티샌드위치");
+                    temp2.get(i).setMenuQrName("ITALIANBMTSANDWICH");
                     break;
                 }
                 case KBBQSANDWITCH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_kbbqsandwitch);
                     temp2.get(i).setMenuName("K비비큐샌드위치");
+                    temp2.get(i).setMenuQrName("KBBQSANDWITCH");
                     break;
                 }
                 case PORKCHEESESANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_pullporkcheesesandwitch);
                     temp2.get(i).setMenuName("폴포크치즈샌드위치");
+                    temp2.get(i).setMenuQrName("PORKCHEESESANDWICH");
                     break;
                 }
                 case ROASTEDCHICKENSANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_roastedchickensandwitch);
                     temp2.get(i).setMenuName("로티세리샌드위치");
+                    temp2.get(i).setMenuQrName("ROASTEDCHICKENSANDWICH");
                     break;
                 }
                 case ROTISSERIEBBQCHICKEN : {
                     temp2.get(i).setMenuImage(R.drawable.resize_rotisseriebbqchickensandwitch);
                     temp2.get(i).setMenuName("로티세리비비큐샌드위치");
+                    temp2.get(i).setMenuQrName("ROTISSERIEBBQCHICKEN");
                     break;
                 }
                 case SHRIMPSANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_shrimpsandwitch);
                     temp2.get(i).setMenuName("쉬림프샌드위치");
+                    temp2.get(i).setMenuQrName("SHRIMPSANDWICH");
                     break;
                 }
                 case SPICYITALIANSANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_spicyitaliansandwitch);
                     temp2.get(i).setMenuName("스파이시이탈리안샌드위치");
+                    temp2.get(i).setMenuQrName("SPICYITALIANSANDWICH");
                     break;
                 }
                 case SPICYSHRIMPSANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_spicyshrimpsandwitch);
                     temp2.get(i).setMenuName("스파이시쉬림프샌드위치");
+                    temp2.get(i).setMenuQrName("SPICYSHRIMPSANDWICH");
                     break;
                 }
                 case STEAKCHEESESANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_steakandcheesesandwitch);
                     temp2.get(i).setMenuName("스테이크앤치즈샌드위치");
+                    temp2.get(i).setMenuQrName("STEAKCHEESESANDWICH");
                     break;
                 }
                 case SUBWAYCLUBSANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_subwayclubsandwitch);
                     temp2.get(i).setMenuName("서브웨이클럽샌드위치");
+                    temp2.get(i).setMenuQrName("SUBWAYCLUBSANDWICH");
                     break;
                 }
                 case VEGGIESANDWICH : {
                     temp2.get(i).setMenuImage(R.drawable.resize_veggiesandwitch);
                     temp2.get(i).setMenuName("베지샌드위치");
+                    temp2.get(i).setMenuQrName("VEGGIESANDWICH");
                     break;
                 }
             }
