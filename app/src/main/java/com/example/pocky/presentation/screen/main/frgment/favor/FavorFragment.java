@@ -152,7 +152,7 @@ public class FavorFragment extends Fragment {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
 
             // favor에서 필요한 데이터를 QR 코드에 넣기
-            String content = favor.getMenuName() + " - " + favor.getRequid();
+            String content = ConvertQrValue(favor);
             Bitmap bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.QR_CODE, 300, 300);
 
             bottomsheet.setQrBitmap(bitmap);
@@ -160,5 +160,309 @@ public class FavorFragment extends Fragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    //최종적으로 qr 데이터 변환 메서드
+    private String ConvertQrValue(Favor favor) {
+        String temp = "";
+        //메뉴 이름
+        switch (favor.getMenuName()) {
+            case "비엘티샌드위치": {
+                temp += "M1 ";
+                break;
+
+            }
+            case "치킨아보카도샌드위치": {
+                temp += "M2 ";
+                break;
+            }
+            case "치킨슬라이스샌드위치": {
+                temp += "M3 ";
+                break;
+            }
+            case "치킨데리야끼샌드위치": {
+                temp += "M4 ";
+                break;
+            }
+            case "에그슬라이스샌드위치": {
+                temp += "M5 ";
+                break;
+            }
+            case "에그마요샌드위치": {
+                temp += "M6 ";
+                break;
+            }
+            case "햄샌드위치": {
+                temp += "M7 ";
+                break;
+            }
+            case "이탈리안비엠티샌드위치": {
+                temp += "M8 ";
+                break;
+            }
+            case "K비비큐샌드위치": {
+                temp += "M9 ";
+                break;
+            }
+            case "폴포크치즈샌드위치": {
+                temp += "M10 ";
+                break;
+            }
+            case "로티세리샌드위치": {
+                temp += "M11 ";
+                break;
+            }
+            case "로티세리비비큐샌드위치": {
+                temp += "M12 ";
+                break;
+            }
+            case "쉬림프샌드위치": {
+                temp += "M13 ";
+                break;
+            }
+            case "스파이시이탈리안샌드위치": {
+                temp += "M14 ";
+                break;
+            }
+            case "스파이시쉬림프샌드위치": {
+                temp += "M15 ";
+                break;
+            }
+            case "스테이크앤치즈샌드위치": {
+                temp += "M16 ";
+                break;
+            }
+            case "서브웨이클럽샌드위치": {
+                temp += "M17 ";
+                break;
+            }
+            case "베지샌드위치": {
+                temp += "M18 ";
+                break;
+            }
+
+
+        }
+        // 빵 이름
+        switch (favor.getBread()) {
+            case "화이트": {
+                temp += "B1 ";
+                break;
+            }
+            case "위트": {
+                temp += "B2 ";
+                break;
+            }
+            case "파마산오레가노": {
+                temp += "B3 ";
+                break;
+            }
+            case "허니오트": {
+                temp += "B4 ";
+                break;
+            }
+            case "하티": {
+                temp += "B5 ";
+                break;
+            }
+            case "플랫브레드": {
+                temp += "B6 ";
+                break;
+            }
+        }
+
+        if (!favor.getToping().isEmpty()) {
+            if (favor.getToping().size() == 2) {
+                temp += "T00";
+            } else if (favor.getToping().size() == 1) {
+                temp += "T0000";
+            } else {
+                temp += "T";
+            }
+
+            for (int i = 0; i < favor.getToping().size(); i++) {
+                // 토핑 이름
+                switch (favor.getToping().get(i)) {
+                    case "아보카도":
+                        temp += "01";
+                        break;
+                    case "베이컨":
+                        temp += "02";
+                        break;
+                    case "에그슬라이스":
+                        temp += "03";
+                        break;
+                    case "미트":
+                        temp += "04";
+                        break;
+                    case "오믈렛":
+                        temp += "05";
+                        break;
+                    case "페퍼로니":
+                        temp += "06";
+                        break;
+                    case "에그마요":
+                        temp += "07";
+                        break;
+                    case "아메리칸치즈":
+                        temp += "08";
+                        break;
+                    case "모짜렐라치즈":
+                        temp += "09";
+                        break;
+                    case "슈레드치즈":
+                        temp += "10";
+                        break;
+                    case "오이":
+                        temp += "11";
+                        break;
+                    case "할라피뇨":
+                        temp += "12";
+                        break;
+                    case "양상추":
+                        temp += "13";
+                        break;
+                    case "올리브":
+                        temp += "14";
+                        break;
+                    case "양파":
+                        temp += "15";
+                        break;
+                    case "피클":
+                        temp += "16";
+                        break;
+                    case "피멘토":
+                        temp += "17";
+                        break;
+                    case "토마토":
+                        temp += "18";
+                        break;
+                }
+            }
+        }
+
+
+        if (!favor.getSauce().isEmpty()) {
+            if (favor.getSauce().size() == 2) {
+                temp += " SAU00";
+            } else if (favor.getSauce().size() == 1) {
+                temp += " SAU0000";
+            } else {
+                temp += " SAU";
+            }
+
+            for (int i = 0; i < favor.getSauce().size(); i++) {
+                // 소스 이름
+                switch (favor.getSauce().get(i)) {
+                    case "BBQ":
+                        temp += "01";
+                        break;
+                    case "허니머스터드":
+                        temp += "02";
+                        break;
+                    case "핫칠리":
+                        temp += "03";
+                        break;
+                    case "이탈리안드레싱":
+                        temp += "04";
+                        break;
+                    case "마요네즈":
+                        temp += "05";
+                        break;
+                    case "머스터드":
+                        temp += "06";
+                        break;
+                    case "올리브오일":
+                        temp += "07";
+                        break;
+                    case "페퍼":
+                        temp += "08";
+                        break;
+                    case "랜치":
+                        temp += "09";
+                        break;
+                    case "레드와인":
+                        temp += "10";
+                        break;
+                    case "소금":
+                        temp += "11";
+                        break;
+                    case "스모크BBQ":
+                        temp += "12";
+                        break;
+                    case "사우스웨스트":
+                        temp += "13";
+                        break;
+                    case "간장":
+                        temp += "14";
+                        break;
+                    case "스위트칠리":
+                        temp += "15";
+                        break;
+                    case "스위트어니언":
+                        temp += "16";
+                        break;
+                    case "타르타르":
+                        temp += "17";
+                        break;
+                    case "사우전드아일랜드":
+                        temp += "18";
+                        break;
+                    case "와사비마요":
+                        temp += "19";
+                        break;
+                }
+            }
+        }
+
+        if (!favor.getSide().isEmpty()) {
+            temp += " SI";
+            // 사이드 이름
+            switch (favor.getSide()) {
+                case "베이컨치즈웨지포테이토":
+                    temp += "01";
+                    break;
+                case "치즈웨지포테이토":
+                    temp += "02";
+                    break;
+                case "치킨베이컨랩":
+                    temp += "03";
+                    break;
+                case "감자칩":
+                    temp += "04";
+                    break;
+                case "초코칩":
+                    temp += "05";
+                    break;
+                case "콘스프":
+                    temp += "06";
+                    break;
+                case "더블초코칩":
+                    temp += "07";
+                    break;
+                case "해쉬브라운":
+                    temp += "08";
+                    break;
+                case "우유":
+                    temp += "09";
+                    break;
+                case "머쉬룸스프":
+                    temp += "10";
+                    break;
+                case "오트밀":
+                    temp += "11";
+                    break;
+                case "라즈베리치즈쿠키":
+                    temp += "12";
+                    break;
+                case "웨지포테이토":
+                    temp += "13";
+                    break;
+                case "화이트마카다미아쿠키":
+                    temp += "14";
+                    break;
+            }
+        }
+        return temp;
     }
 }
