@@ -66,8 +66,10 @@ public class MainFrgment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onResume() {
+        super.onResume();
+
+        init();
     }
 
     private void initGlide(FragmentMainBinding binding){
@@ -126,7 +128,7 @@ public class MainFrgment extends Fragment {
     }
 
     void init(){ //추천메뉴 MOCK 데이터 초기화
-
+        viewModel.getCommentData(UserInfo.getInstance().getUserAge());
 
     }
 

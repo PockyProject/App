@@ -4,12 +4,14 @@ public class UserInfo {
     private String userId;
     private String nickname;
     private String profileURl;
+    private int userAge;
 
     private UserInfo(){};
-    public void init(String userId,String nickname, String profileURl){
+    public void init(String userId,String nickname, String profileURl, int userAge){
                 this.userId = userId;
                 this.nickname = nickname;
                 this.profileURl = profileURl;
+                this.userAge = userAge;
     }
 
     private static class LazyHolder{
@@ -29,4 +31,6 @@ public class UserInfo {
     }
 
     public String getUserId() { return userId; }
+    public int getUserAge() { return userAge; }
+
 }
