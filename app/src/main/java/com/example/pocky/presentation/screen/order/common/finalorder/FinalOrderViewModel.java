@@ -197,14 +197,6 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
         return temp;
     }
 
-    private String ConvertBooleantoString(Boolean menu) {
-        if (menu) {
-            return "YES";
-        } else {
-            return "NO";
-        }
-    }
-
     //최종적으로 qr 데이터 변환 메서드
     private String ConvertQrValue(Menu menu) {
         String temp = "";
