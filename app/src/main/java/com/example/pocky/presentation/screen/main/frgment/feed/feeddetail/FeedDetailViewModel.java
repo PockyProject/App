@@ -13,6 +13,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.example.pocky.domain.model.RetrofitService;
 import com.example.pocky.domain.model.comment.CommentApiService;
 import com.example.pocky.domain.model.comment.CommentData;
+import com.example.pocky.domain.model.feed.FeedData;
 import com.example.pocky.domain.model.user.UserInfo;
 
 import java.sql.Timestamp;
@@ -124,6 +125,31 @@ public class FeedDetailViewModel extends AndroidViewModel {
                         getComment(data.getFeedUid());
                     }else{
                         Log.d(TAG,"데이터 삭제 실패 : " + response.code());
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<Void> call, Throwable t) {
+                    Log.d(TAG,"서버와 연결 실패  : " + t.getMessage());
+                }
+            });
+        });
+    }
+
+    public void postLikeCount(FeedData count){
+        CommentApiService api = RetrofitService.getInstance().getRetrofit().create(CommentApiService.class);
+        // ExecutorService 생성 (스레드 풀)
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+
+        // 네트워크 요청 비동기 처린
+        executor.execute(() -> {
+            api.postLikeCount(count).enqueue(new Callback<Void>() {
+                @Override
+                public void onResponse(Call<Void> call, Response<Void> response) {
+                    if(response.isSuccessful()){
+                        Log.d(TAG,"좋아요 카운트 등록 성공 : " + response.code());
+                    }else{
+                        Log.d(TAG,"좋아요 카운트 등록 실패 : " + response.code());
                     }
                 }
 
