@@ -147,7 +147,12 @@ public class FavorFragment extends Fragment {
 
     // QR 코드 생성 처리 메서드
     private void generateQrCode(Favor favor) {
-        bottomsheet.show(getParentFragmentManager(), FavorModalBottomsheet.TAG);
+
+        // bottomsheet가 이미 표시되어 있다면 닫기
+        if (bottomsheet.isAdded()) {
+            bottomsheet.dismiss();
+        }
+
         try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
 

@@ -130,7 +130,10 @@ public class OrderListFragment extends Fragment implements qrOrderValue {
 
     // QR 코드 생성 처리 메서드
     private void generateQrCode(Order order) {
-        bottomsheet.show(getParentFragmentManager(), OrderModalBottomSheet.TAG);
+        // bottomsheet가 이미 표시되어 있다면 닫기
+        if (bottomsheet.isAdded()) {
+            bottomsheet.dismiss();
+        }
         try {
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
 
@@ -138,6 +141,9 @@ public class OrderListFragment extends Fragment implements qrOrderValue {
 
             String content = ConvertQrValue(order);
             Bitmap bitmap = barcodeEncoder.encodeBitmap(content, BarcodeFormat.QR_CODE, 300, 300);
+
+
+
 
             bottomsheet.setQrBitmap(bitmap);
             bottomsheet.show(getChildFragmentManager(),OrderModalBottomSheet.TAG);
