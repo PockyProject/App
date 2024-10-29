@@ -1,22 +1,17 @@
 package com.example.pocky.presentation.screen.main.frgment.feed;
 
-import android.annotation.SuppressLint;
-import android.nfc.Tag;
-import android.util.Log;
-import android.view.Choreographer;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.AsyncDifferConfig;
 import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.pocky.R;
 import com.example.pocky.domain.model.feed.FeedData;
 
@@ -32,14 +27,12 @@ public class FeedAdapter extends ListAdapter<FeedData,FeedAdapter.ViewHolder> {
         void onItemClick(View v, int position);
     }
 
-    public void setOnItemClickListener(OnItemClickListener listener) { // 받아온 리스너를 설정하는 메서드
-        this.listener = listener;
-    }
-
     public FeedAdapter(OnItemClickListener listener){
         super(FeedDiffUtil);
         FeedAdapter.listener = listener;
     }
+
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -81,14 +74,13 @@ public class FeedAdapter extends ListAdapter<FeedData,FeedAdapter.ViewHolder> {
         public void bind(FeedData feedData){
             menuNameTextView.setText(feedData.getContent());
             titleTextView.setText(feedData.getTitle());
-            Log.d("123",String.valueOf(feedData.getMenuImage()));
 
             Glide.with(itemView)
                     .load(feedData.getMenuImage())
                     .circleCrop()
                     .into(profileImageView);
         }
-        }
+    }
 
     // DiffUtil 정의
     public static final DiffUtil.ItemCallback<FeedData> FeedDiffUtil = new DiffUtil.ItemCallback<FeedData>() {
@@ -105,13 +97,5 @@ public class FeedAdapter extends ListAdapter<FeedData,FeedAdapter.ViewHolder> {
             return oldItem.equals(newItem);
         }
     };
-
-    protected FeedAdapter(@NonNull DiffUtil.ItemCallback<FeedData> diffCallback) {
-        super(diffCallback);
-    }
-
-    protected FeedAdapter(@NonNull AsyncDifferConfig<FeedData> config) {
-        super(config);
-    }
 }
 

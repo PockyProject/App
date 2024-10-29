@@ -1,6 +1,5 @@
-package com.example.pocky.domain.model.Comment;
+package com.example.pocky.domain.model.comment;
 
-import com.example.pocky.domain.model.feed.FeedData;
 import com.google.gson.annotations.SerializedName;
 
 import java.sql.Timestamp;
@@ -16,17 +15,19 @@ public class CommentData {
     @SerializedName("writer")
     private String writer;
 
-    @SerializedName("writerImage")
+    @SerializedName("userUid")
+    private String userUid;
+
+    @SerializedName("writeImage")
     private String writerImage;
 
     @SerializedName("content")
     private String content;
 
+    @SerializedName("likeCount")
+    private int likeCount;
     @SerializedName("writedDate")
     private Timestamp writedDate;
-
-    @SerializedName("likedCount")
-    private int likedCount;
 
     @SerializedName("deleteAt")
     private Timestamp deleteAt;
@@ -38,6 +39,7 @@ public class CommentData {
     public String getCommentUid() {
         return commentUid;
     }
+    public String getUserUid() { return userUid; }
 
     public String getFeedUid() {
         return feedUid;
@@ -60,7 +62,7 @@ public class CommentData {
     }
 
     public int getLikedCount() {
-        return likedCount;
+        return likeCount;
     }
 
     public Timestamp getDeleteAt() {
@@ -71,16 +73,20 @@ public class CommentData {
         return updateAt;
     }
 
-    public CommentData(String commentUid, String feedUid, String writer, String writerImage, String content, Timestamp writedDate, int likedCount, Timestamp deleteAt, Timestamp updateAt) {
+    public CommentData(String commentUid, String feedUid, String writer,
+                       String writerImage, String content, Timestamp writedDate,
+                       int likedCount, Timestamp deleteAt, Timestamp updateAt,
+                       String userUid) {
         this.commentUid = commentUid;
         this.feedUid = feedUid;
         this.writer = writer;
         this.writerImage = writerImage;
         this.content = content;
         this.writedDate = writedDate;
-        this.likedCount = likedCount;
+        this.likeCount = likedCount;
         this.deleteAt = deleteAt;
         this.updateAt = updateAt;
+        this.userUid = userUid;
     }
 
     @Override
@@ -91,6 +97,6 @@ public class CommentData {
         CommentData commentData = (CommentData) obj; // 형변환
 
         // 피드 UID를 비교하여 맞는지 확인
-        return feedUid.equals(commentData.getFeedUid());
+        return feedUid.equals(commentData.getCommentUid());
     }
 }

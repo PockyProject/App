@@ -1,4 +1,4 @@
-package com.example.pocky.presentation.screen.main.frgment.favor;
+package com.example.pocky.presentation.screen.main.frgment.feed.bottomsheet;
 
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -23,7 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import java.io.File;
 import java.io.FileOutputStream;
 
-public class FavorModalBottomsheet  extends BottomSheetDialogFragment {
+public class QrBottomSheet extends BottomSheetDialogFragment {
     static String TAG = "ModalBottomSheet";
     private Bitmap qrBitmap;
 
@@ -129,6 +129,3 @@ public class FavorModalBottomsheet  extends BottomSheetDialogFragment {
         }
     }
 }
-
-
-
