@@ -26,6 +26,8 @@ import com.example.pocky.presentation.screen.order.common.finalorder.qrOrderValu
 import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
+import java.util.Objects;
+
 
 public class OrderListFragment extends Fragment implements qrOrderValue {
     private FragmentOrderlistBinding binding;
@@ -345,7 +347,7 @@ public class OrderListFragment extends Fragment implements qrOrderValue {
             for (int i = 0; i < order.getSauce().size(); i++) {
                 // 소스 이름
                 switch (order.getSauce().get(i)) {
-                    case "BBQ":
+                    case "비비큐":
                         temp += "01";
                         break;
                     case "허니머스터드":
@@ -453,6 +455,13 @@ public class OrderListFragment extends Fragment implements qrOrderValue {
                     temp += "14";
                     break;
             }
+        }
+
+        //음료 이름
+        if (Objects.equals(order.getRequid(), "음료 여부 : 예")) {
+            temp += " YES";
+        } else {
+            temp += " NO";
         }
         return temp;
     }

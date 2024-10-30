@@ -147,6 +147,7 @@ public class FinalOrderViewModel extends AndroidViewModel implements qrOrderValu
         } else {
             temp = "음료 여부 : 아니오";
         }
+        Log.d(TAG,"빵 이름: " + menu.getBreadName());
 
 
         return new Favor(
