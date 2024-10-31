@@ -60,7 +60,7 @@ public class SideActivity extends AppCompatActivity {
         binding.confirmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(arr.getSideName().isEmpty()){
+                if(arr.getSideName() == null || arr.getSideName().isEmpty()){
                     Toast myToast = Toast.makeText(getApplicationContext(),"먼저 사이드를 선택해주세요", Toast.LENGTH_SHORT);
                     myToast.show();
                 }else{

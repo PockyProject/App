@@ -27,6 +27,7 @@ import com.google.zxing.BarcodeFormat;
 import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 import java.util.List;
+import java.util.Objects;
 
 public class FavorFragment extends Fragment {
 
@@ -359,7 +360,7 @@ public class FavorFragment extends Fragment {
             for (int i = 0; i < favor.getSauce().size(); i++) {
                 // 소스 이름
                 switch (favor.getSauce().get(i)) {
-                    case "BBQ":
+                    case "비비큐":
                         temp += "01";
                         break;
                     case "허니머스터드":
@@ -467,6 +468,13 @@ public class FavorFragment extends Fragment {
                     temp += "14";
                     break;
             }
+        }
+
+        //음료 이름
+        if (Objects.equals(favor.getRequid(), "음료 여부 : 예")) {
+            temp += " YES";
+        } else {
+            temp += " NO";
         }
         return temp;
     }
