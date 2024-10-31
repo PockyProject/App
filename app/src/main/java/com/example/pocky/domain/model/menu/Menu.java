@@ -68,14 +68,18 @@ public class Menu {
             this.sauceName = new ArrayList<>(); // sauce 필드에 빈 리스트 생성
         }
 
-        if (getSauceName().isEmpty()) {
-            getSauceName().add(sauceName);
-        }else if(getSauceName().size() < 3){
-            getSauceName().add(sauceName);
+        if (getSauceName().contains(sauceName)) {
+            getSauceName().remove(sauceName);
         }
+        // 리스트에 값이 없을 경우 추가 로직 실행
         else {
-            getSauceName().remove(0);
-            getSauceName().add(sauceName);
+            if (getSauceName().size() < 3) {
+                getSauceName().add(sauceName);
+            } else {
+                // 리스트가 이미 3개가 있는 경우 첫 번째 요소를 삭제하고 새 값을 추가
+                getSauceName().remove(0);
+                getSauceName().add(sauceName);
+            }
         }
     }
 
@@ -89,16 +93,19 @@ public class Menu {
             this.toppingName = new ArrayList<>(); // sauce 필드에 빈 리스트 생성
         }
 
-        if (getToppingName().isEmpty()) {
-            getToppingName().add(toppingName);
-        }else if(getToppingName().size() < 3){
-            getToppingName().add(toppingName);
+        if (getToppingName().contains(toppingName)) {
+            getToppingName().remove(toppingName);
         }
+        // 리스트에 값이 없을 경우 추가 로직 실행
         else {
-            getToppingName().remove(0);
-            getToppingName().add(toppingName);
+            if (getToppingName().size() < 3) {
+                getToppingName().add(toppingName);
+            } else {
+                // 리스트가 이미 3개가 있는 경우 첫 번째 요소를 삭제하고 새 값을 추가
+                getToppingName().remove(0);
+                getToppingName().add(toppingName);
+            }
         }
-
     }
 
     public List<String> getQrToppingName() {
@@ -112,14 +119,18 @@ public class Menu {
             this.qrToppingName = new ArrayList<>(); // sauce 필드에 빈 리스트 생성
         }
 
-        if (getQrToppingName().isEmpty()) {
-            getQrToppingName().add(qrToppingName);
-        }else if(getQrToppingName().size() < 3){
-            getQrToppingName().add(qrToppingName);
+        if (getQrToppingName().contains(qrToppingName)) {
+            getQrToppingName().remove(qrToppingName);
         }
+        // 리스트에 값이 없을 경우 추가 로직 실행
         else {
-            getQrToppingName().remove(0);
-            getQrToppingName().add(qrToppingName);
+            if (getQrToppingName().size() < 3) {
+                getQrToppingName().add(qrToppingName);
+            } else {
+                // 리스트가 이미 3개가 있는 경우 첫 번째 요소를 삭제하고 새 값을 추가
+                getQrToppingName().remove(0);
+                getQrToppingName().add(qrToppingName);
+            }
         }
     }
 
@@ -130,15 +141,18 @@ public class Menu {
             this.qrSauceName = new ArrayList<>(); // sauce 필드에 빈 리스트 생성
         }
 
-        if (getQrSauceName().isEmpty()){
-            getQrSauceName().add(qrSauceName);
-        }else if(getQrSauceName().size() < 3){
-            getQrSauceName().add(qrSauceName);
+        if (getQrSauceName().contains(qrSauceName)) {
+            getQrSauceName().remove(qrSauceName);
         }
-
+        // 리스트에 값이 없을 경우 추가 로직 실행
         else {
-            getQrSauceName().remove(0);
-            getQrSauceName().add(qrSauceName);
+            if (getQrSauceName().size() < 3) {
+                getQrSauceName().add(qrSauceName);
+            } else {
+                // 리스트가 이미 3개가 있는 경우 첫 번째 요소를 삭제하고 새 값을 추가
+                getQrSauceName().remove(0);
+                getQrSauceName().add(qrSauceName);
+            }
         }
     }
 

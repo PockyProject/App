@@ -53,8 +53,8 @@ public class ToppingActivity extends AppCompatActivity {
                 arr.setQrToppingName(qrToppingName);
 
                 Log.d("SideActivity", "선택된 아이템: " + imageResId);
-                Log.d("SideActivity", "선택된 메뉴: " + arr.getSauceName());
-                Log.d("SideActivity", "선택된 메뉴: " + arr.getQrSauceName());
+                Log.d("SideActivity", "선택된 메뉴: " + arr.getToppingName());
+                Log.d("SideActivity", "선택된 메뉴: " + arr.getQrToppingName());
             }
         });
 
@@ -65,7 +65,7 @@ public class ToppingActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(arr.getToppingName() == null || arr.getToppingName().isEmpty()){
-                    Toast myToast = Toast.makeText(getApplicationContext(),"먼저 소스를  선택해주세요", Toast.LENGTH_SHORT);
+                    Toast myToast = Toast.makeText(getApplicationContext(),"먼저 토핑을 선택해주세요", Toast.LENGTH_SHORT);
                     myToast.show();
                 }else{
                     Log.d("BreakFastActivity","최종적으로 선택된 아이템 : " +
