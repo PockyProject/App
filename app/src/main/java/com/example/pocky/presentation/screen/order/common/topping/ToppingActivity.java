@@ -132,7 +132,7 @@ public class ToppingActivity extends AppCompatActivity {
                 "에그마요",
                 "아메리칸치즈",
                 "모짜렐라치즈",
-                "슈래드치즈",
+                "슈레드치즈",
                 "오이",
                 "할라피뇨",
                 "양상추",

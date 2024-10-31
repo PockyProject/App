@@ -337,7 +337,7 @@ public class FavorFragment extends Fragment {
                     case "피클":
                         temp += "16";
                         break;
-                    case "피멘토":
+                    case "피망":
                         temp += "17";
                         break;
                     case "토마토":
@@ -356,14 +356,15 @@ public class FavorFragment extends Fragment {
             } else {
                 temp += " SAU";
             }
-
+            Log.d("FavorFragment", String.valueOf(favor.getSauce().size()));
+            Log.d("FavorFragment", String.valueOf(favor.getSauce()));
             for (int i = 0; i < favor.getSauce().size(); i++) {
                 // 소스 이름
                 switch (favor.getSauce().get(i)) {
                     case "비비큐":
                         temp += "01";
                         break;
-                    case "허니머스터드":
+                    case "허니머스타드":
                         temp += "02";
                         break;
                     case "핫칠리":
@@ -393,13 +394,13 @@ public class FavorFragment extends Fragment {
                     case "소금":
                         temp += "11";
                         break;
-                    case "스모크BBQ":
+                    case "스모크비비큐":
                         temp += "12";
                         break;
                     case "사우스웨스트":
                         temp += "13";
                         break;
-                    case "간장":
+                    case "소이":
                         temp += "14";
                         break;
                     case "스위트칠리":
@@ -437,13 +438,13 @@ public class FavorFragment extends Fragment {
                 case "감자칩":
                     temp += "04";
                     break;
-                case "초코칩":
+                case "초콜렛칩":
                     temp += "05";
                     break;
-                case "콘스프":
+                case "콘수프":
                     temp += "06";
                     break;
-                case "더블초코칩":
+                case "더블초콜릿칩":
                     temp += "07";
                     break;
                 case "해쉬브라운":
@@ -455,10 +456,10 @@ public class FavorFragment extends Fragment {
                 case "머쉬룸스프":
                     temp += "10";
                     break;
-                case "오트밀":
+                case "오트밀라진쿠키":
                     temp += "11";
                     break;
-                case "라즈베리치즈쿠키":
+                case "라지베리치즈케이크쿠키":
                     temp += "12";
                     break;
                 case "웨지포테이토":
