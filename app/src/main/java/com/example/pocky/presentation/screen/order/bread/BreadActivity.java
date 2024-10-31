@@ -103,7 +103,7 @@ public class BreadActivity extends AppCompatActivity {
                 "파마산",
                 "허니오트",
                 "하티",
-                "플랫브래드"
+                "플랫브레드"
         );
         qrBreadName=Arrays.asList(
                 "WHITE",

@@ -242,11 +242,11 @@ public class OrderListFragment extends Fragment implements qrOrderValue {
                 temp += "B1 ";
                 break;
             }
-            case "위트": {
+            case "휘트": {
                 temp += "B2 ";
                 break;
             }
-            case "파마산오레가노": {
+            case "파마산": {
                 temp += "B3 ";
                 break;
             }
